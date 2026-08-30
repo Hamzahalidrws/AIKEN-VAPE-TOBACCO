@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AIKEN VAPE & TOBACCO | إنشاء حساب جديد</title>
+  <!-- Font Awesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ============================
+       CSS Variables & Global Reset
+       ============================ */
+    :root {
+      --neon-green: #86D800;
+      --neon-green-glow: rgba(134, 216, 0, 0.7);
+      --neon-green-soft: rgba(134, 216, 0, 0.15);
+      --electric-purple: #6210A2;
+      --purple-glow: rgba(98, 16, 162, 0.8);
+      --pure-black: #000000;
+      --white: #ffffff;
+      --gray-light: #cccccc;
+      --gray-mid: #888888;
+      --gray-dark: #1a1a1a;
+      --glass-bg: rgba(10, 10, 10, 0.55);
+      --glass-border: rgba(134, 216, 0, 0.3);
+      --glass-border-hover: rgba(134, 216, 0, 0.7);
+      --input-bg: rgba(20, 20, 20, 0.6);
+      --input-border: rgba(255, 255, 255, 0.1);
+      --body-bg: var(--pure-black);
+      --text-color: var(--white);
+      --font-heading: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 50%;
+    }
+
+    /* الوضع النهاري */
+    :root.light-mode {
+      --neon-green: #5bb900;
+      --neon-green-glow: rgba(91, 185, 0, 0.5);
+      --neon-green-soft: rgba(91, 185, 0, 0.1);
+      --electric-purple: #6b21a8;
+      --pure-black: #f3f5f7;
+      --white: #101828;
+      --gray-light: #333333;
+      --gray-mid: #667085;
+      --gray-dark: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(91, 185, 0, 0.3);
+      --glass-border-hover: rgba(91, 185, 0, 0.7);
+      --input-bg: rgba(255, 255, 255, 0.8);
+      --input-border: rgba(0, 0, 0, 0.1);
+      --body-bg: #f3f5f7;
+      --text-color: #101828;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--body-bg);
+      color: var(--text-color);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #particlesCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(134, 216, 0, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 70%, rgba(98, 16, 162, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(134, 216, 0, 0.03) 0%, transparent 70%);
+      transition: background 0.3s;
+    }
+    :root.light-mode .bg-glow {
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(91, 185, 0, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 70%, rgba(107, 33, 168, 0.05) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(91, 185, 0, 0.02) 0%, transparent 70%);
+    }
+
+    /* ============================
+       Top Controls (Theme & Language)
+       ============================ */
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    html[dir="ltr"] .top-controls {
+      right: auto;
+      left: 20px;
+    }
+    .control-btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-color);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      font-size: 1.1rem;
+      position: relative;
+    }
+    .control-btn:hover {
+      border-color: var(--glass-border-hover);
+      color: var(--neon-green);
+      transform: scale(1.05);
+    }
+    .lang-dropdown {
+      position: relative;
+    }
+    .lang-menu {
+      position: absolute;
+      top: 120%;
+      right: 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      list-style: none;
+      padding: 5px 0;
+      min-width: 110px;
+      display: none;
+      z-index: 101;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    html[dir="ltr"] .lang-menu {
+      right: auto;
+      left: 0;
+    }
+    .lang-dropdown.active .lang-menu {
+      display: block;
+    }
+    .lang-menu li {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .lang-menu li:hover {
+      background: rgba(134, 216, 0, 0.15);
+      color: var(--neon-green);
+    }
+    .lang-menu li.active-lang {
+      color: var(--neon-green);
+      font-weight: bold;
+    }
+
+    /* ============================
+       Signup Container
+       ============================ */
+    .signup-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    .signup-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      position: relative;
+      border: 1px solid var(--glass-border);
+      box-shadow:
+        0 0 40px rgba(134, 216, 0, 0.12),
+        0 0 80px rgba(98, 16, 162, 0.08),
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+      color: var(--text-color);
+    }
+
+    .signup-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: calc(var(--radius-lg) + 2px);
+      padding: 2px;
+      background: conic-gradient(from 0deg,
+          transparent 0deg,
+          rgba(134, 216, 0, 0.4) 90deg,
+          transparent 180deg,
+          rgba(98, 16, 162, 0.4) 270deg,
+          transparent 360deg);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .signup-card:hover {
+      border-color: var(--glass-border-hover);
+      box-shadow:
+        0 0 60px rgba(134, 216, 0, 0.2),
+        0 0 100px rgba(98, 16, 162, 0.15),
+        0 30px 70px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .signup-card::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 30px;
+      right: 30px;
+      height: 1px;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(134, 216, 0, 0.5) 20%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(134, 216, 0, 0.5) 80%,
+          transparent);
+      border-radius: 1px;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .logo-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-xl);
+  padding: 5px;
+  background: var(--neon-green); /* ✅ أخضر ثابت بدون تدرج */
+  box-shadow:
+    0 0 30px var(--neon-green-glow),
+    0 0 60px rgba(98, 16, 162, 0.5);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  cursor: pointer;
+}
+
+    .logo-ring:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 50px var(--neon-green-glow),
+        0 0 90px rgba(98, 16, 162, 0.7),
+        0 0 120px rgba(134, 216, 0, 0.4);
+    }
+
+    .logo-ring img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      display: block;
+      border: 2px solid rgba(0, 0, 0, 0.6);
+      background: var(--pure-black);
+    }
+
+    .brand-name {
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .brand-name h1 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--neon-green);
+      text-shadow:
+        0 0 20px var(--neon-green-glow),
+        0 0 60px rgba(134, 216, 0, 0.4),
+        0 0 100px rgba(134, 216, 0, 0.2);
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      text-align: center;
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+      color: var(--gray-mid);
+      letter-spacing: 1px;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Floating Label Styles */
+    .input-group label {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 2;
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      color: var(--gray-mid);
+      background: transparent;
+      padding: 0 4px;
+      transition: all var(--transition-smooth);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    html[dir="ltr"] .input-group label {
+      right: auto;
+      left: 48px;
+    }
+
+    .input-group:focus-within label,
+    .input-group.has-value label {
+      top: -10px;
+      transform: translateY(0);
+      font-size: 0.75rem;
+      color: var(--neon-green);
+      background: var(--body-bg);
+      padding: 0 6px;
+      border-radius: 4px;
+      right: 44px;
+    }
+    html[dir="ltr"] .input-group:focus-within label,
+    html[dir="ltr"] .input-group.has-value label {
+      right: auto;
+      left: 44px;
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 16px;
+      z-index: 3;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-smooth);
+    }
+    html[dir="ltr"] .input-icon {
+      right: auto;
+      left: 16px;
+    }
+
+    .input-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gray-mid);
+      fill: none;
+      stroke-width: 1.8;
+      transition: stroke var(--transition-smooth), filter var(--transition-smooth);
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 48px 14px 16px;
+      background: var(--input-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid var(--input-border);
+      border-radius: var(--radius-md);
+      color: var(--text-color);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      transition: all var(--transition-smooth);
+      outline: none;
+      letter-spacing: 0.5px;
+    }
+    html[dir="ltr"] .input-field {
+      padding: 14px 16px 14px 48px;
+    }
+
+    .input-field:focus {
+      border-color: var(--neon-green);
+      box-shadow:
+        0 0 20px rgba(134, 216, 0, 0.25),
+        0 0 50px rgba(134, 216, 0, 0.08),
+        inset 0 0 20px rgba(134, 216, 0, 0.03);
+      background: var(--input-bg);
+    }
+
+    .input-field:focus~.input-icon svg,
+    .input-group:focus-within .input-icon svg {
+      stroke: var(--neon-green);
+      filter: drop-shadow(0 0 6px var(--neon-green-glow));
+    }
+
+    .input-field.error {
+      border-color: #ff3b3b !important;
+      box-shadow: 0 0 20px rgba(255, 59, 59, 0.3) !important;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+
+    .password-strength {
+      margin-top: -8px;
+      margin-bottom: 6px;
+    }
+
+    .strength-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    :root.light-mode .strength-bar {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 0%;
+      background: #ff3b3b;
+      border-radius: 4px;
+      transition: width var(--transition-smooth), background var(--transition-smooth);
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .strength-text {
+      font-size: 0.75rem;
+      color: var(--gray-mid);
+      text-align: left;
+      letter-spacing: 0.5px;
+    }
+    html[dir="rtl"] .strength-text {
+      text-align: right;
+    }
+
+    .toggle-password {
+      position: absolute;
+      left: 12px;
+      z-index: 3;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+    }
+    html[dir="ltr"] .toggle-password {
+      left: auto;
+      right: 12px;
+    }
+
+    .toggle-password:hover {
+      background: rgba(134, 216, 0, 0.1);
+    }
+
+    .toggle-password svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gray-mid);
+      fill: none;
+      stroke-width: 1.8;
+      transition: stroke var(--transition-smooth), filter var(--transition-smooth);
+    }
+
+    .toggle-password:hover svg {
+      stroke: var(--neon-green);
+      filter: drop-shadow(0 0 5px var(--neon-green-glow));
+    }
+
+    .btn-signup {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--neon-green) 0%, #6db800 100%);
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+      text-transform: uppercase;
+      font-family: var(--font-heading);
+      box-shadow: 0 8px 30px rgba(134, 216, 0, 0.35);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-signup::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--electric-purple) 0%, #7b1fa2 100%);
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+      z-index: -1;
+      border-radius: inherit;
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 45px rgba(134, 216, 0, 0.5), 0 0 70px rgba(98, 16, 162, 0.3);
+    }
+
+    .btn-signup:hover::before {
+      opacity: 0.15;
+    }
+
+    .btn-signup:active {
+      transform: scale(0.96);
+    }
+
+    .btn-signup:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid rgba(0, 0, 0, 0.3);
+      border-top-color: #000;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .footer-link a {
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: all var(--transition-smooth);
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-link a:hover {
+      color: var(--neon-green);
+      text-shadow: 0 0 15px var(--neon-green-glow);
+      border-bottom-color: var(--neon-green);
+    }
+
+    /* Toast */
+    .toast-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .toast-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .toast-box {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(134, 216, 0, 0.2), 0 30px 60px rgba(0,0,0,0.7);
+      transform: translateY(20px) scale(0.9);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      color: var(--text-color);
+    }
+
+    .toast-overlay.active .toast-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .toast-close {
+      display: inline-block;
+      padding: 10px 30px;
+      background: transparent;
+      border: 1.5px solid var(--neon-green);
+      color: var(--neon-green);
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      margin-top: 16px;
+    }
+
+    .toast-close:hover {
+      background: var(--neon-green);
+      color: #000;
+      box-shadow: 0 0 30px var(--neon-green-glow);
+    }
+
+    .toast-message {
+      color: var(--text-color);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .toast-box.success {
+      border-color: rgba(0, 230, 118, 0.5);
+      box-shadow: 0 0 50px rgba(0, 230, 118, 0.2), 0 30px 60px rgba(0,0,0,0.7);
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .signup-card {
+        padding: 28px 20px;
+      }
+      .brand-name h1 {
+        font-size: 1.7rem;
+      }
+      .logo-ring {
+        width: 75px;
+        height: 75px;
+      }
+      .top-controls {
+        top: 10px;
+        right: 10px;
+      }
+      html[dir="ltr"] .top-controls {
+        right: auto;
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Particles Background -->
+  <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Top Controls: Theme Toggle + Language Dropdown -->
+  <div class="top-controls">
+    <button class="control-btn theme-toggle" id="themeToggle" data-translate-title="theme" title="المظهر">
+      <i class="fas fa-moon"></i>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="control-btn" id="langToggle" data-translate-title="language" title="اللغة">
+        <i class="fas fa-globe"></i>
+      </button>
+      <ul class="lang-menu" id="langMenu">
+        <li data-lang="ar" class="active-lang">العربية</li>
+        <li data-lang="en">English</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="signup-wrapper">
+    <div class="signup-card">
+      <div class="logo-container">
+        <div class="logo-ring">
+          <img src="assets/img/logo/favorite-filled.webp" alt="AIKEN Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#86D800;font-weight:900;>AIKEN</span>';">
+        </div>
+      </div>
+      <div class="brand-name">
+        <h1>AIKEN</h1>
+      </div>
+      <div class="brand-subtitle" data-translate="signup_subtitle">إنشاء حساب جديد</div>
+
+      <form class="signup-form" id="signupForm" novalidate autocomplete="off">
+        <!-- Username -->
+        <div class="input-group">
+          <label for="username" data-translate="username_label">اسم المستخدم</label>
+          <input type="text" id="username" class="input-field" required>
+          <span class="input-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+          <label for="email" data-translate="email_label">البريد الإلكتروني</label>
+          <input type="email" id="email" class="input-field" required>
+          <span class="input-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          </span>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <label for="password" data-translate="password_label">كلمة المرور</label>
+          <input type="password" id="password" class="input-field" required>
+          <span class="input-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+          <button type="button" class="toggle-password" data-target="password" aria-label="إظهار كلمة المرور">
+            <svg class="eye-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>
+          </button>
+        </div>
+
+        <!-- قوة كلمة المرور -->
+        <div class="password-strength" id="strengthSection">
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+          <div class="strength-text" id="strengthText"></div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+          <label for="confirmPassword" data-translate="confirm_password_label">تأكيد كلمة المرور</label>
+          <input type="password" id="confirmPassword" class="input-field" required>
+          <span class="input-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+          <button type="button" class="toggle-password" data-target="confirmPassword" aria-label="إظهار تأكيد كلمة المرور">
+            <svg class="eye-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>
+          </button>
+        </div>
+
+        <button type="submit" class="btn-signup" id="signupBtn">
+          <span class="btn-text" data-translate="signup_btn">إنشاء حساب</span>
+        </button>
+      </form>
+
+      <div class="footer-link">
+        <a href="index.html" data-translate="login_link">لديك حساب؟ تسجيل الدخول</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-overlay" id="toastOverlay">
+    <div class="toast-box" id="toastBox">
+      <p class="toast-message" id="toastMessage"></p>
+      <button class="toast-close" id="toastCloseBtn" data-translate="close">إغلاق</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ============================
+      // Translations Object
+      // ============================
+      const translations = {
+        ar: {
+          signup_subtitle: 'إنشاء حساب جديد',
+          username_label: 'اسم المستخدم',
+          email_label: 'البريد الإلكتروني',
+          password_label: 'كلمة المرور',
+          confirm_password_label: 'تأكيد كلمة المرور',
+          signup_btn: 'إنشاء حساب',
+          login_link: 'لديك حساب؟ تسجيل الدخول',
+          theme: 'المظهر',
+          language: 'اللغة',
+          close: 'إغلاق',
+          password_short: 'كلمة المرور يجب أن تكون 8 أحرف على الأقل.',
+          password_mismatch: 'كلمتا المرور غير متطابقتين.',
+          fill_required: 'يرجى ملء جميع الحقول المطلوبة.',
+          strength_very_weak: 'ضعيف جداً',
+          strength_weak: 'ضعيف',
+          strength_medium: 'متوسط',
+          strength_strong: 'قوي',
+          strength_very_strong: 'قوي جداً'
+        },
+        en: {
+          signup_subtitle: 'Create New Account',
+          username_label: 'Username',
+          email_label: 'Email Address',
+          password_label: 'Password',
+          confirm_password_label: 'Confirm Password',
+          signup_btn: 'Sign Up',
+          login_link: 'Have an account? Login',
+          theme: 'Theme',
+          language: 'Language',
+          close: 'Close',
+          password_short: 'Password must be at least 8 characters.',
+          password_mismatch: 'Passwords do not match.',
+          fill_required: 'Please fill in all required fields.',
+          strength_very_weak: 'Very Weak',
+          strength_weak: 'Weak',
+          strength_medium: 'Medium',
+          strength_strong: 'Strong',
+          strength_very_strong: 'Very Strong'
+        }
+      };
+
+      // ============================
+      // DOM Elements
+      // ============================
+      const form = document.getElementById('signupForm');
+      const username = document.getElementById('username');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const confirmPwd = document.getElementById('confirmPassword');
+      const signupBtn = document.getElementById('signupBtn');
+      const btnText = signupBtn.querySelector('.btn-text');
+      const strengthFill = document.getElementById('strengthFill');
+      const strengthText = document.getElementById('strengthText');
+      const toastOverlay = document.getElementById('toastOverlay');
+      const toastMsg = document.getElementById('toastMessage');
+      const toastBox = document.getElementById('toastBox');
+      const toastClose = document.getElementById('toastCloseBtn');
+      const themeToggle = document.getElementById('themeToggle');
+      const langToggle = document.getElementById('langToggle');
+      const langDropdown = document.getElementById('langDropdown');
+      const langMenu = document.getElementById('langMenu');
+
+      // ============================
+      // Language Management
+      // ============================
+      function getCurrentLang() {
+        return localStorage.getItem('lang') || 'ar';
+      }
+
+      function setLang(lang) {
+        localStorage.setItem('lang', lang);
+        applyLanguage(lang);
+        langDropdown.classList.remove('active');
+        document.querySelectorAll('.lang-menu li').forEach(li => {
+          li.classList.toggle('active-lang', li.dataset.lang === lang);
+        });
+      }
+
+      function applyLanguage(lang) {
+        const html = document.getElementById('htmlRoot');
+        html.setAttribute('lang', lang);
+        html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+        document.querySelectorAll('[data-translate]').forEach(el => {
+          const key = el.getAttribute('data-translate');
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+        document.querySelectorAll('[data-translate-title]').forEach(el => {
+          const key = el.getAttribute('data-translate-title');
+          if (translations[lang] && translations[lang][key]) {
+            el.setAttribute('title', translations[lang][key]);
+          }
+        });
+
+        // Re-evaluate floating labels
+        [username, email, password, confirmPwd].forEach(updateFloatingLabel);
+      }
+
+      // Initialize language
+      const initialLang = getCurrentLang();
+      applyLanguage(initialLang);
+      document.querySelectorAll('.lang-menu li').forEach(li => {
+        li.classList.toggle('active-lang', li.dataset.lang === initialLang);
+      });
+
+      // Language dropdown events
+      document.querySelectorAll('.lang-menu li').forEach(li => {
+        li.addEventListener('click', () => setLang(li.dataset.lang));
+      });
+      langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('active');
+      });
+      document.addEventListener('click', () => langDropdown.classList.remove('active'));
+
+      // ============================
+      // Theme Management
+      // ============================
+      function getCurrentTheme() {
+        return localStorage.getItem('theme') || 'dark';
+      }
+
+      function applyTheme(theme) {
+        const html = document.getElementById('htmlRoot');
+        if (theme === 'light') {
+          html.classList.add('light-mode');
+          themeToggle.querySelector('i').classList.remove('fa-moon');
+          themeToggle.querySelector('i').classList.add('fa-sun');
+        } else {
+          html.classList.remove('light-mode');
+          themeToggle.querySelector('i').classList.remove('fa-sun');
+          themeToggle.querySelector('i').classList.add('fa-moon');
+        }
+      }
+
+      // Initialize theme
+      applyTheme(getCurrentTheme());
+
+      // Theme toggle event
+      themeToggle.addEventListener('click', () => {
+        const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+      });
+
+      // ============================
+      // Floating Label State Management
+      // ============================
+      function updateFloatingLabel(input) {
+        const group = input.closest('.input-group');
+        if (!group) return;
+        if (input.value.trim() !== '') {
+          group.classList.add('has-value');
+        } else {
+          group.classList.remove('has-value');
+        }
+      }
+
+      // Attach events
+      [username, email, password, confirmPwd].forEach(input => {
+        input.addEventListener('input', function() {
+          updateFloatingLabel(this);
+        });
+      });
+
+      // Check on load for autofill
+      window.addEventListener('load', function() {
+        [username, email, password, confirmPwd].forEach(updateFloatingLabel);
+      });
+
+      // ============================
+      // Toggle password visibility
+      // ============================
+      document.querySelectorAll('.toggle-password').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const targetId = this.dataset.target;
+          const input = document.getElementById(targetId);
+          const icon = this.querySelector('.eye-icon');
+          const isPass = input.type === 'password';
+          input.type = isPass ? 'text' : 'password';
+          icon.innerHTML = isPass ?
+            '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>' :
+            '<circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>';
+          updateFloatingLabel(input);
+        });
+      });
+
+      // ============================
+      // Password Strength Evaluation
+      // ============================
+      function evaluateStrength(pwd) {
+        let score = 0;
+        if (pwd.length >= 8) score++;
+        if (pwd.length >= 12) score++;
+        if (/[A-Z]/.test(pwd)) score++;
+        if (/[0-9]/.test(pwd)) score++;
+        if (/[^A-Za-z0-9]/.test(pwd)) score++;
+        return score;
+      }
+
+      function getStrengthText(score) {
+        const lang = getCurrentLang();
+        const keys = ['', 'strength_very_weak', 'strength_weak', 'strength_medium', 'strength_strong', 'strength_very_strong'];
+        return translations[lang][keys[score]] || '';
+      }
+
+      function updateStrengthUI(score) {
+        let width, color;
+        switch(score) {
+          case 0: width=0; color='#ff3b3b'; break;
+          case 1: width=20; color='#ff3b3b'; break;
+          case 2: width=40; color='#ff8800'; break;
+          case 3: width=60; color='#ffcc00'; break;
+          case 4: width=80; color='#a0e000'; break;
+          case 5: width=100; color='#86D800'; break;
+          default: width=0; color='#ff3b3b';
+        }
+        strengthFill.style.width = width + '%';
+        strengthFill.style.background = color;
+        strengthFill.style.boxShadow = `0 0 8px ${color}`;
+        strengthText.textContent = getStrengthText(score);
+        strengthText.style.color = color;
+      }
+
+      password.addEventListener('input', function() {
+        const pwd = this.value;
+        if (pwd.length === 0) {
+          strengthFill.style.width = '0%';
+          strengthText.textContent = '';
+          return;
+        }
+        const score = evaluateStrength(pwd);
+        updateStrengthUI(score);
+      });
+
+      // ============================
+      // Toast System
+      // ============================
+      function showToast(msg, type='info') {
+        toastMsg.textContent = msg;
+        toastBox.className = 'toast-box' + (type==='success' ? ' success' : '');
+        toastOverlay.classList.add('active');
+        toastClose.focus();
+      }
+      function hideToast() { toastOverlay.classList.remove('active'); }
+      toastClose.addEventListener('click', hideToast);
+      toastOverlay.addEventListener('click', e => { if(e.target===toastOverlay) hideToast(); });
+      document.addEventListener('keydown', e => { if(e.key==='Escape' && toastOverlay.classList.contains('active')) hideToast(); });
+
+      // ============================
+      // Form Validation & Submission
+      // ============================
+      function clearErrors() {
+        [username, email, password, confirmPwd].forEach(i => i.classList.remove('error'));
+      }
+      function setError(input) {
+        input.classList.add('error');
+        input.focus();
+        setTimeout(() => input.classList.remove('error'), 600);
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        clearErrors();
+        const lang = getCurrentLang();
+        const user = username.value.trim();
+        const mail = email.value.trim();
+        const pwd = password.value;
+        const cpwd = confirmPwd.value;
+        let hasError = false;
+
+        if (!user) { setError(username); hasError = true; }
+        if (!mail || !/^\S+@\S+\.\S+$/.test(mail)) { setError(email); hasError = true; }
+        if (!pwd) { setError(password); hasError = true; }
+        else if (pwd.length < 8) {
+          setError(password);
+          showToast(translations[lang].password_short);
+          return;
+        }
+        if (!cpwd) { setError(confirmPwd); hasError = true; }
+        else if (pwd !== cpwd) {
+          setError(confirmPwd);
+          showToast(translations[lang].password_mismatch);
+          return;
+        }
+
+        if (hasError) {
+          showToast(translations[lang].fill_required);
+          return;
+        }
+
+        // Simulate loading and store data locally
+        signupBtn.disabled = true;
+        btnText.style.opacity = '0';
+        const spinner = document.createElement('span');
+        spinner.className = 'spinner';
+        signupBtn.appendChild(spinner);
+        btnText.textContent = '';
+
+        setTimeout(() => {
+          // حفظ البيانات في localStorage (متوافقة مع صفحة استعادة كلمة المرور)
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('username', user);
+          localStorage.setItem('userEmail', mail);
+          localStorage.setItem('userPassword', pwd); // ✅ تمت إضافة تخزين كلمة المرور
+
+          window.location.href = 'index.html';
+        }, 800);
+      });
+
+      // ============================
+      // Canvas Particles Animation
+      // ============================
+      const canvas = document.getElementById('particlesCanvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [], animFrame;
+      let w, h;
+      function resize() { w = window.innerWidth; h = window.innerHeight; canvas.width = w; canvas.height = h; }
+      class Particle {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * w; this.y = Math.random() * h;
+          this.size = Math.random() * 2.5 + 0.8;
+          this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5;
+          this.opacity = Math.random() * 0.5 + 0.2;
+          const r = Math.random();
+          this.color = r < 0.55 ? `rgba(134,216,0,${this.opacity})` : r < 0.85 ? `rgba(98,16,162,${this.opacity})` : `rgba(255,255,255,${this.opacity*0.5})`;
+          this.glow = r < 0.55 ? `rgba(134,216,0,${this.opacity*0.6})` : r < 0.85 ? `rgba(98,16,162,${this.opacity*0.5})` : `rgba(255,255,255,${this.opacity*0.2})`;
+        }
+        update() {
+          this.x += this.speedX; this.y += this.speedY;
+          if(this.x<-10) this.x=w+10; if(this.x>w+10) this.x=-10;
+          if(this.y<-10) this.y=h+10; if(this.y>h+10) this.y=-10;
+        }
+        draw() {
+          ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+          ctx.fillStyle=this.color; ctx.fill();
+          ctx.beginPath(); ctx.arc(this.x,this.y,this.size*2.5,0,Math.PI*2);
+          ctx.fillStyle=this.glow; ctx.fill();
+        }
+      }
+      function init() { particles = []; for(let i=0;i<Math.floor(w*h/12000);i++) particles.push(new Particle()); }
+      function animate() {
+        ctx.clearRect(0,0,w,h);
+        particles.forEach(p=>{ p.update(); p.draw(); });
+        animFrame = requestAnimationFrame(animate);
+      }
+      resize(); init(); animate();
+      window.addEventListener('resize', ()=>{ resize(); init(); });
+
+      // Initial focus
+      setTimeout(() => username.focus(), 400);
+      window.addEventListener('beforeunload', ()=>{ if(animFrame) cancelAnimationFrame(animFrame); });
+    })();
+  </script>
+</body>
+</html>

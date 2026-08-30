@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيانات التوصيل - Aiken Vape</title>
+
+    <!-- خطوط وأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+
+    <style>
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            --error-color: #f8717a;
+            --success-color: #86D800;
+            --border-radius-card: 20px;
+            --border-radius-input: 12px;
+            --border-radius-btn: 6px;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        :root.light-mode {
+            --bg-dark: #f3f5f7;
+            --bg-card: #ffffff;
+            --bg-alt: #e9edf2;
+            --bg-img: #f7f8fa;
+            --text-light: #101828;
+            --text-muted: #667085;
+            --border-color: #d9dee7;
+            --header-bg: #ffffff;
+            --footer-bg: #f8fafc;
+            --hover-bg: #eef2f6;
+            --tag-bg: #edf1f5;
+            --hero-bg-end: #f3f5f7;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            --error-color: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+        .lock-scroll { overflow: hidden !important; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--text-light);
+        }
+        p { color: var(--text-muted); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 22px;
+            border-radius: var(--border-radius-btn);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+            text-align: center;
+            font-family: inherit;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            line-height: 1.5;
+        }
+        .btn:focus-visible {
+            outline: 3px solid var(--green);
+            outline-offset: 2px;
+        }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--text-light); color: var(--green); box-shadow: 0 0 15px rgba(134,216,0,0.4); }
+        .btn-purple { background: var(--purple); color: #fff; }
+        .btn-purple:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(98,16,162,0.4); }
+        .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
+        .btn-outline:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(134,216,0,0.2); }
+        .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 5px; }
+        .btn:disabled { opacity: 0.5; pointer-events: none; }
+
+        header {
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--purple);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        .logo {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--purple); }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-links li a {
+            position: relative;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -6px;
+            width: 0;
+            height: 3px;
+            background: var(--green);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(134,216,0,.5);
+            transition: width .3s ease;
+        }
+        .nav-links li a:hover { color: var(--green); text-shadow: 0 0 10px rgba(134,216,0,.3); }
+        .nav-links li a:hover::after, .nav-links li a.active::after { width: 100%; }
+        .nav-links li a.active { color: var(--green); }
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--green);
+            min-width: 210px;
+            z-index: 10;
+            padding: 8px 0;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .dropdown-menu li:last-child a { border-bottom: none; }
+        .dropdown-menu li a:hover { background: var(--hover-bg); color: var(--green); padding-right: 22px; }
+        .header-icons {
+            display: flex;
+            gap: 16px;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            align-items: center;
+        }
+        .header-icons a, .header-icons i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .header-icons a:hover i, .header-icons i:hover { color: var(--green); transform: scale(1.1); }
+        .header-icons a.active i { color: var(--green); text-shadow: 0 0 12px rgba(134,216,0,0.7); }
+        .menu-toggle { display: none; color: var(--green); font-size: 1.6rem; cursor: pointer; }
+        .desktop-only { display: block; }
+        .mobile-only { display: none !important; }
+        .lang-dropdown { position: relative; display: flex; align-items: center; cursor: pointer; }
+        .lang-menu {
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            transform: translateX(-90%);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--purple);
+            border-radius: 5px;
+            list-style: none;
+            padding: 5px 0;
+            min-width: 110px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+        }
+        html[dir="ltr"] .lang-menu { left: 50%; right: auto; transform: translateX(-90%); }
+        html[dir="rtl"] .lang-menu { right: 50%; left: auto; transform: translateX(90%); }
+        .lang-dropdown.active .lang-menu { display: block; }
+        .lang-menu li { padding: 10px; font-size: 0.95rem; color: var(--text-light); transition: 0.3s; cursor: pointer; }
+        .lang-menu li:hover { background: var(--hover-bg); color: var(--green); }
+        .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
+        .nav-overlay.active { display: block; }
+
+        .steps-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0 40px;
+            flex-wrap: wrap;
+        }
+        .step-dot {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .step-dot i {
+            font-size: 1.1rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        .step-dot.completed i {
+            background: var(--green);
+            border-color: var(--green);
+            color: #000;
+        }
+        .step-dot.active i {
+            border-color: var(--green);
+            color: var(--green);
+            box-shadow: 0 0 10px rgba(134,216,0,0.3);
+        }
+
+        .shipping-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            flex: 1;
+            width: 100%;
+        }
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .page-title span { color: var(--green); }
+        .page-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .verification-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-card);
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s ease;
+        }
+        .verification-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+        }
+        .verification-card h3 i { color: var(--green); }
+        .verification-card > p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: -14px;
+            margin-bottom: 16px;
+        }
+
+        .delivery-area-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-alt);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        .delivery-area-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--green);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 15px rgba(134,216,0,0.3);
+        }
+        .delivery-area-text h4 {
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+            color: var(--text-light);
+        }
+        .delivery-area-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-group label,
+        .form-group .field-label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text-light);
+        }
+        .field-label .required-indicator {
+            color: var(--error-color);
+            margin-right: 2px;
+        }
+        .optional-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--tag-bg);
+            padding: 2px 8px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--border-radius-input);
+            border: 1px solid var(--border-color);
+            background: var(--bg-alt);
+            color: var(--text-light);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-base);
+            outline: none;
+            line-height: 1.5;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(134,216,0,0.12);
+            outline: none;
+        }
+        .form-group input:disabled,
+        .form-group input[readonly] {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: var(--error-color);
+            box-shadow: 0 0 0 3px rgba(248,113,122,0.12);
+        }
+        .form-group input.success,
+        .form-group textarea.success {
+            border-color: var(--success-color);
+            box-shadow: 0 0 0 3px rgba(134,216,0,0.12);
+        }
+        .error-message {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--error-color);
+            margin-top: 4px;
+            min-height: 0;
+            transition: all 0.2s ease;
+        }
+        .error-message:empty { display: none; }
+        .helper-text {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .readonly-field {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: var(--border-radius-input);
+            border: 1px solid var(--border-color);
+            background: var(--bg-alt);
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: not-allowed;
+            user-select: none;
+            opacity: 0.85;
+        }
+        .readonly-field i {
+            color: var(--purple);
+            font-size: 0.85rem;
+        }
+
+        .location-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: rgba(134,216,0,0.1);
+            border: 1px solid rgba(134,216,0,0.3);
+            border-radius: 10px;
+            color: var(--green);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .location-status i { color: var(--green); }
+        .location-status.error {
+            background: rgba(248,113,122,0.1);
+            border-color: rgba(248,113,122,0.3);
+            color: var(--error-color);
+        }
+        .location-status.error i { color: var(--error-color); }
+
+        .delivery-alert {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            border-right: 4px solid var(--green);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        html[dir="ltr"] .delivery-alert { border-right: 1px solid var(--border-color); border-left: 4px solid var(--green); }
+        .delivery-alert i { color: var(--green); font-size: 1.1rem; }
+
+        /* ===== جديد: أنماط بطاقة رسوم التوصيل ===== */
+        .fee-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--green);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 20px rgba(134, 216, 0, 0.15);
+            animation: fadeInUp 0.4s ease;
+        }
+        .fee-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .fee-card-title i { color: var(--green); }
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .fee-row:last-child { border-bottom: none; }
+        .fee-row strong {
+            font-weight: 700;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        .fee-row.total {
+            border-bottom: none;
+            border-top: 2px solid var(--green);
+            margin-top: 8px;
+            padding-top: 14px;
+            font-size: 1.05rem;
+        }
+        .fee-row.total strong {
+            font-size: 1.3rem;
+            color: var(--green);
+        }
+        .fee-breakdown {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* ===== نهاية أنماط بطاقة رسوم التوصيل ===== */
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            background: var(--green);
+            color: #000;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: 'Tajawal', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(134,216,0,0.2);
+        }
+        .btn-submit:hover:not(:disabled) {
+            background: #9de820;
+            box-shadow: 0 10px 30px rgba(134,216,0,0.4);
+            transform: translateY(-2px);
+        }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .btn-submit .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,0.2);
+            border-top-color: #000;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: none;
+        }
+        .btn-submit.loading .spinner { display: inline-block; }
+        .btn-submit.loading .btn-text { display: none; }
+        .btn-submit.loading::after { content: "جارٍ المتابعة..."; }
+
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            flex-direction: column;
+            backdrop-filter: blur(4px);
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: var(--text-light); font-size: 1.1rem; }
+
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            pointer-events: auto;
+            animation: toastIn 0.4s ease forwards;
+            max-width: 380px;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .toast-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+        .toast-icon.success { background: var(--green); color: #000; }
+        .toast-icon.error { background: var(--error-color); color: #fff; }
+        .toast-text { font-weight: 600; font-size: 0.9rem; color: var(--text-light); }
+
+        footer {
+            background: var(--footer-bg);
+            padding: clamp(40px, 8vw, 70px) 0 20px;
+            border-top: 4px solid var(--green);
+            transition: 0.3s;
+            margin-top: auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: var(--purple);
+            margin-bottom: 20px;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 35px;
+            height: 3px;
+            background: var(--green);
+        }
+        html[dir="ltr"] .footer-col h4::after { right: auto; left: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-muted); transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+        .footer-col ul li a::before { content: '\f104'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.75rem; color: var(--green); transition: 0.3s; }
+        html[dir="ltr"] .footer-col ul li a::before { content: '\f105'; }
+        .footer-col ul li a:hover { color: var(--text-light); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; color: var(--green); font-size: 1.1rem; border: 1px solid var(--border-color); }
+        .social-links a:hover { background: var(--purple); color: #fff; border-color: var(--purple); transform: translateY(-3px); }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; font-size: 0.9rem; }
+        .footer-contact li i { color: var(--green); margin-top: 4px; }
+        .payment-methods { margin-top: 20px; font-size: 1.6rem; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; }
+        .payment-methods i:hover { color: var(--text-light); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: flex !important; }
+            #desktopCartLink { display: flex !important; }
+            #mobileCartLink { display: none !important; }
+            .header-inner { position: relative; padding: 10px 0; }
+            .nav-links {
+                display: flex;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 20px;
+                border-left: 2px solid var(--purple);
+                transition: right 0.4s ease;
+                align-items: flex-start;
+                z-index: 1001;
+                overflow-y: auto;
+                gap: 2px;
+            }
+            .header-inner {
+                padding: 12px 20px;
+            }
+            html[dir="ltr"] .nav-links { right: auto; left: -100%; border-left: none; border-right: 2px solid var(--purple); transition: left 0.4s ease; }
+            .nav-links.active { right: 0; }
+            html[dir="ltr"] .nav-links.active { left: 0; right: auto; }
+            .mobile-icons-row { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; font-size: 1.3rem; color: var(--text-light); }
+            .nav-links li { width: 100%; }
+            .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; border-right: 2px solid var(--purple); margin-right: 12px; background: transparent; visibility: visible; opacity: 1; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0; }
+            .dropdown.active .dropdown-menu { max-height: 500px; padding: 0 0 5px; }
+            .menu-toggle { display: block; }
+            .header-icons { gap: 12px; font-size: 1.1rem; }
+
+            .page-title { font-size: 1.8rem; }
+            .verification-card { padding: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 15px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .steps-indicator { gap: 6px; font-size: 0.75rem; }
+            .step-dot span { font-size: 0.7rem; }
+            .step-dot i { width: 24px; height: 24px; font-size: 0.9rem; }
+            .delivery-area-card { flex-direction: column; text-align: center; gap: 10px; }
+            .shipping-container { padding: 0 14px; }
+            .btn-submit { font-size: 1rem; padding: 14px; }
+            .fee-card { padding: 14px; }
+            .fee-row.total strong { font-size: 1.1rem; }
+        }
+        @media (max-width: 400px) {
+            .steps-indicator { gap: 4px; }
+            .step-dot span { font-size: 0.65rem; }
+            .step-dot i { width: 20px; height: 20px; font-size: 0.8rem; }
+            .header-inner {
+                padding: 12px 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+        @media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+/* ===== زر الهامبرغر المتحول ===== */
+.menu-toggle {
+    display: none;              /* مخفي افتراضيًا */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1002;             /* فوق القائمة الجانبية */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+}
+
+/* تحويل الخطوط إلى X عند إضافة كلاس active */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* إظهار الزر في شاشات الموبايل */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- ========== الهيدر ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Aiken <span>Vape</span></div>
+            <ul class="nav-links" id="navMenu">
+                <li class="mobile-only mobile-icons-row">
+                    <a href="cart.html" id="mobileCartLink" class="cart-link" title="السلة" data-translate-title="cart"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="account.html" id="mobileAccountIcon" class="account-link" title="حسابي" data-translate-title="account" style="display:none;"><i class="fas fa-user"></i></a>
+                    <i id="mobileLoginIcon" class="fas fa-sign-in-alt" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                    <i class="fas fa-moon theme-toggle" title="المظهر" data-translate-title="theme"></i>
+                    <div class="lang-dropdown"><i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i><ul class="lang-menu"><li onclick="setLang('ar')">العربية</li><li onclick="setLang('en')">English</li></ul></div>
+                </li>
+                <li><a href="index.html" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
+                <li class="dropdown" id="dropdownCategories">
+                    <a href="#" class="nav-link dropdown-toggle"><span data-translate="nav_categories">الأقسام</span> <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="disposables.html" data-translate="cat_disposables">السحبات الجاهزة</a></li>
+                        <li><a href="vapes.html" data-translate="cat_devices">أجهزة الفيب</a></li>
+                        <li><a href="e-liquids.html" data-translate="cat_flavors">نكهات الفيب</a></li>
+                        <li><a href="pods-coils.html" data-translate="cat_pods">البودات والكويلات</a></li>
+                        <li><a href="nicotine-pouches.html" data-translate="cat_nicotine">أكياس النيكوتين</a></li>
+                        <li><a href="thc.html" data-translate="cat_thc">THC</a></li>
+                        <li><a href="cbd.html" data-translate="cat_cbd">CBD</a></li>
+                        <li><a href="glass.html" data-translate="cat_glass">الزجاج Glass</a></li>
+                        <li><a href="accessories.html" data-translate="cat_accessories">الملحقات والإكسسوارات</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#shop" class="nav-link" data-translate="nav_shop">المتجر</a></li>
+                <li><a href="index.html#offers" class="nav-link" data-translate="nav_offers">العروض والتخفيضات</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="nav_about">من نحن</a></li>
+                <li><a href="contact.html" class="nav-link" data-translate="nav_contact">تواصل معنا</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class="fas fa-search" id="searchIcon" title="بحث" data-translate-title="search" style="cursor:pointer;"></i>
+                <a href="cart.html" id="desktopCartLink" class="cart-link" title="السلة" data-translate-title="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a href="account.html" id="desktopAccountIcon" class="account-link desktop-only" title="حسابي" data-translate-title="account" style="display:none;"><i class="fas fa-user"></i></a>
+                <i id="desktopLoginIcon" class="fas fa-sign-in-alt desktop-only" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                <i class="fas fa-moon theme-toggle desktop-only" title="المظهر" data-translate-title="theme"></i>
+                <div class="lang-dropdown desktop-only"><i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i><ul class="lang-menu"><li onclick="setLang('ar')">العربية</li><li onclick="setLang('en')">English</li></ul></div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ========== محتوى صفحة بيانات التوصيل ========== -->
+    <main class="shipping-container">
+        <div class="steps-indicator">
+            <div class="step-dot completed"><i class="fas fa-check"></i> <span data-translate="step_cart">السلة</span></div>
+            <div class="step-dot completed"><i class="fas fa-check"></i> <span data-translate="step_age">التحقق من العمر</span></div>
+            <div class="step-dot active"><i class="fas fa-circle"></i> <span data-translate="step_shipping">بيانات التوصيل</span></div>
+            <div class="step-dot"><i class="far fa-circle"></i> <span data-translate="step_payment">الدفع</span></div>
+            <div class="step-dot"><i class="far fa-circle"></i> <span data-translate="step_confirm">التأكيد</span></div>
+        </div>
+
+        <h1 class="page-title" data-aos="fade-up" data-aos-duration="600"><span data-translate="shipping_title_highlight">بيانات</span> <span data-translate="shipping_title_rest">التوصيل</span></h1>
+        <p class="page-desc" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-translate="shipping_desc">أدخل بيانات التوصيل الخاصة بك لإتمام طلبك.</p>
+
+        <form id="shippingForm" novalidate>
+            <!-- منطقة التوصيل -->
+            <div class="verification-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
+                <h3><i class="fas fa-truck"></i> <span data-translate="delivery_area_title">منطقة التوصيل</span></h3>
+                <div class="delivery-area-card">
+                    <div class="delivery-area-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="delivery-area-text">
+                        <h4 data-translate="delivery_area_text">التوصيل متاح فقط داخل Aiken, South Carolina</h4>
+                        <p data-translate="delivery_area_note">لا نوفر التوصيل خارج هذه المنطقة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بيانات العميل -->
+            <div class="verification-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                <h3><i class="fas fa-user-circle"></i> <span data-translate="customer_info_title">بيانات العميل</span></h3>
+                <p data-translate="customer_info_desc">أدخل معلوماتك الأساسية للتواصل معك.</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName"><span data-translate="full_name_label">الاسم الكامل</span> <span class="required-indicator">*</span></label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="أدخل الاسم الكامل"
+                            data-translate-placeholder="full_name_placeholder"
+                            autocomplete="name"
+                            aria-required="true"
+                            aria-invalid="false"
+                            aria-describedby="fullNameError"
+                        >
+                        <span class="error-message" id="fullNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><span data-translate="phone_label">رقم الهاتف</span> <span class="required-indicator">*</span></label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="أدخل رقم الهاتف"
+                            data-translate-placeholder="phone_placeholder"
+                            autocomplete="tel"
+                            inputmode="tel"
+                            aria-required="true"
+                            aria-invalid="false"
+                            aria-describedby="phoneError"
+                        >
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- عنوان التوصيل -->
+            <div class="verification-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
+                <h3><i class="fas fa-home"></i> <span data-translate="address_title">عنوان التوصيل</span></h3>
+                <p data-translate="address_desc">أدخل العنوان الكامل لتوصيل طلبك.</p>
+
+                <div class="form-group">
+                    <label for="streetAddress"><span data-translate="street_label">عنوان الشارع</span> <span class="required-indicator">*</span></label>
+                    <input
+                        type="text"
+                        id="streetAddress"
+                        placeholder="أدخل عنوان الشارع"
+                        data-translate-placeholder="street_placeholder"
+                        autocomplete="street-address"
+                        aria-required="true"
+                        aria-invalid="false"
+                        aria-describedby="streetAddressError"
+                    >
+                    <span class="error-message" id="streetAddressError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="apartment"><span data-translate="apartment_label">الشقة / الوحدة / الجناح</span> <span class="optional-label" data-translate="optional">اختياري</span></label>
+                    <input
+                        type="text"
+                        id="apartment"
+                        placeholder="اختياري"
+                        data-translate-placeholder="optional_placeholder"
+                        autocomplete="address-line2"
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-translate="city_label">المدينة</label>
+                        <div class="readonly-field">
+                            <i class="fas fa-lock"></i> Aiken
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="state_label">الولاية</label>
+                        <div class="readonly-field">
+                            <i class="fas fa-lock"></i> South Carolina
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="zipCode"><span data-translate="zip_label">الرمز البريدي (ZIP Code)</span> <span class="required-indicator">*</span></label>
+                    <input
+                        type="text"
+                        id="zipCode"
+                        placeholder="أدخل الرمز البريدي"
+                        data-translate-placeholder="zip_placeholder"
+                        inputmode="numeric"
+                        autocomplete="postal-code"
+                        maxlength="10"
+                        aria-required="true"
+                        aria-invalid="false"
+                        aria-describedby="zipCodeError"
+                    >
+                    <span class="error-message" id="zipCodeError"></span>
+                </div>
+
+                <!-- ===== جديد: بطاقة عرض رسوم التوصيل ===== -->
+                <div id="deliveryFeeCard" class="fee-card" style="display:none;">
+                    <div class="fee-card-title">
+                        <i class="fas fa-calculator"></i>
+                        <span data-translate="fee_title">رسوم التوصيل المحسوبة</span>
+                    </div>
+                    <div id="deliveryFeeDisplay"></div>
+                    <p class="fee-breakdown" data-translate="fee_formula_note">المعادلة: $3 + (المسافة × $1.25 لكل ميل)</p>
+                </div>
+                <!-- ===== نهاية بطاقة رسوم التوصيل ===== -->
+            </div>
+
+            <!-- ملاحظات التوصيل -->
+            <div class="verification-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                <h3>
+                    <span data-translate="notes_title">ملاحظات التوصيل</span>
+                    <span class="optional-label" data-translate="optional">اختياري</span>
+                </h3>
+                <div class="form-group">
+                    <textarea
+                        id="deliveryNotes"
+                        placeholder="أضف أي ملاحظات تساعدنا في توصيل طلبك..."
+                        data-translate-placeholder="notes_placeholder"
+                        rows="4"
+                        aria-invalid="false"
+                        aria-describedby="deliveryNotesHelper"
+                    ></textarea>
+                    <p class="helper-text" id="deliveryNotesHelper" data-translate="notes_helper">مثال: اتصل بي عند الوصول</p>
+                </div>
+            </div>
+
+            <!-- تحديد الموقع -->
+            <div class="verification-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">
+                <h3><i class="fas fa-location-dot"></i> <span data-translate="location_title">موقع التوصيل</span></h3>
+                <p class="helper-text" data-translate="location_desc">اختياري — يساعدنا تحديد موقعك الحالي على تحديد موقع التوصيل بدقة.</p>
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="locationBtn"
+                    onclick="getCurrentLocation()"
+                    aria-label="تحديد موقعي الحالي"
+                    data-translate="get_location_btn"
+                >
+                    <i class="fas fa-location-dot"></i> <span data-translate="get_location_btn_text">تحديد موقعي الحالي</span>
+                </button>
+
+                <div class="location-status" id="locationStatus" style="display:none;">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="locationStatusText" data-translate="location_success">تم تحديد موقعك بنجاح</span>
+                </div>
+            </div>
+
+            <!-- تنبيه منطقة التوصيل -->
+            <div class="delivery-alert" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                <i class="fas fa-truck"></i>
+                <span data-translate="delivery_alert">التوصيل متاح فقط داخل Aiken, South Carolina</span>
+            </div>
+
+            <!-- زر المتابعة -->
+            <button
+                type="submit"
+                class="btn-submit"
+                id="submitShippingBtn"
+                data-aos="fade-up"
+                data-aos-duration="600"
+                data-aos-delay="450"
+                onclick="handleSubmit(event)"
+                aria-label="المتابعة إلى الدفع"
+            >
+                <span class="btn-text"><i class="fas fa-lock"></i> <span data-translate="proceed_btn">المتابعة إلى الدفع</span></span>
+                <span class="spinner"></span>
+            </button>
+        </form>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="logo" style="font-size:1.6rem;margin-bottom:15px;">Aiken <span>Vape</span></div><p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;line-height:1.6;" data-translate="footer_desc">الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.</p><div class="social-links">
+                    <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==&amp;igsi=MWE5eW4xb3U0ZnhrMQ=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/193wnE9jcr/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@hamzahalydrws?_r=1&amp;_t=ZS-98wVIRKlJge"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/12175308866"><i class="fab fa-whatsapp"></i></a>
+                </div></div>
+               <div class="footer-col"><h4 data-translate="footer_links">روابط هامة</h4><ul><li><a href="index.html" data-translate="nav_home">الرئيسية</a></li><li><a href="index.html#shop" data-translate="nav_shop">المتجر</a></li><li><a href="disposables.html" data-translate="nav_disposables">السحبات الجاهزة</a></li><li><a href="index.html#offers" data-translate="nav_offers">العروض</a></li><li><a href="cbd.html" data-translate="nav_cbd"> CBD</a></li><li><a href="about.html" data-translate="nav_about">من نحن</a></li><li><a href="contact.html" data-translate="nav_contact">تواصل معنا</a></li></ul></div>
+                <div class="footer-col">
+    <h4 data-translate="footer_policies">السياسات</h4>
+    <ul>
+        <li><a href="policies.html#terms" data-translate="policy_terms">الشروط والأحكام</a></li>
+        <li><a href="policies.html#privacy" data-translate="policy_privacy">سياسة الخصوصية</a></li>
+        <li><a href="policies.html#shipping" data-translate="policy_shipping">سياسة الشحن</a></li>
+        <li><a href="policies.html#age" data-translate="policy_age">تأكيد العمر</a></li>
+    </ul>
+</div>
+                <div class="footer-col"><h4 data-translate="footer_contact">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i> <span>2567 Whiskey Rd, Aiken, SC 29803</span></li><li><i class="fas fa-envelope"></i> <span>zubair007207@gmail.com</span></li><li><i class="fas fa-phone"></i> <span dir="ltr">+1 803-226-0066</span></li></ul><div class="payment-methods"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-apple-pay"></i></div></div>
+            </div>
+            <div class="footer-bottom" data-translate="copyright">&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.</div>
+        </div>
+    </footer>
+
+    <!-- شاشة التحميل -->
+    <div class="loading-overlay" id="loadingOverlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" data-translate="loading_text">جاري تجهيز صفحة الدفع...</div>
+    </div>
+
+    <!-- توست -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- AOS JS -->
+    <script src="assets/js/aos.js"></script>
+
+    <script>
+    // ============================================
+    // ============ إعدادات رسوم التوصيل ============
+    // ============================================
+    // يمكنك تعديل هذه القيم بسهولة حسب الحاجة
+
+    const STORE_ADDRESS = '2567 Whiskey Rd, Aiken, SC 29803';
+    const STORE_ZIP = '29803';
+    const STORE_LAT = 33.5617; // خط عرض المتجر (تقريبي)
+    const STORE_LNG = -81.7035; // خط طول المتجر (تقريبي)
+
+    const DELIVERY_FEE_BASE = 3.00;       // الرسوم الأساسية بالدولار
+    const DELIVERY_FEE_PER_MILE = 1.25;   // رسوم كل ميل بالدولار
+
+    // ============================================
+    // جدول المسافات بين المتجر وكل رمز بريدي
+    // (بالميل) — يمكنك تعديل هذه القيم حسب المسافات الفعلية
+    // ============================================
+    const ZIP_DISTANCES_MILES = {
+        '29801': 3.0,   // وسط مدينة Aiken
+        '29802': 4.0,   // شمال Aiken
+        '29803': 1.0,   // نفس منطقة المتجر (Whiskey Rd)
+        '29804': 2.5,   // شرق Aiken
+        '29805': 6.0,   // ضواحي Aiken
+        '29808': 8.0    // أبعد منطقة
+    };
+
+    // ============================================
+    // الترجمات
+    // ============================================
+    const translations = {
+        ar: {
+            account: 'حسابي', theme: 'المظهر', language: 'اللغة', login_title: 'تسجيل الدخول', logout_title: 'تسجيل الخروج',
+            search: 'بحث', cart: 'السلة',
+            nav_home: 'الرئيسية', nav_categories: 'الأقسام', nav_shop: 'المتجر', nav_offers: 'العروض والتخفيضات',
+            nav_about: 'من نحن', nav_contact: 'تواصل معنا',
+            cat_disposables: 'السحبات الجاهزة', cat_devices: 'أجهزة الفيب', cat_flavors: 'نكهات الفيب',
+            cat_pods: 'البودات والكويلات', cat_nicotine: 'أكياس النيكوتين', cat_thc: 'THC', cat_cbd: 'CBD',
+            cat_glass: 'الزجاج', cat_accessories: 'الملحقات والإكسسوارات',
+            step_cart: 'السلة', step_age: 'التحقق من العمر', step_shipping: 'بيانات التوصيل', step_payment: 'الدفع', step_confirm: 'التأكيد',
+            shipping_title_highlight: 'بيانات', shipping_title_rest: 'التوصيل',
+            shipping_desc: 'أدخل بيانات التوصيل الخاصة بك لإتمام طلبك.',
+            delivery_area_title: 'منطقة التوصيل',
+            delivery_area_text: 'التوصيل متاح فقط داخل Aiken, South Carolina',
+            delivery_area_note: 'لا نوفر التوصيل خارج هذه المنطقة.',
+            customer_info_title: 'بيانات العميل',
+            customer_info_desc: 'أدخل معلوماتك الأساسية للتواصل معك.',
+            full_name_label: 'الاسم الكامل', full_name_placeholder: 'أدخل الاسم الكامل',
+            phone_label: 'رقم الهاتف', phone_placeholder: 'أدخل رقم الهاتف',
+            address_title: 'عنوان التوصيل',
+            address_desc: 'أدخل العنوان الكامل لتوصيل طلبك.',
+            street_label: 'عنوان الشارع', street_placeholder: 'أدخل عنوان الشارع',
+            apartment_label: 'الشقة / الوحدة / الجناح', optional: 'اختياري', optional_placeholder: 'اختياري',
+            city_label: 'المدينة', state_label: 'الولاية',
+            zip_label: 'الرمز البريدي (ZIP Code)', zip_placeholder: 'أدخل الرمز البريدي',
+            notes_title: 'ملاحظات التوصيل', notes_placeholder: 'أضف أي ملاحظات تساعدنا في توصيل طلبك...',
+            notes_helper: 'مثال: اتصل بي عند الوصول',
+            location_title: 'موقع التوصيل',
+            location_desc: 'اختياري — يساعدنا تحديد موقعك الحالي على تحديد موقع التوصيل بدقة.',
+            get_location_btn: 'تحديد موقعي الحالي',
+            get_location_btn_text: 'تحديد موقعي الحالي',
+            location_success: 'تم تحديد موقعك بنجاح',
+            delivery_alert: 'التوصيل متاح فقط داخل Aiken, South Carolina',
+            proceed_btn: 'المتابعة إلى الدفع',
+            loading_text: 'جاري تجهيز صفحة الدفع...',
+            // رسائل الخطأ
+            name_required: 'يرجى إدخال الاسم الكامل.',
+            name_invalid: 'يرجى إدخال اسم صحيح (3 أحرف على الأقل).',
+            phone_required: 'يرجى إدخال رقم هاتف صحيح.',
+            phone_invalid: 'يرجى إدخال رقم هاتف أمريكي صحيح.',
+            street_required: 'يرجى إدخال عنوان الشارع.',
+            street_invalid: 'يرجى إدخال عنوان شارع صحيح.',
+            zip_required: 'يرجى إدخال الرمز البريدي.',
+            zip_invalid: 'يرجى إدخال رمز بريدي أمريكي صحيح.',
+            zip_area_invalid: 'عنوان التوصيل غير متاح.',
+            location_not_supported: 'متصفحك لا يدعم تحديد الموقع.',
+            location_permission_denied: 'تم رفض إذن الموقع. يمكنك إكمال الطلب باستخدام العنوان المكتوب فقط.',
+            location_unavailable: 'معلومات الموقع غير متاحة حاليًا.',
+            location_timeout: 'انتهت مهلة تحديد الموقع. حاول مرة أخرى.',
+            location_generic_error: 'تعذر تحديد الموقع.',
+            loc_success_msg: 'تم تحديد موقعك بنجاح',
+            relocating: 'إعادة تحديد الموقع',
+            locating: 'جارٍ تحديد الموقع...',
+            form_error: 'يرجى تصحيح الأخطاء في النموذج',
+            verifying_address: 'جاري التحقق من العنوان...',
+            no_cart_items: 'لا توجد عناصر في السلة، الرجاء إضافة منتجات أولاً',
+            logout_success: 'تم تسجيل الخروج',
+            footer_desc: 'الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.',
+            footer_links: 'روابط هامة', footer_policies: 'السياسات', footer_contact: 'تواصل معنا',
+            nav_disposables: 'السحبات الجاهزة',
+            policy_terms: 'الشروط والأحكام', policy_privacy: 'سياسة الخصوصية', policy_return: 'سياسة الاسترجاع',
+            policy_shipping: 'سياسة الشحن', policy_age: 'تأكيد العمر',
+            address: 'اليمن - إب، الفرع الرئيسي',
+            copyright: '&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.',
+            // ===== جديد: ترجمات رسوم التوصيل =====
+            fee_title: 'رسوم التوصيل المحسوبة',
+            fee_formula_note: 'المعادلة: $3 + (المسافة × $1.25 لكل ميل)',
+            fee_distance: 'المسافة من المتجر',
+            fee_base: 'الرسوم الأساسية',
+            fee_per_mile: 'رسوم الأميال',
+            fee_mile_calc: 'المسافة × سعر الميل',
+            fee_total: 'إجمالي رسوم التوصيل',
+            fee_miles_unit: 'ميل',
+            fee_enter_zip: 'أدخل الرمز البريدي لعرض رسوم التوصيل'
+            // ===== نهاية ترجمات رسوم التوصيل =====
+        },
+        en: {
+            account: 'My Account', theme: 'Theme', language: 'Language', login_title: 'Login', logout_title: 'Logout',
+            search: 'Search', cart: 'Cart',
+            nav_home: 'Home', nav_categories: 'Categories', nav_shop: 'Shop', nav_offers: 'Offers & Deals',
+            nav_about: 'About Us', nav_contact: 'Contact Us',
+            cat_disposables: 'Disposables', cat_devices: 'Vape Devices', cat_flavors: 'E-Liquids',
+            cat_pods: 'Pods & Coils', cat_nicotine: 'Nicotine Pouches', cat_thc: 'THC', cat_cbd: 'CBD',
+            cat_glass: 'Glass', cat_accessories: 'Accessories',
+            step_cart: 'Cart', step_age: 'Age Verification', step_shipping: 'Shipping', step_payment: 'Payment', step_confirm: 'Confirmation',
+            shipping_title_highlight: 'Shipping', shipping_title_rest: 'Information',
+            shipping_desc: 'Enter your delivery details to complete your order.',
+            delivery_area_title: 'Delivery Area',
+            delivery_area_text: 'Delivery available only within Aiken, South Carolina',
+            delivery_area_note: 'We do not provide delivery outside this area.',
+            customer_info_title: 'Customer Information',
+            customer_info_desc: 'Enter your basic contact information.',
+            full_name_label: 'Full Name', full_name_placeholder: 'Enter full name',
+            phone_label: 'Phone Number', phone_placeholder: 'Enter phone number',
+            address_title: 'Delivery Address',
+            address_desc: 'Enter the complete delivery address.',
+            street_label: 'Street Address', street_placeholder: 'Enter street address',
+            apartment_label: 'Apartment / Unit / Suite', optional: 'Optional', optional_placeholder: 'Optional',
+            city_label: 'City', state_label: 'State',
+            zip_label: 'ZIP Code', zip_placeholder: 'Enter ZIP code',
+            notes_title: 'Delivery Notes', notes_placeholder: 'Add any notes that help us deliver your order...',
+            notes_helper: 'Example: Call me upon arrival',
+            location_title: 'Delivery Location',
+            location_desc: 'Optional — sharing your current location helps us pinpoint delivery accurately.',
+            get_location_btn: 'Locate Me',
+            get_location_btn_text: 'Locate Me',
+            location_success: 'Your location has been identified successfully',
+            delivery_alert: 'Delivery available only within Aiken, South Carolina',
+            proceed_btn: 'Proceed to Payment',
+            loading_text: 'Preparing payment page...',
+            name_required: 'Please enter full name.',
+            name_invalid: 'Please enter a valid name (at least 3 characters).',
+            phone_required: 'Please enter a valid phone number.',
+            phone_invalid: 'Please enter a valid US phone number.',
+            street_required: 'Please enter street address.',
+            street_invalid: 'Please enter a valid street address.',
+            zip_required: 'Please enter ZIP code.',
+            zip_invalid: 'Please enter a valid US ZIP code.',
+            zip_area_invalid: 'Delivery address not available.',
+            location_not_supported: 'Your browser does not support geolocation.',
+            location_permission_denied: 'Location permission denied. You can complete the order using the written address only.',
+            location_unavailable: 'Location information is currently unavailable.',
+            location_timeout: 'Location request timed out. Try again.',
+            location_generic_error: 'Unable to determine location.',
+            loc_success_msg: 'Location identified successfully',
+            relocating: 'Relocate',
+            locating: 'Locating...',
+            form_error: 'Please correct the errors in the form',
+            verifying_address: 'Verifying address...',
+            no_cart_items: 'No items in cart, please add products first',
+            logout_success: 'Logged out successfully',
+            footer_desc: 'The premier destination for the finest vape devices and accessories.',
+            footer_links: 'Important Links', footer_policies: 'Policies', footer_contact: 'Contact Us',
+            nav_disposables: 'Disposable Vapes',
+            policy_terms: 'Terms & Conditions', policy_privacy: 'Privacy Policy', policy_return: 'Return Policy',
+            policy_shipping: 'Shipping Policy', policy_age: 'Age Verification',
+            address: 'Yemen - Ibb, Main Branch',
+            copyright: '&copy; 2026 AIKEN VAPE & TOBACCO. All rights reserved.',
+            // ===== جديد: ترجمات رسوم التوصيل =====
+            fee_title: 'Calculated Delivery Fee',
+            fee_formula_note: 'Formula: $3 + (distance × $1.25 per mile)',
+            fee_distance: 'Distance from store',
+            fee_base: 'Base fee',
+            fee_per_mile: 'Per-mile fee',
+            fee_mile_calc: 'Distance × per-mile rate',
+            fee_total: 'Total delivery fee',
+            fee_miles_unit: 'miles',
+            fee_enter_zip: 'Enter ZIP code to view delivery fee'
+            // ===== نهاية ترجمات رسوم التوصيل =====
+        }
+    };
+
+    // ============================================
+    // حالة اللغة
+    // ============================================
+    let lang = localStorage.getItem('lang') || 'ar';
+    const t = (key) => translations[lang]?.[key] || key;
+
+    function updateActiveLangInDropdowns(l) {
+        document.querySelectorAll('.lang-menu li').forEach(li => {
+            const langAttr = li.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+            if (langAttr === l) {
+                li.style.color = 'var(--green)';
+                li.style.fontWeight = 'bold';
+            } else {
+                li.style.color = '';
+                li.style.fontWeight = '';
+            }
+        });
+    }
+
+    function applyLanguage(l) {
+        lang = l;
+        localStorage.setItem('lang', l);
+        document.getElementById('htmlRoot').setAttribute('lang', l);
+        document.getElementById('htmlRoot').setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];
+        });
+        document.querySelectorAll('[data-translate-title]').forEach(el => {
+            const key = el.getAttribute('data-translate-title');
+            if (translations[lang]?.[key]) el.setAttribute('title', translations[lang][key]);
+        });
+        document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            if (translations[lang]?.[key]) el.setAttribute('placeholder', translations[lang][key]);
+        });
+        updateActiveLangInDropdowns(l);
+        updateLoginIcon();
+        // تحديث عرض رسوم التوصيل عند تغيير اللغة
+        if (document.getElementById('zipCode')?.value.trim()) {
+            updateDeliveryFeeDisplay();
+        }
+    }
+
+    function setLang(l) {
+        applyLanguage(l);
+        document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+    }
+
+    // ============================================
+    // التهيئة
+    // ============================================
+    document.addEventListener('DOMContentLoaded', () => {
+        initAOS();
+        initTheme();
+        updateLoginIcon();
+        initMobileMenu();
+        initLanguageDropdown();
+        initFormValidation();
+        applyLanguage(lang);
+        // استعادة بيانات التوصيل المحفوظة إن وجدت
+        restoreSavedShippingData();
+    });
+
+    function initAOS() {
+        if (window.AOS) {
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 60,
+                disable: function() {
+                    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                        || window.innerWidth < 768;
+                }
+            });
+        }
+    }
+
+    const VALID_ZIP_CODES = new Set([
+        '29801', '29802', '29803', '29804', '29805', '29808'
+    ]);
+    const DELIVERY_CITY = 'Aiken';
+    const DELIVERY_STATE = 'South Carolina';
+    const REDIRECT_URL = 'payment.html';
+    const SHIPPING_STORAGE_KEY = 'shippingData';
+    const DELIVERY_FEE_STORAGE_KEY = 'deliveryFee';
+
+    // ============================================
+    // دالة حساب رسوم التوصيل
+    // ============================================
+    function calculateDeliveryFee(zipCode) {
+        const cleanedZip = zipCode.trim().replace(/\s+/g, '');
+        const zipMatch = cleanedZip.match(/^(\d{5})/);
+        if (!zipMatch) return null;
+
+        const baseZip = zipMatch[1];
+        if (!VALID_ZIP_CODES.has(baseZip)) return null;
+
+        const distanceMiles = ZIP_DISTANCES_MILES[baseZip] ?? null;
+        if (distanceMiles === null) return null;
+
+        const baseFee = DELIVERY_FEE_BASE;
+        const perMileFee = DELIVERY_FEE_PER_MILE;
+        const mileFee = distanceMiles * perMileFee;
+        const totalFee = baseFee + mileFee;
+
+        return {
+            zipCode: baseZip,
+            distanceMiles: distanceMiles,
+            baseFee: baseFee,
+            perMileFee: perMileFee,
+            mileFee: mileFee,
+            totalFee: totalFee,
+            formula: `${baseFee.toFixed(2)} + (${distanceMiles.toFixed(1)} × ${perMileFee.toFixed(2)})`
+        };
+    }
+
+    // ============================================
+    // دالة عرض رسوم التوصيل في الواجهة
+    // ============================================
+    function updateDeliveryFeeDisplay() {
+        const zipInput = document.getElementById('zipCode');
+        const feeCard = document.getElementById('deliveryFeeCard');
+        const feeDisplay = document.getElementById('deliveryFeeDisplay');
+
+        if (!zipInput || !feeCard || !feeDisplay) return;
+
+        const zipValue = zipInput.value.trim();
+        const feeData = calculateDeliveryFee(zipValue);
+
+        if (feeData) {
+            // إظهار البطاقة مع التحديث
+            feeCard.style.display = 'block';
+            feeCard.style.borderColor = 'var(--green)';
+
+            feeDisplay.innerHTML = `
+                <div class="fee-row">
+                    <span><i class="fas fa-map-marker-alt" style="color:var(--green); margin-left:4px;"></i> ${t('fee_distance')}:</span>
+                    <strong>${feeData.distanceMiles.toFixed(1)} ${t('fee_miles_unit')}</strong>
+                </div>
+                <div class="fee-row">
+                    <span><i class="fas fa-dollar-sign" style="color:var(--green); margin-left:4px;"></i> ${t('fee_base')}:</span>
+                    <strong>$${feeData.baseFee.toFixed(2)}</strong>
+                </div>
+                <div class="fee-row">
+                    <span><i class="fas fa-road" style="color:var(--green); margin-left:4px;"></i> ${t('fee_mile_calc')}:</span>
+                    <strong>${feeData.distanceMiles.toFixed(1)} × $${feeData.perMileFee.toFixed(2)} = $${feeData.mileFee.toFixed(2)}</strong>
+                </div>
+                <div class="fee-row total">
+                    <span><i class="fas fa-receipt" style="color:var(--green); margin-left:4px;"></i> ${t('fee_total')}:</span>
+                    <strong>$${feeData.totalFee.toFixed(2)}</strong>
+                </div>
+            `;
+
+            // حفظ رسوم التوصيل محليًا عند كل تحديث
+            localStorage.setItem(DELIVERY_FEE_STORAGE_KEY, JSON.stringify(feeData));
+
+            return feeData;
+        } else {
+            // إخفاء البطاقة إذا لم يكن الرمز البريدي صالحًا
+            feeCard.style.display = 'none';
+            localStorage.removeItem(DELIVERY_FEE_STORAGE_KEY);
+            return null;
+        }
+    }
+
+    // ============================================
+    // استعادة بيانات التوصيل المحفوظة
+    // ============================================
+    function restoreSavedShippingData() {
+        try {
+            const savedShipping = JSON.parse(localStorage.getItem(SHIPPING_STORAGE_KEY));
+            if (!savedShipping) return;
+
+            if (savedShipping.fullName) document.getElementById('fullName').value = savedShipping.fullName;
+            if (savedShipping.phone) document.getElementById('phone').value = savedShipping.phone;
+            if (savedShipping.streetAddress) document.getElementById('streetAddress').value = savedShipping.streetAddress;
+            if (savedShipping.apartment) document.getElementById('apartment').value = savedShipping.apartment;
+            if (savedShipping.zipCode) {
+                document.getElementById('zipCode').value = savedShipping.zipCode;
+                updateDeliveryFeeDisplay();
+            }
+            if (savedShipping.deliveryNotes) document.getElementById('deliveryNotes').value = savedShipping.deliveryNotes;
+        } catch (e) {
+            // تجاهل الأخطاء في الاستعادة
+        }
+    }
+
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+        document.querySelectorAll('.theme-toggle').forEach(tg => {
+            tg.addEventListener('click', () => {
+                const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+        });
+    }
+
+    function applyTheme(theme) {
+        const toggles = document.querySelectorAll('.theme-toggle');
+        if (theme === 'light') {
+            document.documentElement.classList.add('light-mode');
+            toggles.forEach(el => el.classList.replace('fa-moon', 'fa-sun'));
+        } else {
+            document.documentElement.classList.remove('light-mode');
+            toggles.forEach(el => el.classList.replace('fa-sun', 'fa-moon'));
+        }
+    }
+
+    function isLoggedIn() {
+        return localStorage.getItem('isLoggedIn') === 'true';
+    }
+
+    function handleLoginClick() {
+        if (isLoggedIn()) {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            updateLoginIcon();
+            showToast(t('logout_success'), 'error');
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+
+    function updateLoginIcon() {
+        const di = document.getElementById('desktopLoginIcon');
+        const mi = document.getElementById('mobileLoginIcon');
+        [di, mi].forEach(icon => {
+            if (!icon) return;
+            if (isLoggedIn()) {
+                icon.className = icon.className.includes('fa-sign-out-alt') ? icon.className : icon.className.replace('fa-sign-in-alt', 'fa-sign-out-alt');
+                icon.setAttribute('title', t('logout_title'));
+            } else {
+                icon.className = icon.className.includes('fa-sign-in-alt') ? icon.className : icon.className.replace('fa-sign-out-alt', 'fa-sign-in-alt');
+                icon.setAttribute('title', t('login_title'));
+            }
+        });
+        const da = document.getElementById('desktopAccountIcon');
+        const ma = document.getElementById('mobileAccountIcon');
+        const display = isLoggedIn() ? 'flex' : 'none';
+        if (da) da.style.display = display;
+        if (ma) ma.style.display = display;
+    }
+
+    function initMobileMenu() {
+        const bodyEl = document.body;
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function openMenu() {
+    navMenu.classList.add('active');
+    navOverlay.classList.add('active');
+    bodyEl.classList.add('lock-scroll');
+    menuToggle.classList.add('active');    // ← إضافة كلاس active لتحويل الخطوط إلى X
+}
+function closeMenu() {
+    navMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    bodyEl.classList.remove('lock-scroll');
+    menuToggle.classList.remove('active'); // ← إزالة كلاس active لإعادة الخطوط
+}
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.contains('active') ? closeMenu() : openMenu();
+            });
+        }
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeMenu);
+        }
+
+        document.querySelectorAll('.dropdown').forEach(dd => {
+            dd.querySelector('.dropdown-toggle')?.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dd.classList.toggle('active');
+                }
+            });
+        });
+    }
+
+    function initLanguageDropdown() {
+        document.querySelectorAll('.lang-dropdown').forEach(dd => {
+            dd.querySelector('.lang-toggle')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+                dd.classList.toggle('active');
+            });
+        });
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+        });
+    }
+
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('toastContainer');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        const icon = type === 'success' ? 'fa-check' : 'fa-exclamation';
+        toast.innerHTML = '<div class="toast-icon ' + type + '"><i class="fas ' + icon + '"></i></div><span class="toast-text">' + message + '</span>';
+        container.appendChild(toast);
+        setTimeout(() => toast.remove(), 3500);
+    }
+
+    function validateName() {
+        const input = document.getElementById('fullName');
+        const errorEl = document.getElementById('fullNameError');
+        const value = input.value.trim();
+
+        if (!value) {
+            showError(input, errorEl, t('name_required'));
+            return false;
+        }
+        if (value.length < 3) {
+            showError(input, errorEl, t('name_invalid'));
+            return false;
+        }
+        clearError(input, errorEl);
+        return true;
+    }
+
+    function validatePhone() {
+        const input = document.getElementById('phone');
+        const errorEl = document.getElementById('phoneError');
+        const value = input.value.trim();
+
+        if (!value) {
+            showError(input, errorEl, t('phone_required'));
+            return false;
+        }
+
+        const digits = value.replace(/\D/g, '');
+        if (digits.length < 10 || digits.length > 11) {
+            showError(input, errorEl, t('phone_invalid'));
+            return false;
+        }
+        if (digits.length === 11 && digits[0] !== '1') {
+            showError(input, errorEl, t('phone_invalid'));
+            return false;
+        }
+        clearError(input, errorEl);
+        return true;
+    }
+
+    function validateStreetAddress() {
+        const input = document.getElementById('streetAddress');
+        const errorEl = document.getElementById('streetAddressError');
+        const value = input.value.trim();
+
+        if (!value) {
+            showError(input, errorEl, t('street_required'));
+            return false;
+        }
+        if (value.length < 5) {
+            showError(input, errorEl, t('street_invalid'));
+            return false;
+        }
+        clearError(input, errorEl);
+        return true;
+    }
+
+    function validateZipCode() {
+        const input = document.getElementById('zipCode');
+        const errorEl = document.getElementById('zipCodeError');
+        const value = input.value.trim();
+
+        if (!value) {
+            showError(input, errorEl, t('zip_required'));
+            return false;
+        }
+
+        const zipRegex = /^(\d{5})(?:[-\s]?(\d{4}))?$/;
+        const match = value.match(zipRegex);
+
+        if (!match) {
+            showError(input, errorEl, t('zip_invalid'));
+            return false;
+        }
+
+        const baseZip = match[1];
+        if (!VALID_ZIP_CODES.has(baseZip)) {
+            showError(input, errorEl, t('zip_area_invalid'));
+            return false;
+        }
+
+        clearError(input, errorEl);
+        // تحديث عرض رسوم التوصيل عند نجاح التحقق
+        updateDeliveryFeeDisplay();
+        return true;
+    }
+
+    function validateDeliveryArea() {
+        const zipInput = document.getElementById('zipCode');
+        const zipError = document.getElementById('zipCodeError');
+        const zipValue = zipInput.value.trim();
+        const zipMatch = zipValue.match(/^(\d{5})/);
+        const baseZip = zipMatch ? zipMatch[1] : '';
+
+        if (baseZip && !VALID_ZIP_CODES.has(baseZip)) {
+            showError(zipInput, zipError, t('zip_area_invalid'));
+            zipInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            zipInput.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function showError(input, errorEl, message) {
+        input.classList.add('error');
+        input.classList.remove('success');
+        input.setAttribute('aria-invalid', 'true');
+        if (errorEl) errorEl.textContent = message;
+    }
+
+    function clearError(input, errorEl) {
+        input.classList.remove('error');
+        input.classList.add('success');
+        input.setAttribute('aria-invalid', 'false');
+        if (errorEl) errorEl.textContent = '';
+    }
+
+    function clearAllErrors() {
+        const inputs = document.querySelectorAll('#shippingForm input, #shippingForm textarea');
+        inputs.forEach(input => {
+            input.classList.remove('error', 'success');
+            input.setAttribute('aria-invalid', 'false');
+        });
+        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+    }
+
+    function getCurrentLocation() {
+        const btn = document.getElementById('locationBtn');
+        const statusEl = document.getElementById('locationStatus');
+        const statusText = document.getElementById('locationStatusText');
+
+        if (!btn) return;
+
+        btn.disabled = true;
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + t('locating');
+
+        if (!navigator.geolocation) {
+            showLocationError(statusEl, statusText, t('location_not_supported'));
+            btn.disabled = false;
+            btn.innerHTML = originalContent;
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                localStorage.setItem('userLatitude', latitude.toString());
+                localStorage.setItem('userLongitude', longitude.toString());
+
+                statusEl.style.display = 'flex';
+                statusEl.className = 'location-status';
+                statusText.textContent = t('loc_success_msg');
+                showToast(t('loc_success_msg'), 'success');
+
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-location-dot"></i> ' + t('relocating');
+            },
+            (error) => {
+                let message = t('location_generic_error');
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        message = t('location_permission_denied');
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        message = t('location_unavailable');
+                        break;
+                    case error.TIMEOUT:
+                        message = t('location_timeout');
+                        break;
+                }
+                showLocationError(statusEl, statusText, message);
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 60000
+            }
+        );
+    }
+
+    function showLocationError(statusEl, statusText, message) {
+        if (!statusEl || !statusText) return;
+        statusEl.style.display = 'flex';
+        statusEl.className = 'location-status error';
+        statusText.textContent = message;
+    }
+
+    function setLoadingState(isLoading) {
+        const btn = document.getElementById('submitShippingBtn');
+        if (!btn) return;
+        if (isLoading) {
+            btn.classList.add('loading');
+            btn.disabled = true;
+        } else {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+        }
+    }
+
+    function handleSubmit(event) {
+        if (event) event.preventDefault();
+
+        if (document.getElementById('submitShippingBtn').classList.contains('loading')) {
+            return;
+        }
+
+        clearAllErrors();
+
+        const isNameValid = validateName();
+        const isPhoneValid = validatePhone();
+        const isStreetValid = validateStreetAddress();
+        const isZipValid = validateZipCode();
+        const isAreaValid = validateDeliveryArea();
+
+        const allValid = isNameValid && isPhoneValid && isStreetValid && isZipValid && isAreaValid;
+
+        if (!allValid) {
+            const firstError = document.querySelector('#shippingForm input.error, #shippingForm textarea.error');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus({ preventScroll: true });
+            }
+            showToast(t('form_error'), 'error');
+            return;
+        }
+
+        // حساب رسوم التوصيل النهائية
+        const zipValue = document.getElementById('zipCode').value.trim();
+        const feeData = calculateDeliveryFee(zipValue);
+
+        const shippingData = {
+            fullName: document.getElementById('fullName').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            streetAddress: document.getElementById('streetAddress').value.trim(),
+            apartment: document.getElementById('apartment').value.trim(),
+            city: DELIVERY_CITY,
+            state: DELIVERY_STATE,
+            zipCode: zipValue,
+            deliveryNotes: document.getElementById('deliveryNotes').value.trim(),
+            latitude: localStorage.getItem('userLatitude') || null,
+            longitude: localStorage.getItem('userLongitude') || null,
+            // ===== جديد: إضافة بيانات رسوم التوصيل =====
+            deliveryFee: feeData ? feeData.totalFee : null,
+            deliveryFeeBreakdown: feeData ? {
+                baseFee: feeData.baseFee,
+                perMileFee: feeData.perMileFee,
+                distanceMiles: feeData.distanceMiles,
+                mileFee: feeData.mileFee,
+                totalFee: feeData.totalFee,
+                formula: feeData.formula
+            } : null,
+            submittedAt: new Date().toISOString()
+        };
+
+        // تخزين بيانات التوصيل محليًا
+        localStorage.setItem(SHIPPING_STORAGE_KEY, JSON.stringify(shippingData));
+
+        // تخزين رسوم التوصيل كمفتاح مستقل للوصول السريع
+        if (feeData) {
+            localStorage.setItem(DELIVERY_FEE_STORAGE_KEY, JSON.stringify(feeData));
+        }
+
+        const pendingOrder = JSON.parse(localStorage.getItem('pendingOrder')) || null;
+
+        if (pendingOrder) {
+            pendingOrder.shipping = shippingData;
+            pendingOrder.deliveryFee = feeData ? feeData.totalFee : 0;
+            pendingOrder.updatedAt = new Date().toISOString();
+            localStorage.setItem('pendingOrder', JSON.stringify(pendingOrder));
+
+            setLoadingState(true);
+            showToast(t('verifying_address'), 'success');
+
+            setTimeout(() => {
+                window.location.href = REDIRECT_URL;
+            }, 1500);
+        } else {
+            showToast(t('no_cart_items'), 'error');
+        }
+    }
+
+    function initFormValidation() {
+        const fields = [
+            { id: 'fullName', validator: validateName, errorId: 'fullNameError' },
+            { id: 'phone', validator: validatePhone, errorId: 'phoneError' },
+            { id: 'streetAddress', validator: validateStreetAddress, errorId: 'streetAddressError' },
+            { id: 'zipCode', validator: validateZipCode, errorId: 'zipCodeError' }
+        ];
+
+        fields.forEach(field => {
+            const input = document.getElementById(field.id);
+            if (!input) return;
+
+            input.addEventListener('blur', () => {
+                field.validator();
+                // تحديث عرض رسوم التوصيل عند مغادرة حقل الرمز البريدي
+                if (field.id === 'zipCode') {
+                    updateDeliveryFeeDisplay();
+                }
+            });
+
+            input.addEventListener('input', () => {
+                const errorEl = document.getElementById(field.errorId);
+                if (input.classList.contains('error')) {
+                    input.classList.remove('error');
+                    input.setAttribute('aria-invalid', 'false');
+                    if (errorEl) errorEl.textContent = '';
+                }
+                // تحديث فوري لعرض رسوم التوصيل عند كتابة الرمز البريدي
+                if (field.id === 'zipCode') {
+                    const cleaned = input.value.replace(/[^\d-]/g, '').slice(0, 10);
+                    if (cleaned !== input.value) input.value = cleaned;
+                    updateDeliveryFeeDisplay();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && field.id !== 'deliveryNotes') {
+                    e.preventDefault();
+                    const nextField = fields[fields.indexOf(field) + 1];
+                    if (nextField) {
+                        document.getElementById(nextField.id)?.focus();
+                    }
+                }
+            });
+        });
+
+        const zipInput = document.getElementById('zipCode');
+        if (zipInput) {
+            zipInput.addEventListener('input', () => {
+                zipInput.value = zipInput.value.replace(/[^\d-]/g, '').slice(0, 10);
+                updateDeliveryFeeDisplay();
+            });
+        }
+
+        const form = document.getElementById('shippingForm');
+        if (form) {
+            form.addEventListener('submit', handleSubmit);
+        }
+    }
+    </script>
+</body>
+</html>

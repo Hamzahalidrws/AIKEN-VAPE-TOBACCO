@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج | AIKEN VAPE & TOBACCO</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+
+    <style>
+        /* ========== متغيرات الألوان الأساسية ========== */
+        :root {
+            --green: #86D800;
+            --green-end: #63B700;
+            --green-glow: rgba(134, 216, 0, 0.35);
+            --green-shadow: rgba(99, 183, 0, 0.45);
+            --purple: #6210A2;
+            --purple-glow: rgba(98, 16, 162, 0.4);
+            --purple-shadow: rgba(98, 16, 162, 0.35);
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --star-glow: rgba(241, 196, 15, 0.5);
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0,0,0,0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --btn-cart-glow: rgba(134, 216, 0, 0.45);
+            --btn-wish-bg: #111111;
+            --btn-wish-border: #222222;
+            --ripple-color: rgba(255, 255, 255, 0.25);
+            --tooltip-bg: #1a1a1a;
+            --success-bg: rgba(134, 216, 0, 0.12);
+            --success-border: rgba(134, 216, 0, 0.3);
+            --rating-card-bg: rgba(255, 255, 255, 0.02);
+            --share-bg: #1a1a1a;
+            --share-icon-bg: #1f1f1f;
+            --share-btn-bg: #1f1f1f;
+            --share-close-bg: #86D800;
+            --share-icon-color: #ffffff;
+            --share-hover-glow: rgba(134, 216, 0, 0.7);
+            --share-btn-hover-bg: #2a2a2a;
+        }
+        :root.light-mode {
+            --bg-dark: #f4f6f8;
+            --bg-card: #ffffff;
+            --bg-alt: #eef2f5;
+            --bg-img: #f9f9f9;
+            --text-light: #111111;
+            --text-muted: #555555;
+            --border-color: #dddddd;
+            --header-bg: #ffffff;
+            --footer-bg: #ffffff;
+            --hover-bg: #f0f0f0;
+            --tag-bg: #eeeeee;
+            --hero-bg-end: #f4f6f8;
+            --green: #5bb900;
+            --green-end: #4a9900;
+            --green-glow: rgba(91, 185, 0, 0.2);
+            --green-shadow: rgba(74, 153, 0, 0.25);
+            --purple: #6b21a8;
+            --purple-glow: rgba(107, 33, 168, 0.2);
+            --purple-shadow: rgba(107, 33, 168, 0.2);
+            --modal-overlay-bg: rgba(0,0,0,0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            --glass-bg: rgba(0, 0, 0, 0.02);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --btn-cart-glow: rgba(91, 185, 0, 0.25);
+            --btn-wish-bg: #f5f5f5;
+            --btn-wish-border: #dddddd;
+            --ripple-color: rgba(0, 0, 0, 0.15);
+            --tooltip-bg: #333333;
+            --success-bg: rgba(91, 185, 0, 0.08);
+            --success-border: rgba(91, 185, 0, 0.25);
+            --rating-card-bg: rgba(0, 0, 0, 0.015);
+            --share-bg: #f0f0f0;
+            --share-icon-bg: #e8e8e8;
+            --share-btn-bg: #e8e8e8;
+            --share-close-bg: #5bb900;
+            --share-icon-color: #333333;
+            --share-hover-glow: rgba(91, 185, 0, 0.6);
+            --share-btn-hover-bg: #dcdcdc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-dark); color: var(--text-light); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+        .lock-scroll { overflow: hidden !important; }
+        a { text-decoration: none; color: inherit; } ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; width: 100%; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 22px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; border: none; text-align: center; font-family: inherit; font-size: 0.95rem; white-space: nowrap; position: relative; overflow: hidden; }
+        .btn-green { background: var(--green); color: #000; } .btn-green:hover { background: var(--text-light); color: var(--green); box-shadow: 0 0 15px rgba(134,216,0,0.4); }
+        .btn-purple { background: var(--purple); color: #fff; } .btn-purple:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(98,16,162,0.4); }
+        .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; } .btn-outline:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(134,216,0,0.2); }
+
+        /* ========== قائمة المشاركة ========== */
+        .share-menu-wrapper { display: flex; justify-content: center; align-items: center; margin-top: 20px; padding: 10px 0; }
+        .share-main { position: relative; display: flex; justify-content: center; align-items: center; width: 170px; height: 170px; }
+        .share-icon-trigger { position: absolute; width: 50px; height: 50px; background: var(--share-icon-bg); border-radius: 15px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 10; transition: 0.3s; border: 1px solid var(--border-color); }
+        .share-icon-trigger i { font-size: 1.4em; color: var(--share-icon-color); transition: 0.3s; }
+        .share-icon-trigger:hover i { color: var(--green); filter: drop-shadow(0 0 3px var(--green)) drop-shadow(0 0 8px var(--green-glow)) drop-shadow(0 0 15px var(--green-glow)); }
+        .share-icon-trigger.hidden { opacity: 0; pointer-events: none; transform: scale(0.5); }
+        .share-navigation { position: relative; width: 40px; height: 40px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.5s; z-index: 5; }
+        .share-navigation span { position: absolute; width: 7px; height: 7px; background: var(--text-muted); display: flex; justify-content: center; align-items: center; border-radius: 50%; transform: translate(calc(14px * var(--x)), calc(14px * var(--y))); transition: transform 0.5s, width 0.5s, height 0.5s, background 0.5s; transition-delay: calc(0.1s * var(--i)); pointer-events: none; opacity: 0; }
+        .share-navigation.active span { width: 50px; height: 50px; background: var(--share-btn-bg); border-radius: 15px; border: 1px solid var(--border-color); transform: translate(calc(65px * var(--x)), calc(65px * var(--y))); pointer-events: auto; opacity: 1; }
+        .share-navigation span i { font-size: 0; color: var(--share-icon-color); transition: 0.5s; }
+        .share-navigation.active span i { font-size: 1.3em; }
+        .share-navigation.active span:hover { background: var(--share-btn-hover-bg); border-color: var(--green); }
+        .share-navigation.active span:hover i { color: var(--green); filter: drop-shadow(0 0 3px var(--green)) drop-shadow(0 0 8px var(--green-glow)) drop-shadow(0 0 15px var(--green-glow)); }
+        .share-close-btn { position: absolute; width: 7px; height: 7px; background: var(--text-muted); display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: 0.5s; pointer-events: none; z-index: 6; opacity: 0; }
+        .share-navigation.active ~ .share-close-btn { width: 45px; height: 45px; background: var(--share-close-bg); border-radius: 15px; pointer-events: auto; transition-delay: 0.5s; opacity: 1; }
+        .share-navigation.active ~ .share-close-btn:hover { background: var(--green-end); cursor: pointer; box-shadow: 0 0 18px var(--green-glow); }
+        .share-close-btn i { font-size: 0; color: #000; }
+        .share-navigation.active ~ .share-close-btn i { font-size: 1.6em; transition-delay: 0.8s; }
+        :root.light-mode .share-close-btn i { color: #fff; }
+        .share-whatsapp i { color: #25D366 !important; }
+        .share-sms i { color: #00aaff !important; }
+        .share-copy i { color: #ffd700 !important; }
+        .share-more i { color: #ff5722 !important; }
+        .share-navigation.active span.share-whatsapp:hover i { color: #25D366 !important; filter: drop-shadow(0 0 3px #25D366) drop-shadow(0 0 8px #25D366) drop-shadow(0 0 12px #25D366); }
+        .share-navigation.active span.share-sms:hover i { color: #00aaff !important; filter: drop-shadow(0 0 3px #00aaff) drop-shadow(0 0 8px #00aaff) drop-shadow(0 0 12px #00aaff); }
+        .share-navigation.active span.share-copy:hover i { color: #ffd700 !important; filter: drop-shadow(0 0 3px #ffd700) drop-shadow(0 0 8px #ffd700) drop-shadow(0 0 12px #ffd700); }
+        .share-navigation.active span.share-more:hover i { color: #ff5722 !important; filter: drop-shadow(0 0 3px #ff5722) drop-shadow(0 0 8px #ff5722) drop-shadow(0 0 12px #ff5722); }
+        .share-label { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: -10px; font-weight: 500; transition: color 0.3s; }
+
+        /* ========== الهيدر ========== */
+        header { background: var(--header-bg); border-bottom: 2px solid var(--purple); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 1px; } .logo span { color: var(--purple); }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links li a { position: relative; font-weight: 700; font-size: clamp(0.9rem, 2vw, 1.1rem); white-space: nowrap; transition: color 0.3s; }
+        .nav-links li a::after { content: ""; position: absolute; right: 0; bottom: -6px; width: 0; height: 3px; background: var(--green); border-radius: 3px; box-shadow: 0 0 10px rgba(134,216,0,.5); transition: width .3s ease; }
+        .nav-links li a:hover { color: var(--green); } .nav-links li a:hover::after, .nav-links li a.active::after { width: 100%; } .nav-links li a.active { color: var(--green); }
+        .dropdown { position: relative; }
+        .dropdown-menu { display: block; visibility: hidden; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: absolute; top: 100%; right: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--green); min-width: 210px; z-index: 10; padding: 8px 0; border-radius: 0 0 5px 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 10px 18px; font-size: 0.95rem; border-bottom: 1px solid var(--border-color); }
+        .dropdown-menu li:last-child a { border-bottom: none; } .dropdown-menu li a:hover { background: var(--hover-bg); color: var(--green); padding-right: 22px; }
+        .header-icons { display: flex; gap: 16px; color: var(--text-light); font-size: 1.2rem; align-items: center; }
+        .header-icons a, .header-icons i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .header-icons a:hover i, .header-icons i:hover { color: var(--green); transform: scale(1.1); }
+        .menu-toggle { display: none; color: var(--green); font-size: 1.6rem; cursor: pointer; } .desktop-only { display: block; } .mobile-only { display: none !important; }
+        .lang-dropdown { position: relative; display: flex; align-items: center; cursor: pointer; }
+        .lang-menu { position: absolute; top: 150%; left: 50%; transform: translateX(-90%); background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--purple); border-radius: 5px; list-style: none; padding: 5px 0; min-width: 110px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-align: center; }
+        html[dir="ltr"] .lang-menu { left: 50%; right: auto; transform: translateX(-90%); } html[dir="rtl"] .lang-menu { right: 50%; left: auto; transform: translateX(90%); }
+        .lang-dropdown.active .lang-menu { display: block; } .lang-menu li { padding: 10px; font-size: 0.95rem; color: var(--text-light); transition: 0.3s; cursor: pointer; } .lang-menu li:hover { background: var(--hover-bg); color: var(--green); }
+        .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; } .nav-overlay.active { display: block; }
+
+        /* ========== نموذج البحث ========== */
+        .search-overlay { position: fixed; inset: 0; background: var(--modal-overlay-bg); backdrop-filter: blur(8px); z-index: 10000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; display: flex; align-items: flex-start; justify-content: center; padding-top: 10vh; }
+        .search-overlay.active { opacity: 1; visibility: visible; }
+        .search-modal { background: var(--modal-bg); width: 90%; max-width: 620px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--modal-shadow); transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; max-height: 80vh; overflow: hidden; }
+        .search-overlay.active .search-modal { transform: translateY(0) scale(1); }
+        .search-header { display: flex; align-items: center; padding: 16px 20px; gap: 12px; border-bottom: 1px solid var(--border-color); }
+        .search-header .search-icon { font-size: 1.4rem; color: var(--green); flex-shrink: 0; }
+        .search-header input { flex: 1; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 16px; color: var(--text-light); font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .search-header input:focus { border-color: var(--green); }
+        .search-header .close-btn { font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: color 0.3s; flex-shrink: 0; width: 32px; text-align: center; } .search-header .close-btn:hover { color: var(--green); }
+        .search-results { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+        .search-result-item { display: flex; align-items: center; gap: 15px; padding: 12px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); transition: border-color 0.3s, background 0.3s; } .search-result-item:hover { border-color: var(--green); background: var(--hover-bg); }
+        .search-result-img { width: 60px; height: 60px; border-radius: 12px; background: var(--bg-img); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; font-size: 2rem; color: var(--text-muted); }
+        .search-result-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+        .search-result-info { flex: 1; min-width: 0; }
+        .search-result-title { font-weight: 700; color: var(--text-light); font-size: 1rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .search-result-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; } .search-result-meta span { background: var(--tag-bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-color); }
+        .search-result-price { color: var(--green); font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+        .search-result-rating { font-size: 0.8rem; color: var(--star-color); display: flex; align-items: center; gap: 4px; } .search-result-rating span { color: var(--text-muted); margin-left: 4px; }
+        .search-result-details { padding: 8px 16px; border-radius: 8px; background: var(--purple); color: #fff; font-size: 0.85rem; white-space: nowrap; transition: background 0.3s; font-weight: 700; } .search-result-details:hover { background: var(--green); color: #000; }
+        .search-empty { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* ========== Main ========== */
+        main { flex: 1; padding: 40px 0; }
+        .detail-container { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .detail-image { background: var(--bg-img); border-radius: 16px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); overflow: hidden; position: relative; }
+        .detail-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+        .detail-info { display: flex; flex-direction: column; gap: 20px; }
+        .detail-info h1 { font-size: 2rem; font-weight: 800; }
+        .detail-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+        .detail-meta span { background: var(--tag-bg); padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; }
+        .detail-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: var(--text-muted); }
+        .detail-specs div { background: var(--bg-dark); padding: 10px; border-radius: 8px; font-size: 0.9rem; }
+        .detail-specs strong { color: var(--text-light); }
+        .detail-rating { display: flex; align-items: center; gap: 8px; font-size: 1.1rem; color: var(--star-color); }
+        .detail-rating span { color: var(--text-muted); font-size: 0.9rem; }
+        .detail-price { font-size: 2.5rem; font-weight: 800; color: var(--green); }
+        .detail-desc { color: var(--text-muted); line-height: 1.8; }
+
+        /* ========== نظام التقييم ========== */
+        .rating-card { background: var(--rating-card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 24px; margin-top: 6px; transition: all 0.35s ease; position: relative; overflow: hidden; }
+        .rating-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, var(--green-glow), transparent 70%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; z-index: 0; }
+        .rating-card.glow-active::before { opacity: 0.5; } .rating-card>* { position: relative; z-index: 1; }
+        .rating-title { font-size: 1.05rem; font-weight: 700; color: var(--text-light); margin-bottom: 14px; text-align: center; }
+        .rating-stars-container { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+        .rating-star { font-size: 2rem; color: #444; cursor: pointer; transition: color 0.2s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.25s ease; user-select: none; -webkit-tap-highlight-color: transparent; }
+        .rating-star.hovered, .rating-star.active-rated { color: var(--star-color); text-shadow: 0 0 18px var(--star-glow), 0 0 36px var(--star-glow); }
+        .rating-star:hover { transform: scale(1.18); text-shadow: 0 0 22px var(--star-glow), 0 0 44px var(--star-glow); }
+        .rating-star:active { transform: scale(0.88); transition: transform 0.1s ease; }
+        .rating-star.pop-anim { animation: starPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes starPop { 0% { transform: scale(0.7); } 40% { transform: scale(1.45); } 70% { transform: scale(0.9); } 100% { transform: scale(1); } }
+        .rating-hint { text-align: center; font-size: 0.85rem; color: var(--text-muted); min-height: 22px; transition: all 0.35s ease; }
+        .rating-success-msg { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; font-weight: 600; color: var(--green); opacity: 0; transform: translateY(12px) scale(0.9); transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; min-height: 0; max-height: 0; overflow: hidden; }
+        .rating-success-msg.show { opacity: 1; transform: translateY(0) scale(1); min-height: 30px; max-height: 60px; margin-top: 8px; }
+        .rating-success-msg i { font-size: 1.3rem; color: var(--green); }
+        .rating-already-rated { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; font-weight: 600; color: var(--green); background: var(--success-bg); border: 1px solid var(--success-border); border-radius: 12px; padding: 12px 18px; margin-top: 4px; }
+
+        /* ========== أزرار محسنة ========== */
+        .detail-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+        .btn-add-cart { flex: 1; min-width: 180px; height: 58px; border-radius: 20px; font-size: 1rem; font-weight: 600; background: linear-gradient(135deg, var(--green) 0%, var(--green-end) 100%); color: #000; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2); box-shadow: 0 8px 28px var(--green-shadow), 0 0 0 0 var(--green-glow); z-index: 1; font-family: inherit; }
+        .btn-add-cart::after { content: ''; position: absolute; top: -40%; left: -20%; width: 60%; height: 180%; background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 100%); border-radius: 50%; pointer-events: none; z-index: 2; transform: rotate(15deg); }
+        .btn-add-cart::before { content: ''; position: absolute; inset: 2px; border-radius: 18px; background: rgba(255,255,255,0.04); pointer-events: none; z-index: 0; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .btn-add-cart>* { position: relative; z-index: 3; }
+        .btn-add-cart .cart-icon { font-size: 1.2rem; transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2); }
+        .btn-add-cart:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 38px var(--green-shadow), 0 0 32px var(--btn-cart-glow); background: linear-gradient(135deg, #93e600 0%, var(--green) 100%); }
+        .btn-add-cart:hover .cart-icon { transform: translateX(3px) rotate(-8deg); }
+        html[dir="ltr"] .btn-add-cart:hover .cart-icon { transform: translateX(-3px) rotate(8deg); }
+        .btn-add-cart:active { transform: scale(0.97); transition: transform 0.12s ease; }
+
+        .btn-wishlist-heart { width: 58px; height: 58px; min-width: 58px; border-radius: 18px; background: var(--btn-wish-bg); border: 1.5px solid var(--btn-wish-border); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2); box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 1; font-family: inherit; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+        .btn-wishlist-heart .heart-icon { font-size: 1.35rem; color: #fff; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 2; }
+        :root.light-mode .btn-wishlist-heart .heart-icon { color: #333; }
+        .btn-wishlist-heart:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 8px 28px var(--purple-shadow), 0 0 24px var(--purple-glow); transform: translateY(-2px); }
+        .btn-wishlist-heart:hover .heart-icon { transform: scale(1.15); color: #fff; }
+        .btn-wishlist-heart:active { transform: scale(0.94); transition: transform 0.1s ease; }
+        .btn-wishlist-heart.wishlisted .heart-icon { color: #ff2d55; animation: heartPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-wishlist-heart.wishlisted { border-color: rgba(255,45,85,0.4); box-shadow: 0 4px 20px rgba(255,45,85,0.2); }
+        @keyframes heartPop { 0% { transform: scale(0.6); } 40% { transform: scale(1.5); } 70% { transform: scale(0.9); } 100% { transform: scale(1); } }
+        .btn-wishlist-heart.pulse-anim { animation: heartPulse 0.7s ease; }
+        @keyframes heartPulse { 0% { box-shadow: 0 4px 16px rgba(0,0,0,0.2); } 30% { box-shadow: 0 0 0 16px rgba(255,45,85,0); } 60% { box-shadow: 0 0 0 0 rgba(255,45,85,0); } 100% { box-shadow: 0 4px 20px rgba(255,45,85,0.2); } }
+
+        /* ========== مودال الكمية (عدد فقط) ========== */
+        .qty-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .qty-modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .qty-modal-box { background: var(--bg-card); padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; border: 1px solid var(--border-color); box-shadow: 0 25px 50px rgba(0,0,0,0.6); transform: translateY(20px) scale(0.9); transition: transform 0.4s ease; }
+        .qty-modal-overlay.active .qty-modal-box { transform: translateY(0) scale(1); }
+        .qty-modal-box h3 { margin-bottom: 15px; color: var(--green); text-align: center; }
+        .qty-modal-product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--text-light); text-align: center; }
+        .qty-modal-controls { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0; }
+        .qty-modal-controls button { background: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-light); width: 42px; height: 42px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .qty-modal-controls button:hover { border-color: var(--green); color: var(--green); }
+        .qty-modal-controls span { font-size: 1.3rem; font-weight: 700; min-width: 40px; text-align: center; color: var(--text-light); }
+        .qty-modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px; }
+        .qty-modal-actions .btn { flex: 1; }
+
+        /* Tooltip & Ripple */
+        .tooltip-popup { position: fixed; background: var(--tooltip-bg); color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; pointer-events: none; z-index: 10001; opacity: 0; transform: translateY(8px) scale(0.9); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); white-space: nowrap; box-shadow: 0 6px 20px rgba(0,0,0,0.35); border: 1px solid var(--border-color); }
+        .tooltip-popup.show { opacity: 1; transform: translateY(0) scale(1); }
+        .tooltip-popup::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 12px; height: 12px; background: var(--tooltip-bg); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .ripple-span { position: absolute; border-radius: 50%; background: var(--ripple-color); transform: scale(0); animation: rippleAnim 0.7s ease-out forwards; pointer-events: none; z-index: 5; }
+        @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+        .not-found { text-align: center; padding: 80px 0; color: var(--text-muted); }
+
+        /* Toast */
+        .toast-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .toast-overlay.active { opacity: 1; pointer-events: auto; }
+        .toast-box { background: var(--bg-card); padding: 30px; border-radius: 16px; text-align: center; max-width: 420px; width: 90%; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.5); transform: translateY(20px) scale(0.9); transition: transform 0.4s ease; }
+        .toast-overlay.active .toast-box { transform: translateY(0) scale(1); }
+        .toast-box i { font-size: 3rem; color: var(--green); margin-bottom: 15px; } .toast-box p { color: var(--text-light); margin-bottom: 20px; }
+        .toast-close { padding: 10px 25px; background: var(--green); color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; }
+
+        /* Footer */
+        footer { background: var(--footer-bg); padding: clamp(40px, 8vw, 70px) 0 20px; border-top: 4px solid var(--green); margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--purple); margin-bottom: 20px; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 800; position: relative; padding-bottom: 8px; }
+        .footer-col h4::after { content: ''; position: absolute; right: 0; bottom: 0; width: 35px; height: 3px; background: var(--green); }
+        .footer-col ul li { margin-bottom: 12px; } .footer-col ul li a { color: var(--text-muted); transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+        .footer-col ul li a::before { content: '\f104'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.75rem; color: var(--green); } .footer-col ul li a:hover { color: var(--text-light); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; } .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; color: var(--green); font-size: 1.1rem; border: 1px solid var(--border-color); } .social-links a:hover { background: var(--purple); color: #fff; }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-muted); margin-bottom: 12px; font-size: 0.9rem; } .footer-contact li i { color: var(--green); margin-top: 4px; }
+        .payment-methods { margin-top: 20px; font-size: 1.6rem; color: var(--text-muted); display: flex; gap: 12px; } .payment-methods i:hover { color: var(--text-light); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; } .mobile-only { display: flex !important; }
+            #desktopCartLink { display: flex !important; } #mobileCartLink { display: none !important; }
+            .header-inner { position: relative; padding: 10px 0; }
+            .nav-links { display: flex; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--header-bg); flex-direction: column; padding: 20px; border-left: 2px solid var(--purple); transition: right 0.4s ease; align-items: flex-start; z-index: 1001; overflow-y: auto; gap: 2px; }
+            .nav-links.active { right: 0; }
+            .mobile-icons-row { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; font-size: 1.3rem; }
+            .nav-links li { width: 100%; } .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; border-right: 2px solid var(--purple); margin-right: 12px; background: transparent; visibility: visible; opacity: 1; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0; }
+            .dropdown.active .dropdown-menu { max-height: 500px; padding: 5px 0; }
+            .dropdown-menu li a { font-size: 0.9rem; padding: 10px 14px; }
+            .menu-toggle { display: flex !important; } .header-icons { gap: 12px; font-size: 1.1rem; }
+            .detail-container { grid-template-columns: 1fr; padding: 20px; }
+            .detail-image img { border-radius: 12px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links li a.active::after { display: none; } .nav-links li a.active { background: rgba(134,216,0,.12); color: var(--green); border-radius: 6px; padding-right: 10px; }
+            html[dir="ltr"] .nav-links { left: -100%; right: auto; } html[dir="ltr"] .nav-links.active { left: 0; }
+            .search-modal { width: 95%; max-height: 85vh; } .search-header { padding: 12px; gap: 6px; }
+            .search-header .search-icon, .search-header .close-btn { font-size: 1.2rem; }
+            .search-header input { flex: 0 1 200px; width: 180px; padding: 8px 10px; font-size: 0.9rem; border-radius: 8px; }
+            .rating-star { font-size: 1.6rem; } .rating-stars-container { gap: 6px; }
+            .btn-add-cart { height: 52px; font-size: 0.9rem; border-radius: 16px; }
+            .btn-wishlist-heart { width: 52px; height: 52px; min-width: 52px; border-radius: 16px; }
+            .detail-actions { gap: 10px; }
+            .share-main { width: 150px; height: 150px; }
+            .share-navigation.active span { width: 42px; height: 42px; transform: translate(calc(55px * var(--x)), calc(55px * var(--y))); }
+            .share-navigation.active ~ .share-close-btn { width: 38px; height: 38px; }
+            .share-navigation.active span i { font-size: 1.1em; }
+            
+             .header-inner {
+        padding: 12px 20px; /* مسافة أفقية 20px من كل جانب */
+    }
+        }
+        
+        /* ========== شارة السلة وحركة الإضافة ========== */
+.cart-link {
+    position: relative; /* يجعل الرابط نقطة مرجعية لوضع الشارة فوقه */
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px; /* في الوضع RTL تكون الشارة على اليسار، لكن هنا right يعمل لأن الأيقونة تكون في الهيدر */
+    background-color: var(--green);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--header-bg);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: none; /* مخفي افتراضياً إذا كان العدد 0 */
+}
+
+/* تأثير النبض عند تحديث العدد */
+.cart-badge.pop {
+    transform: scale(1.4);
+}
+
+.btn-wishlist-heart img.custom-wishlist-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+/* زر الهامبرغر المتحول */
+.menu-toggle {
+    display: none; /* سيظهر في الموبايل فقط */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1002;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Aiken <span>Vape</span></div>
+            <ul class="nav-links" id="navMenu">
+                <li class="mobile-only mobile-icons-row">
+                    <a href="cart.html" id="mobileCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge cart-count">0</span>
+                    </a>
+                    <a href="account.html" id="mobileAccountIcon" class="account-link" title="حسابي" data-translate-title="account" style="display:none;"><i class="fas fa-user"></i></a>
+                    <i id="mobileLoginIcon" class="fas fa-sign-in-alt" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                    <i class="fas fa-moon theme-toggle" title="المظهر" data-translate-title="theme"></i>
+                    <div class="lang-dropdown"><i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i><ul class="lang-menu"><li onclick="setLang('ar')">العربية</li><li onclick="setLang('en')">English</li></ul></div>
+                </li>
+                <li><a href="index.html" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
+                <li class="dropdown" id="dropdownCategories">
+                    <a href="#" class="nav-link dropdown-toggle active"><span data-translate="nav_categories">الأقسام</span> <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="disposables.html" class="nav-link" data-translate="cat_disposables">السحبات الجاهزة</a></li>
+                        <li><a href="vapes.html" class="nav-link" data-translate="cat_devices">أجهزة الفيب</a></li>
+                        <li><a href="e-liquids.html" class="nav-link" data-translate="cat_flavors">نكهات الفيب</a></li>
+                        <li><a href="pods-coils.html" class="nav-link" data-translate="cat_pods">البودات والكويلات</a></li>
+                        <li><a href="nicotine-pouches.html" class="nav-link" data-translate="cat_nicotine">أكياس النيكوتين</a></li>
+                        <li><a href="thc.html" class="nav-link active" data-translate="cat_thc">THC</a></li>
+                        <li><a href="cbd.html" class="nav-link" data-translate="cat_cbd">CBD</a></li>
+                        <li><a href="glass.html" class="nav-link" data-translate="cat_glass">الزجاج Glass</a></li>
+                        <li><a href="accessories.html" class="nav-link" data-translate="cat_accessories">الملحقات والإكسسوارات</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#shop" class="nav-link" data-translate="nav_shop">المتجر</a></li>
+                <li><a href="index.html#offers" class="nav-link" data-translate="nav_offers">العروض والتخفيضات</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="nav_about">من نحن</a></li>
+                <li><a href="contact.html" class="nav-link" data-translate="nav_contact">تواصل معنا</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class="fas fa-search" id="searchIcon" title="بحث" data-translate-title="search_placeholder" style="cursor:pointer;"></i>
+                <a href="cart.html" id="desktopCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge cart-count">0</span>
+                </a>
+                <a href="account.html" id="desktopAccountIcon" class="account-link desktop-only" title="حسابي" data-translate-title="account" style="display:none;"><i class="fas fa-user"></i></a>
+                <i id="desktopLoginIcon" class="fas fa-sign-in-alt desktop-only" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                <i class="fas fa-moon theme-toggle desktop-only" title="المظهر" data-translate-title="theme"></i>
+                <div class="lang-dropdown desktop-only"><i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i><ul class="lang-menu"><li onclick="setLang('ar')">العربية</li><li onclick="setLang('en')">English</li></ul></div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-modal">
+            <div class="search-header"><i class="fas fa-search search-icon"></i><input type="text" id="searchInput" placeholder="ابحث عن منتج THC..." data-translate-placeholder="search_placeholder"><i class="fas fa-times close-btn" id="closeSearchBtn" title="إغلاق" data-translate-title="close_search"></i></div>
+            <div class="search-results" id="searchResults"><div class="search-empty" data-translate="search_results">ابدأ البحث عن المنتجات</div></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="container" id="detailContainer"></div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="logo" style="font-size:1.6rem;margin-bottom:15px;">Aiken <span>Vape</span></div><p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;line-height:1.6;" data-translate="footer_desc">الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.</p><div class="social-links">
+                    <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==&amp;igsi=MWE5eW4xb3U0ZnhrMQ=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/193wnE9jcr/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@hamzahalydrws?_r=1&amp;_t=ZS-98wVIRKlJge"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/12175308866"><i class="fab fa-whatsapp"></i></a>
+                </div></div>
+                <div class="footer-col"><h4 data-translate="footer_links">روابط هامة</h4><ul><li><a href="index.html" data-translate="nav_home">الرئيسية</a></li><li><a href="index.html#shop" data-translate="nav_shop">المتجر</a></li><li><a href="disposables.html" data-translate="nav_disposables">السحبات الجاهزة</a></li><li><a href="index.html#offers" data-translate="nav_offers">العروض</a></li><li><a href="cbd.html" data-translate="nav_cbd">CBD</a></li><li><a href="about.html" data-translate="nav_about">من نحن</a></li><li><a href="contact.html" data-translate="nav_contact">تواصل معنا</a></li></ul></div>
+                <div class="footer-col">
+    <h4 data-translate="footer_policies">السياسات</h4>
+    <ul>
+        <li><a href="policies.html#terms" data-translate="policy_terms">الشروط والأحكام</a></li>
+        <li><a href="policies.html#privacy" data-translate="policy_privacy">سياسة الخصوصية</a></li>
+        <li><a href="policies.html#shipping" data-translate="policy_shipping">سياسة الشحن</a></li>
+        <li><a href="policies.html#age" data-translate="policy_age">تأكيد العمر</a></li>
+    </ul>
+</div>
+                <div class="footer-col"><h4 data-translate="footer_contact">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i> <span>2567 Whiskey Rd, Aiken, SC 29803</span></li><li><i class="fas fa-envelope"></i> <span>zubair007207@gmail.com</span></li><li><i class="fas fa-phone"></i> <span dir="ltr">+1 803-226-0066</span></li></ul><div class="payment-methods"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-apple-pay"></i></div></div>
+            </div>
+            <div class="footer-bottom" data-translate="copyright">&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.</div>
+        </div>
+    </footer>
+
+    <div class="toast-overlay" id="toastOverlay"><div class="toast-box"><i class="fas fa-lock" id="toastIcon"></i><p id="toastMessage"></p><button class="toast-close" id="toastCloseBtn" data-translate="close">إغلاق</button></div></div>
+    <div class="tooltip-popup" id="globalTooltip"></div>
+
+    <!-- ========== مودال تحديد الكمية (عدد فقط) ========== -->
+    <div class="qty-modal-overlay" id="qtyModal">
+        <div class="qty-modal-box">
+            <h3 data-translate="choose_quantity">تحديد الكمية</h3>
+            <div class="qty-modal-product-name" id="qtyModalProductName"></div>
+            
+            <!-- السعر الإجمالي -->
+            <div id="qtyModalPrice" style="text-align: center; font-size: 1.2rem; font-weight: bold; color: var(--green, #28a745); margin: 10px 0;"></div>
+            
+            <div class="qty-modal-controls">
+                <button onclick="changeQty(-1)">-</button>
+                <span id="qtyDisplay">1</span>
+                <button onclick="changeQty(1)">+</button>
+            </div>
+            <div class="qty-modal-actions">
+                <button class="btn btn-outline" onclick="closeQtyModal()" data-translate="cancel">إلغاء</button>
+                <button class="btn btn-purple" onclick="confirmQtyAddToCart()" data-translate="confirm_add">أضف للسلة</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ==================== الترجمات ====================
+    const translations = {
+        ar: {
+            account:'حسابي',theme:'المظهر',language:'اللغة',login_title:'تسجيل الدخول',logout_title:'تسجيل الخروج',
+            search:'بحث',search_placeholder:'ابحث عن منتج THC...',search_results:'ابدأ البحث عن المنتجات',no_search_results:'لا توجد نتائج مطابقة',close_search:'إغلاق البحث',
+            cart:'السلة',nav_home:'الرئيسية',nav_categories:'الأقسام',nav_shop:'المتجر',nav_offers:'العروض والتخفيضات',
+            nav_about:'من نحن',nav_contact:'تواصل معنا',
+            cat_disposables:'السحبات الجاهزة',cat_devices:'أجهزة الفيب',cat_flavors:'نكهات الفيب',cat_pods:'البودات والكويلات',
+            cat_nicotine:'أكياس النيكوتين',cat_thc:'THC',cat_cbd:'CBD',cat_glass:'الزجاج',cat_accessories:'الملحقات والإكسسوارات',
+            details:'تفاصيل',currency:'$',
+            login_required:'يجب عليك <a href="login.html" style="color:var(--green);text-decoration:underline;">تسجيل الدخول</a> أولاً لتتمكن من استخدام هذه الميزة.',
+            detail_title:'تفاصيل المنتج',not_found:'المنتج غير موجود.',back_to_thc:'العودة لقسم THC',
+            add_to_cart:'أضف للسلة',add_to_wishlist:'أضف للمفضلة',
+            added_to_cart:'✓ تمت الإضافة إلى السلة',added_to_wishlist:'تمت الإضافة إلى المفضلة',removed_from_wishlist:'تمت الإزالة من المفضلة',
+            brand:'العلامة التجارية',product_type:'نوع المنتج',thc_type:'نوع THC',potency:'التركيز',flavor_name:'النكهة',strain:'السلالة',
+            thc_vape:'فيبات THC',gummies:'Gummies',pre_rolls:'Pre-Rolls',
+            rate_product:'قيّم هذا المنتج',choose_stars:'اختر عدد النجوم',already_rated:'✓ لقد قمت بتقييم هذا المنتج.',thank_rating:'✓ شكراً لك، تم تسجيل تقييمك.',
+            choose_quantity: 'تحديد الكمية', cancel: 'إلغاء', confirm_add: 'أضف للسلة',
+            footer_desc:'الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.',footer_links:'روابط هامة',footer_policies:'السياسات',footer_contact:'تواصل معنا',
+            policy_terms:'الشروط والأحكام',policy_privacy:'سياسة الخصوصية',policy_return:'سياسة الاسترجاع',policy_shipping:'سياسة الشحن',policy_age:'تأكيد العمر',
+            address:'اليمن - إب، الفرع الرئيسي',copyright:'&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.',close:'إغلاق',logout_success:'تم تسجيل الخروج بنجاح.',
+            share_label:'مشاركة المنتج',share_whatsapp:'مشاركة عبر واتساب',share_sms:'مشاركة عبر الرسائل',share_copy:'نسخ الرابط',share_more:'خيارات مشاركة أخرى',
+            copy_success:'تم نسخ الرابط بنجاح',share_not_supported:'المشاركة غير مدعومة في هذا المتصفح'
+        },
+        en: {
+            account:'My Account',theme:'Theme',language:'Language',login_title:'Login',logout_title:'Logout',
+            search:'Search',search_placeholder:'Search for a THC product...',search_results:'Start searching for products',no_search_results:'No matching results',close_search:'Close Search',
+            cart:'Cart',nav_home:'Home',nav_categories:'Categories',nav_shop:'Shop',nav_offers:'Offers & Deals',
+            nav_about:'About Us',nav_contact:'Contact Us',
+            cat_disposables:'Disposables',cat_devices:'Vape Devices',cat_flavors:'E-Liquids',cat_pods:'Pods & Coils',
+            cat_nicotine:'Nicotine Pouches',cat_thc:'THC',cat_cbd:'CBD',cat_glass:'Glass',cat_accessories:'Accessories',
+            details:'Details',currency:'$',
+            login_required:'You need to <a href="login.html" style="color:var(--green);text-decoration:underline;">login</a> first.',
+            detail_title:'Product Details',not_found:'Product not found.',back_to_thc:'Back to THC',
+            add_to_cart:'Add to Cart',add_to_wishlist:'Add to Wishlist',
+            added_to_cart:'✓ Added to Cart',added_to_wishlist:'Added to Wishlist',removed_from_wishlist:'Removed from Wishlist',
+            brand:'Brand',product_type:'Product Type',thc_type:'THC Type',potency:'Potency',flavor_name:'Flavor',strain:'Strain',
+            thc_vape:'THC Vapes',gummies:'Gummies',pre_rolls:'Pre-Rolls',
+            rate_product:'Rate This Product',choose_stars:'Choose star rating',already_rated:'✓ You have rated this product.',thank_rating:'✓ Thank you! Your rating recorded.',
+            choose_quantity: 'Choose Quantity', cancel: 'Cancel', confirm_add: 'Add to Cart',
+            footer_desc:'The premier destination for the finest vape devices.',footer_links:'Important Links',footer_policies:'Policies',footer_contact:'Contact Us',
+            policy_terms:'Terms',policy_privacy:'Privacy',policy_return:'Return',policy_shipping:'Shipping',policy_age:'Age Verification',
+            address:'Yemen - Ibb, Main Branch',copyright:'&copy; 2026 AIKEN VAPE & TOBACCO. All rights reserved.',close:'Close',logout_success:'Logged out successfully.',
+            share_label:'Share Product',share_whatsapp:'Share via WhatsApp',share_sms:'Share via SMS',share_copy:'Copy Link',share_more:'More Share Options',
+            copy_success:'Link copied successfully',share_not_supported:'Sharing not supported in this browser'
+        }
+    };
+
+    // ==================== بيانات منتجات THC (متطابقة مع صفحة الأقسام) ====================
+    const products = [
+        { id:701, type:'thc_vape', name:{ar:'THC Vape Delta-9 - فراولة', en:'THC Vape Delta-9 - Strawberry'}, brand:'Bloom', thcType:'Delta-9 THC', potency:'80% - 90%', flavor:'فراولة', strain:'Hybrid', price:120, rating:4.6, reviews:55, desc:{ar:'فيب THC بنكهة الفراولة الغنية، مستخلص من سلالة هجين عالية الجودة.', en:'THC vape with rich strawberry flavor, extracted from high-quality hybrid strain.'}, image:'assets/img/thc/1.webp' },
+        { id:702, type:'gummies', name:{ar:'Delta-8 Gummies - مانجو', en:'Delta-8 Gummies - Mango'}, brand:'MoonWlkr', thcType:'Delta-8 THC', potency:'50% - 70%', flavor:'مانجو', strain:'Sativa', price:80, rating:4.3, reviews:70, desc:{ar:'حلوى THC بنكهة المانجو اللذيذة، توفر تأثيرًا متوازنًا.', en:'THC gummies with delicious mango flavor, providing a balanced effect.'}, image:'assets/img/thc/2.webp' },
+        { id:703, type:'pre_rolls', name:{ar:'Pre-Roll THCA - نعناع', en:'Pre-Roll THCA - Mint'}, brand:'Raw Garden', thcType:'THCA', potency:'90%+', flavor:'نعناع', strain:'Indica', price:150, rating:4.8, reviews:40, desc:{ar:'سيجار THCA بنكهة النعناع المنعش، من إنتاج Raw Garden.', en:'THCA pre-roll with refreshing mint flavor, produced by Raw Garden.'}, image:'assets/img/thc/3.webp' },
+        { id:704, type:'gummies', name:{ar:'THCP Gummies - عنب', en:'THCP Gummies - Grape'}, brand:'Binoid', thcType:'THCP', potency:'70% - 80%', flavor:'عنب', strain:'Indica', price:95, rating:4.5, reviews:60, desc:{ar:'حلوى THCP بنكهة العنب القوية، مثالية للاسترخاء.', en:'THCP gummies with strong grape flavor, perfect for relaxation.'}, image:'assets/img/thc/4.webp' },
+        { id:705, type:'thc_vape', name:{ar:'Delta-9 Vape - بطيخ', en:'Delta-9 Vape - Watermelon'}, brand:'3Chi', thcType:'Delta-9 THC', potency:'80% - 90%', flavor:'بطيخ', strain:'Hybrid', price:130, rating:4.7, reviews:85, desc:{ar:'فيب Delta-9 بنكهة البطيخ المنعش، سلالة هجين متوازنة.', en:'Delta-9 vape with refreshing watermelon flavor, balanced hybrid strain.'}, image:'assets/img/thc/5.webp' },
+        { id:706, type:'pre_rolls', name:{ar:'THCV Pre-Roll - ليمون', en:'THCV Pre-Roll - Lemon'}, brand:'Raw Garden', thcType:'THCV', potency:'90%+', flavor:'ليمون', strain:'Sativa', price:160, rating:4.9, reviews:30, desc:{ar:'سيجار THCV بنكهة الليمون الحامض، طاقة وانتعاش.', en:'THCV pre-roll with tangy lemon flavor, energy and refreshment.'}, image:'assets/img/thc/6.webp' },
+        { id:707, type:'thc_vape', name:{ar:'Delta-8 Vape - توت أزرق', en:'Delta-8 Vape - Blueberry'}, brand:'MoonWlkr', thcType:'Delta-8 THC', potency:'70% - 80%', flavor:'توت أزرق', strain:'Indica', price:110, rating:4.4, reviews:65, desc:{ar:'فيب Delta-8 بنكهة التوت الأزرق، يساعد على الهدوء.', en:'Delta-8 vape with blueberry flavor, helps with calmness.'}, image:'assets/img/thc/7.webp' },
+        { id:708, type:'gummies', name:{ar:'THCB Gummies - أناناس', en:'THCB Gummies - Pineapple'}, brand:'Binoid', thcType:'THCB', potency:'50% - 70%', flavor:'أناناس', strain:'Hybrid', price:85, rating:4.2, reviews:48, desc:{ar:'حلوى THCB بنكهة الأناناس الاستوائي، تجربة فريدة.', en:'THCB gummies with tropical pineapple flavor, a unique experience.'}, image:'assets/img/thc/8.webp' }
+    ];
+
+    let lang = localStorage.getItem('lang') || 'ar';
+    const t = key => translations[lang]?.[key] || key;
+
+    function isLoggedIn() { return localStorage.getItem('isLoggedIn') === 'true'; }
+    function handleCartClick(e) { if(!isLoggedIn()) { e.preventDefault(); showToast(t('login_required')); return false; } return true; }
+    function updateLoginIcon() {
+        const di = document.getElementById('desktopLoginIcon'), mi = document.getElementById('mobileLoginIcon');
+        [di, mi].forEach(icon => { if(!icon) return; if(isLoggedIn()) { icon.className='fas fa-sign-out-alt'; icon.setAttribute('title',t('logout_title')); } else { icon.className='fas fa-sign-in-alt'; icon.setAttribute('title',t('login_title')); } });
+        const da = document.getElementById('desktopAccountIcon'), ma = document.getElementById('mobileAccountIcon');
+        const display = isLoggedIn() ? 'flex' : 'none';
+        if(da) da.style.display = display; if(ma) ma.style.display = display;
+    }
+    function handleLoginClick() { if(isLoggedIn()) { localStorage.removeItem('isLoggedIn'); updateLoginIcon(); showToast(t('logout_success'),'fa-sign-out-alt'); } else window.location.href='login.html'; }
+    function requireAuth() { if(!isLoggedIn()) { showToast(t('login_required')); return false; } return true; }
+    function showToast(msg, icon='fa-lock') {
+        document.getElementById('toastMessage').innerHTML=msg; document.getElementById('toastIcon').className=`fas ${icon}`;
+        document.getElementById('toastOverlay').classList.add('active');
+    }
+    document.getElementById('toastCloseBtn').onclick=()=>document.getElementById('toastOverlay').classList.remove('active');
+    document.getElementById('toastOverlay').onclick=e=>{ if(e.target===document.getElementById('toastOverlay')) document.getElementById('toastOverlay').classList.remove('active'); };
+
+    function updateActiveLangInDropdowns(lang) {
+        document.querySelectorAll('.lang-menu li').forEach(li => {
+            const langAttr = li.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+            if (langAttr === lang) { li.style.color = 'var(--green)'; li.style.fontWeight = 'bold'; }
+            else { li.style.color = ''; li.style.fontWeight = ''; }
+        });
+    }
+    function applyLanguage(l) {
+        lang=l; localStorage.setItem('lang',l);
+        document.getElementById('htmlRoot').setAttribute('lang',l);
+        document.getElementById('htmlRoot').setAttribute('dir',l==='ar'?'rtl':'ltr');
+        document.querySelectorAll('[data-translate]').forEach(el=>{ const k=el.getAttribute('data-translate'); if(translations[lang]?.[k]) el.innerHTML=translations[lang][k]; });
+        document.querySelectorAll('[data-translate-title]').forEach(el=>{ const k=el.getAttribute('data-translate-title'); if(translations[lang]?.[k]) el.setAttribute('title',translations[lang][k]); });
+        updateLoginIcon(); updateActiveLangInDropdowns(lang); loadProductDetail();
+        document.querySelectorAll('.lang-dropdown').forEach(d=>d.classList.remove('active'));
+    }
+    function setLang(l) { applyLanguage(l); }
+
+    const menuToggle=document.getElementById('menuToggle'), navMenu=document.getElementById('navMenu'), navOverlay=document.getElementById('navOverlay');
+    function openMenu(){ navMenu.classList.add('active'); navOverlay.classList.add('active'); document.body.classList.add('lock-scroll'); menuToggle.classList.replace('fa-bars','fa-times'); menuToggle.classList.add('active'); }
+    function closeMenu(){ navMenu.classList.remove('active'); navOverlay.classList.remove('active'); document.body.classList.remove('lock-scroll'); menuToggle.classList.remove('active'); menuToggle.classList.replace('fa-times','fa-bars'); }
+    menuToggle.onclick=()=>navMenu.classList.contains('active')?closeMenu():openMenu(); navOverlay.onclick=closeMenu;
+    document.querySelectorAll('.nav-link').forEach(l=>l.onclick=()=>{ if(window.innerWidth<=768 && !l.classList.contains('dropdown-toggle')) closeMenu(); });
+    const dropdownToggle=document.querySelector('.dropdown-toggle'), dropdown=document.getElementById('dropdownCategories');
+    if(dropdownToggle) dropdownToggle.addEventListener('click',(e)=>{ if(window.innerWidth<=768){ e.preventDefault(); dropdown.classList.toggle('active'); } });
+    const themeToggles=document.querySelectorAll('.theme-toggle');
+    function applyTheme(th){ if(th==='light'){ document.documentElement.classList.add('light-mode'); themeToggles.forEach(t=>t.classList.replace('fa-moon','fa-sun')); } else { document.documentElement.classList.remove('light-mode'); themeToggles.forEach(t=>t.classList.replace('fa-sun','fa-moon')); } }
+    applyTheme(localStorage.getItem('theme')||'dark'); themeToggles.forEach(t=>t.onclick=()=>{ const nt=document.documentElement.classList.contains('light-mode')?'dark':'light'; localStorage.setItem('theme',nt); applyTheme(nt); });
+    document.querySelectorAll('.lang-dropdown').forEach(d=>{ d.querySelector('.lang-toggle').onclick=e=>{ e.stopPropagation(); document.querySelectorAll('.lang-dropdown').forEach(dd=>{if(dd!==d)dd.classList.remove('active');}); d.classList.toggle('active'); }; });
+    document.onclick=()=>document.querySelectorAll('.lang-dropdown').forEach(d=>d.classList.remove('active'));
+
+    const searchOverlay=document.getElementById('searchOverlay'), searchInput=document.getElementById('searchInput'), closeSearchBtn=document.getElementById('closeSearchBtn'), searchResultsDiv=document.getElementById('searchResults'), searchIcon=document.getElementById('searchIcon');
+    function openSearchModal(){ searchOverlay.classList.add('active'); document.body.classList.add('lock-scroll'); searchInput.value=''; searchInput.focus(); performSearch(); }
+    function closeSearchModal(){ searchOverlay.classList.remove('active'); document.body.classList.remove('lock-scroll'); }
+    searchIcon.onclick=openSearchModal; closeSearchBtn.onclick=closeSearchModal; searchOverlay.onclick=e=>{ if(e.target===searchOverlay) closeSearchModal(); };
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape' && searchOverlay.classList.contains('active')) closeSearchModal(); });
+    searchInput.oninput=performSearch;
+    function performSearch(){
+        const q=searchInput.value.trim().toLowerCase();
+        if(!q){ searchResultsDiv.innerHTML=`<div class="search-empty">${t('search_results')}</div>`; return; }
+        const results = products.filter(p => 
+            p.name.ar.includes(q) || p.name.en.toLowerCase().includes(q) ||
+            p.brand.toLowerCase().includes(q) || p.thcType.toLowerCase().includes(q) ||
+            p.flavor.includes(q) || p.strain.toLowerCase().includes(q) ||
+            p.desc.ar.includes(q) || p.desc.en.toLowerCase().includes(q) ||
+            p.type.includes(q)
+        );
+        if(!results.length){ searchResultsDiv.innerHTML=`<div class="search-empty">${t('no_search_results')}</div>`; return; }
+        searchResultsDiv.innerHTML=results.map(p=>`
+            <div class="search-result-item">
+                <div class="search-result-img"><img src="${p.image}" alt="${lang==='ar'?p.name.ar:p.name.en}"></div>
+                <div class="search-result-info">
+                    <div class="search-result-title">${lang==='ar'?p.name.ar:p.name.en}</div>
+                    <div class="search-result-meta"><span>${t(p.type)}</span><span>${p.brand}</span><span>${p.thcType}</span><span>${p.potency}</span></div>
+                    <div class="search-result-price">${p.price} ${t('currency')}</div>
+                    <div class="search-result-rating">${generateStars(p.rating)} <span>(${p.reviews})</span></div>
+                </div>
+                <a href="thc-details.html?id=${p.id}" class="search-result-details">${t('details')}</a>
+            </div>
+        `).join('');
+    }
+
+    function getUserRating(id){ const d = localStorage.getItem(`product_rating_${id}`); return d ? parseFloat(d) : null; }
+    function saveUserRating(id,rating){ localStorage.setItem(`product_rating_${id}`, rating); }
+    function generateStars(r){ let s=''; for(let i=1;i<=5;i++) s += i<=r ? '<i class="fas fa-star"></i>' : (i-0.5<=r?'<i class="fas fa-star-half-alt"></i>':'<i class="far fa-star"></i>'); return s; }
+
+    function initRatingSystem(productId, originalRating, originalReviews, containerId){
+        const container = document.getElementById(containerId); if(!container) return;
+        const userRating = getUserRating(productId);
+        const starsContainer = container.querySelector('.rating-stars-container') || container;
+        const hintEl = container.querySelector('.rating-hint');
+        const successEl = container.querySelector('.rating-success-msg');
+        const alreadyEl = container.querySelector('.rating-already-rated');
+        const card = container.closest('.rating-card');
+        const stars = starsContainer ? starsContainer.querySelectorAll('.rating-star') : [];
+        if(userRating !== null){
+            if(alreadyEl) alreadyEl.style.display='flex';
+            if(starsContainer) starsContainer.style.pointerEvents='none';
+            stars.forEach(s=>{ if(parseInt(s.dataset.value) <= userRating) s.classList.add('active-rated'); });
+            updateDisplayRating(productId, originalRating, originalReviews);
+            return;
+        }
+        if(alreadyEl) alreadyEl.style.display='none';
+        if(starsContainer) starsContainer.style.pointerEvents='auto';
+        if(hintEl) hintEl.textContent=t('choose_stars');
+        let hovered=0, selected=0;
+        stars.forEach(star=>{
+            star.onmouseenter=()=>{ hovered=parseInt(star.dataset.value); updateStars(stars, hovered); card?.classList.add('glow-active'); };
+            star.onclick=(e)=>{
+                selected=parseInt(star.dataset.value);
+                stars.forEach(s=>s.classList.remove('pop-anim'));
+                for(let i=0;i<selected;i++){ setTimeout(()=>{ if(stars[i]) stars[i].classList.add('pop-anim'); }, i*60); }
+                saveUserRating(productId, selected);
+                if(starsContainer) starsContainer.style.pointerEvents='none';
+                updateStars(stars, selected, true);
+                if(successEl){ successEl.innerHTML=`<i class="fas fa-check-circle"></i> ${t('thank_rating')}`; successEl.classList.add('show'); }
+                if(hintEl) hintEl.textContent='';
+                card?.classList.remove('glow-active');
+                if(alreadyEl){ setTimeout(()=>{ alreadyEl.style.display='flex'; successEl?.classList.remove('show'); },2000); }
+                updateDisplayRating(productId, originalRating, originalReviews);
+                addRipple(e, star);
+            };
+        });
+        if(starsContainer){
+            starsContainer.addEventListener('mouseleave',()=>{
+                if(selected===0){ hovered=0; updateStars(stars, selected); card?.classList.remove('glow-active'); if(hintEl) hintEl.textContent=t('choose_stars'); }
+            });
+        }
+    }
+    function updateStars(stars,count,permanent=false){
+        stars.forEach(s=>{ const v=parseInt(s.dataset.value); s.classList.remove('hovered','active-rated'); if(v<=count) s.classList.add(permanent?'active-rated':'hovered'); });
+    }
+    function updateDisplayRating(productId, origRating, origReviews){
+        const user=getUserRating(productId); const displayEl=document.getElementById('detailRatingDisplay'); if(!displayEl) return;
+        let r=origRating, rev=origReviews;
+        if(user!==null){ const sum=origRating*origReviews+user; rev=origReviews+1; r=Math.round((sum/rev)*10)/10; }
+        displayEl.innerHTML=`${generateStars(r)}<span>(${rev})</span>`;
+    }
+
+    function addRipple(e,el){ const ripple=document.createElement('span'); ripple.className='ripple-span'; const rect=el.getBoundingClientRect(), size=Math.max(rect.width,rect.height); ripple.style.width=ripple.style.height=size+'px'; ripple.style.left=(e.clientX-rect.left-size/2)+'px'; ripple.style.top=(e.clientY-rect.top-size/2)+'px'; el.appendChild(ripple); ripple.onanimationend=()=>ripple.remove(); }
+    const tooltip=document.getElementById('globalTooltip'); let tooltipTimeout;
+    function showTooltip(el,msg,d=1800){ clearTimeout(tooltipTimeout); tooltip.textContent=msg; tooltip.classList.add('show'); const rect=el.getBoundingClientRect(); let left=rect.left+rect.width/2-tooltip.offsetWidth/2, top=rect.top-tooltip.offsetHeight-10; if(top<10) top=rect.bottom+10; tooltip.style.left=left+'px'; tooltip.style.top=top+'px'; tooltipTimeout=setTimeout(()=>tooltip.classList.remove('show'),d); }
+
+        function handleWishlist(productId, btnEl){
+        if(!requireAuth()) return;
+        const isWish = localStorage.getItem(`wishlist_${productId}`)==='true';
+        const rect = btnEl.getBoundingClientRect(); 
+        addRipple({clientX:rect.left+rect.width/2,clientY:rect.top+rect.height/2}, btnEl);
+        
+        // استدعاء الصورة الموجودة داخل الزر
+        const heartImg = btnEl.querySelector('img.custom-wishlist-img');
+
+        if(isWish){ 
+            localStorage.removeItem(`wishlist_${productId}`); 
+            btnEl.classList.remove('wishlisted'); 
+            if(heartImg) heartImg.src = 'assets/img/logo/favorite-outline.ico'; // تغيير للصورة المفرغة
+            showTooltip(btnEl, t('removed_from_wishlist')); 
+        }
+        else { 
+            localStorage.setItem(`wishlist_${productId}`,'true'); 
+            btnEl.classList.add('wishlisted'); 
+            if(heartImg) heartImg.src = 'assets/img/logo/favorite-filled.ico'; // تغيير للصورة الممتلئة
+            btnEl.classList.add('pulse-anim'); 
+            setTimeout(()=>btnEl.classList.remove('pulse-anim'),700); 
+            showTooltip(btnEl, t('added_to_wishlist')); 
+        }
+    }
+
+
+    // ==================== سلة التسوق (localStorage) ====================
+    function addToCart(productId, quantity) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // البحث عن عنصر بنفس id و option = 'single'
+    const existingIndex = cart.findIndex(item => item.id === productId && (item.option || 'single') === 'single');
+
+    if (existingIndex > -1) {
+        // زيادة الكمية بصيغة qty
+        cart[existingIndex].qty = (cart[existingIndex].qty || 1) + quantity;
+    } else {
+        // إضافة عنصر جديد بالصيغة الموحدة
+        cart.push({
+            id: productId,
+            qty: quantity,
+            option: 'single',
+            unitPrice: product.price,
+            nameAr: product.name.ar,
+            nameEn: product.name.en
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+    function updateCartCount() {
+    // نقرأ من المفتاح الموحد "cart"
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // حساب إجمالي الكميات (ندعم qty أو quantity للتوافق)
+    const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+
+    const cartCountEls = document.querySelectorAll('.cart-count');
+    cartCountEls.forEach(el => {
+        el.textContent = count;
+        if (count > 0) {
+            el.style.display = 'flex';
+            el.classList.add('pop');
+            setTimeout(() => el.classList.remove('pop'), 300);
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
+
+    // ==================== مودال الكمية ====================
+    let activeQtyProductId = null;
+    let qty = 1;
+    let currentProductPrice = 0;
+
+    function openQtyModal(productId, btnEl) {
+        if (!requireAuth()) return;
+        activeQtyProductId = productId;
+        qty = 1;
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        currentProductPrice = product.price || 0;
+        document.getElementById('qtyModalProductName').textContent = lang === 'ar' ? product.name.ar : product.name.en;
+        document.getElementById('qtyDisplay').textContent = qty;
+        document.getElementById('qtyModalPrice').textContent = `${(currentProductPrice * qty).toFixed(2)} ${t('currency')}`;
+        document.getElementById('qtyModal').classList.add('active');
+        document.body.classList.add('lock-scroll');
+    }
+
+    function closeQtyModal() {
+        document.getElementById('qtyModal').classList.remove('active');
+        document.body.classList.remove('lock-scroll');
+        activeQtyProductId = null;
+    }
+
+    function changeQty(delta) {
+        qty = Math.max(1, qty + delta);
+        document.getElementById('qtyDisplay').textContent = qty;
+        document.getElementById('qtyModalPrice').textContent = `${(currentProductPrice * qty).toFixed(2)} ${t('currency')}`;
+    }
+
+    function confirmQtyAddToCart() {
+        if (!activeQtyProductId) return;
+        const product = products.find(p => p.id === activeQtyProductId);
+        if (product) {
+            addToCart(activeQtyProductId, qty);
+            showToast(`"${lang === 'ar' ? product.name.ar : product.name.en}" x${qty} ${t('added_to_cart')}`, 'fa-cart-plus');
+        }
+        closeQtyModal();
+    }
+
+    document.getElementById('qtyModal').addEventListener('click', function(e) {
+        if (e.target === this) closeQtyModal();
+    });
+
+    /* ========== دوال قائمة المشاركة ========== */
+    function initShareMenu(productId){
+        const shareIconTrigger = document.getElementById('shareIconTrigger');
+        const shareNavigation = document.getElementById('shareNavigation');
+        const shareCloseBtn = document.getElementById('shareCloseBtn');
+        if(!shareIconTrigger || !shareNavigation || !shareCloseBtn) return;
+        const product = products.find(p=>p.id===productId);
+        if(!product) return;
+        const productName = lang==='ar' ? product.name.ar : product.name.en;
+        const productUrl = window.location.origin + window.location.pathname + '?id=' + productId;
+        const message = `${productName} - AIKEN VAPE`;
+        function openMenu(){ shareNavigation.classList.add('active'); shareIconTrigger.classList.add('hidden'); }
+        function closeMenu(){ shareNavigation.classList.remove('active'); shareIconTrigger.classList.remove('hidden'); }
+        shareIconTrigger.addEventListener('click', function(e){ e.stopPropagation(); openMenu(); });
+        shareNavigation.addEventListener('click', function(e){ if(!shareNavigation.classList.contains('active')){ openMenu(); } });
+        shareCloseBtn.addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
+        function ensureOpen(event){ event.stopPropagation(); if(!shareNavigation.classList.contains('active')){ openMenu(); return false; } return true; }
+        window.shareWhatsapp = function(event){ if(!ensureOpen(event)) return; window.open('https://wa.me/?text=' + encodeURIComponent(message + ' ' + productUrl), '_blank'); };
+        window.shareSms = function(event){ if(!ensureOpen(event)) return; window.open('sms:?body=' + encodeURIComponent(message + ' ' + productUrl), '_self'); };
+        window.shareCopyLink = function(event){ if(!ensureOpen(event)) return; navigator.clipboard.writeText(productUrl).then(() => { showToast(t('copy_success'), 'fa-copy'); closeMenu(); }).catch(() => { showToast(t('copy_success'), 'fa-copy'); closeMenu(); }); };
+        window.shareMore = async function(event){ if(!ensureOpen(event)) return; if(navigator.share){ try { await navigator.share({ title: productName, text: message, url: productUrl }); } catch(e){} } else { showToast(t('share_not_supported'), 'fa-exclamation-triangle'); closeMenu(); } };
+    }
+
+    function loadProductDetail(){
+        const params=new URLSearchParams(window.location.search), id=parseInt(params.get('id'));
+        const product=products.find(p=>p.id===id);
+        const container=document.getElementById('detailContainer');
+        if(!product){ container.innerHTML=`<div class="not-found"><i class="fas fa-exclamation-triangle" style="font-size:3rem;color:var(--green);"></i><p style="margin:20px 0;">${t('not_found')}</p><a href="thc.html" class="btn btn-outline">${t('back_to_thc')}</a></div>`; return; }
+        const name=lang==='ar'?product.name.ar:product.name.en, desc=lang==='ar'?product.desc.ar:product.desc.en;
+        const typeLabel=t(product.type);
+        const userRating=getUserRating(id); let dispRating=product.rating, dispReviews=product.reviews;
+        if(userRating!==null){ const sum=product.rating*product.reviews+userRating; dispReviews=product.reviews+1; dispRating=Math.round((sum/dispReviews)*10)/10; }
+        const isWish = localStorage.getItem(`wishlist_${id}`)==='true';
+        container.innerHTML=`
+            <div class="detail-container">
+                <div class="detail-image">
+                    <img src="${product.image}" alt="${name}">
+                </div>
+                <div class="detail-info">
+                    <h1>${name}</h1>
+                    <div class="detail-meta">
+                        <span><i class="fas fa-box"></i> ${typeLabel}</span>
+                        <span><i class="fas fa-tag"></i> ${product.brand}</span>
+                        <span><i class="fas fa-dna"></i> ${product.thcType}</span>
+                        <span><i class="fas fa-palette"></i> ${product.strain}</span>
+                    </div>
+                    <div class="detail-specs">
+                        <div><strong>${t('product_type')}:</strong> ${typeLabel}</div>
+                        <div><strong>${t('brand')}:</strong> ${product.brand}</div>
+                        <div><strong>${t('thc_type')}:</strong> ${product.thcType}</div>
+                        <div><strong>${t('potency')}:</strong> ${product.potency}</div>
+                        <div><strong>${t('flavor_name')}:</strong> ${product.flavor}</div>
+                        <div><strong>${t('strain')}:</strong> ${product.strain}</div>
+                    </div>
+                    <div class="detail-rating" id="detailRatingDisplay">${generateStars(dispRating)}<span>(${dispReviews})</span></div>
+                    <div class="detail-price">${product.price} ${t('currency')}</div>
+                    <p class="detail-desc">${desc}</p>
+                    <div class="detail-actions">
+                        <button class="btn-add-cart" id="btnAddCart" onclick="openQtyModal(${product.id}, this)">
+                            <span class="btn-text">${t('add_to_cart')}</span><i class="fas fa-shopping-bag cart-icon"></i>
+                        </button>
+                       <button class="btn-wishlist-heart ${isWish?'wishlisted':''}" onclick="handleWishlist(${product.id}, this)">
+    <img src="${isWish ? 'assets/img/logo/favorite-filled.ico' : 'assets/img/logo/favorite-outline.ico'}" class="custom-wishlist-img" alt="wishlist">
+</button>
+
+                    </div>
+                    <div class="rating-card" id="ratingCard">
+                        <div class="rating-title">${t('rate_product')}</div>
+                        <div class="rating-stars-container" id="ratingStarsContainer">
+                            <i class="fas fa-star rating-star" data-value="1"></i><i class="fas fa-star rating-star" data-value="2"></i><i class="fas fa-star rating-star" data-value="3"></i><i class="fas fa-star rating-star" data-value="4"></i><i class="fas fa-star rating-star" data-value="5"></i>
+                        </div>
+                        <div class="rating-hint">${userRating!==null?'':t('choose_stars')}</div>
+                        <div class="rating-success-msg"><i class="fas fa-check-circle"></i> ${t('thank_rating')}</div>
+                        <div class="rating-already-rated" style="display:${userRating!==null?'flex':'none'};"><i class="fas fa-check-circle"></i> ${t('already_rated')}</div>
+                    </div>
+                    <div class="share-label">${t('share_label')}</div>
+                    <div class="share-menu-wrapper">
+                        <div class="share-main">
+                            <div class="share-icon-trigger" id="shareIconTrigger"><i class="fas fa-share-alt"></i></div>
+                            <div class="share-navigation" id="shareNavigation">
+                                <span class="share-whatsapp" style="--i:0;--x:-1;--y:0;" onclick="shareWhatsapp(event)"><i class="fab fa-whatsapp"></i></span>
+                                <span class="share-more" style="--i:1;--x:1;--y:0;" onclick="shareMore(event)"><i class="fas fa-ellipsis-h"></i></span>
+                                <span class="share-sms" style="--i:2;--x:0;--y:-1;" onclick="shareSms(event)"><i class="fas fa-sms"></i></span>
+                                <span class="share-copy" style="--i:3;--x:0;--y:1;" onclick="shareCopyLink(event)"><i class="fas fa-copy"></i></span>
+                            </div>
+                            <div class="share-close-btn" id="shareCloseBtn"><i class="fas fa-times"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        setTimeout(()=> {
+            initRatingSystem(id, product.rating, product.reviews, 'ratingStarsContainer');
+            initShareMenu(id);
+        }, 100);
+    }
+
+    // ==================== بدء التشغيل ====================
+    applyLanguage(localStorage.getItem('lang')||'ar');
+    updateLoginIcon();
+    updateCartCount();
+</script>
+</body>
+</html>

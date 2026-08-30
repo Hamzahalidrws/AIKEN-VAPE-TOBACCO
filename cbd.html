@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم CBD | AIKEN VAPE & TOBACCO</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <style>
+        /* ========== متغيرات الألوان ========== */
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        :root.light-mode {
+            --bg-dark: #f3f5f7;
+            --bg-card: #ffffff;
+            --bg-alt: #e9edf2;
+            --bg-img: #f7f8fa;
+            --text-light: #101828;
+            --text-muted: #667085;
+            --border-color: #d9dee7;
+            --header-bg: #ffffff;
+            --footer-bg: #f8fafc;
+            --hover-bg: #eef2f6;
+            --tag-bg: #edf1f5;
+            --hero-bg-end: #f3f5f7;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-dark); color: var(--text-light); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+        .lock-scroll { overflow: hidden !important; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; width: 100%; }
+        .section-title { font-size: clamp(1.6rem, 5vw, 2.2rem); color: var(--green); margin-bottom: 0.5rem; text-align: center; font-weight: 800; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
+        .bg-alt { background-color: var(--bg-alt); }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 22px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; border: none; text-align: center; font-family: inherit; font-size: 0.95rem; white-space: nowrap; }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--text-light); color: var(--green); box-shadow: 0 0 15px rgba(134,216,0,0.4); }
+        .btn-purple { background: var(--purple); color: #fff; }
+        .btn-purple:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(98,16,162,0.4); }
+        .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
+        .btn-outline:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(134,216,0,0.2); }
+        .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 5px; }
+
+        /* ========== الهيدر الجديد ========== */
+        header { background: var(--header-bg); border-bottom: 2px solid var(--purple); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--purple); }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links li a { position: relative; font-weight: 700; font-size: clamp(0.9rem, 2vw, 1.1rem); white-space: nowrap; transition: color 0.3s; }
+        .nav-links li a::after { content: ""; position: absolute; right: 0; bottom: -6px; width: 0; height: 3px; background: var(--green); border-radius: 3px; box-shadow: 0 0 10px rgba(134,216,0,.5); transition: width .3s ease; }
+        .nav-links li a:hover { color: var(--green); text-shadow: 0 0 10px rgba(134,216,0,.3); }
+        .nav-links li a:hover::after, .nav-links li a.active::after { width: 100%; }
+        .nav-links li a.active { color: var(--green); }
+
+        .dropdown { position: relative; }
+        .dropdown-menu { display: block; visibility: hidden; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: absolute; top: 100%; right: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--green); min-width: 210px; z-index: 10; padding: 8px 0; border-radius: 0 0 5px 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 10px 18px; font-size: 0.95rem; border-bottom: 1px solid var(--border-color); }
+        .dropdown-menu li:last-child a { border-bottom: none; }
+        .dropdown-menu li a:hover { background: var(--hover-bg); color: var(--green); padding-right: 22px; }
+
+        .header-icons { display: flex; gap: 16px; color: var(--text-light); font-size: 1.2rem; align-items: center; }
+        .header-icons a, .header-icons i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .header-icons a:hover i, .header-icons i:hover { color: var(--green); transform: scale(1.1); }
+        .menu-toggle { display: none; color: var(--green); font-size: 1.6rem; cursor: pointer; }
+        .desktop-only { display: block; }
+        .mobile-only { display: none !important; }
+
+        .lang-dropdown { position: relative; display: flex; align-items: center; cursor: pointer; }
+        .lang-menu { position: absolute; top: 150%; left: 50%; transform: translateX(-90%); background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--purple); border-radius: 5px; list-style: none; padding: 5px 0; min-width: 110px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-align: center; }
+        html[dir="ltr"] .lang-menu { left: 50%; right: auto; transform: translateX(-90%); }
+        html[dir="rtl"] .lang-menu { right: 50%; left: auto; transform: translateX(90%); }
+        .lang-dropdown.active .lang-menu { display: block; }
+        .lang-menu li { padding: 10px; font-size: 0.95rem; color: var(--text-light); transition: 0.3s; cursor: pointer; }
+        .lang-menu li:hover { background: var(--hover-bg); color: var(--green); }
+        .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
+        .nav-overlay.active { display: block; }
+
+        /* ========== نموذج البحث المميز ========== */
+        .search-overlay { position: fixed; inset: 0; background: var(--modal-overlay-bg); backdrop-filter: blur(8px); z-index: 10000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; display: flex; align-items: flex-start; justify-content: center; padding-top: 10vh; }
+        .search-overlay.active { opacity: 1; visibility: visible; }
+        .search-modal { background: var(--modal-bg); width: 90%; max-width: 620px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--modal-shadow); transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; max-height: 80vh; overflow: hidden; }
+        .search-overlay.active .search-modal { transform: translateY(0) scale(1); }
+        .search-header { display: flex; align-items: center; padding: 16px 20px; gap: 12px; border-bottom: 1px solid var(--border-color); }
+        .search-header .search-icon { font-size: 1.4rem; color: var(--green); flex-shrink: 0; }
+        .search-header input { flex: 1; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 16px; color: var(--text-light); font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .search-header input:focus { border-color: var(--green); }
+        .search-header .close-btn { font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: color 0.3s; flex-shrink: 0; width: 32px; text-align: center; }
+        .search-header .close-btn:hover { color: var(--green); }
+        .search-results { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+        .search-results::-webkit-scrollbar { width: 6px; }
+        .search-results::-webkit-scrollbar-track { background: transparent; }
+        .search-results::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        .search-result-item { display: flex; align-items: center; gap: 15px; padding: 12px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); transition: border-color 0.3s, background 0.3s; }
+        .search-result-item:hover { border-color: var(--green); background: var(--hover-bg); }
+        .search-result-img { width: 60px; height: 60px; border-radius: 12px; background: var(--bg-img); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; font-size: 2rem; color: var(--text-muted); }
+        .search-result-info { flex: 1; min-width: 0; }
+        .search-result-title { font-weight: 700; color: var(--text-light); font-size: 1rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .search-result-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
+        .search-result-meta span { background: var(--tag-bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-color); }
+        .search-result-price { color: var(--green); font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+        .search-result-rating { font-size: 0.8rem; color: var(--star-color); display: flex; align-items: center; gap: 4px; }
+        .search-result-rating span { color: var(--text-muted); margin-left: 4px; }
+        .search-result-details { padding: 8px 16px; border-radius: 8px; background: var(--purple); color: #fff; font-size: 0.85rem; white-space: nowrap; transition: background 0.3s; font-weight: 700; }
+        .search-result-details:hover { background: var(--green); color: #000; }
+        .search-empty { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* ========== Page Hero ========== */
+        .page-hero { padding: clamp(40px, 8vw, 70px) 0; background: radial-gradient(circle at center, rgba(98,16,162,0.2) 0%, var(--hero-bg-end) 70%); text-align: center; }
+        .page-hero h1 { font-size: clamp(2rem, 6vw, 3rem); color: var(--green); margin-bottom: 10px; }
+
+        /* ========== Filter Section ========== */
+        .filter-section { background: var(--bg-card); padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); margin: 30px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; align-items: end; }
+        .filter-group { display: flex; flex-direction: column; }
+        .filter-group label { display: block; margin-bottom: 6px; font-weight: 700; color: var(--text-light); font-size: 0.9rem; }
+        .filter-group select, .filter-group input { width: 100%; padding: 10px 12px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-light); font-family: inherit; font-size: 0.9rem; outline: none; transition: 0.3s; }
+        .filter-group select:focus, .filter-group input:focus { border-color: var(--green); }
+        .filter-actions { display: flex; gap: 10px; grid-column: 1 / -1; justify-content: flex-end; margin-top: 5px; }
+        .btn-filter { background: var(--purple); color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; transition: 0.3s; flex: 1; max-width: 150px; } .btn-filter:hover { background: var(--green); color: #000; }
+        .btn-reset { background: transparent; border: 1px solid var(--border-color); color: var(--text-light); padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: 0.3s; flex: 1; max-width: 150px; } .btn-reset:hover { border-color: var(--green); color: var(--green); }
+
+        /* ========== Products Grid ========== */
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+        .product-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-color); position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; overflow: hidden; height: 100%; }
+        .product-card:hover { border-color: var(--green); box-shadow: 0 8px 20px rgba(134,216,0,0.15); transform: translateY(-5px); }
+        .product-img { width: 100%; aspect-ratio: 1/1; background: var(--bg-img); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border-bottom: 1px solid var(--border-color); }
+        .product-img .fallback-icon { font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--text-muted); transition: 0.4s; }
+        .product-card:hover .product-img .fallback-icon { color: var(--purple); transform: scale(1.1); }
+        .wishlist-icon { position: absolute; top: 10px; left: 10px; color: #fff; background: rgba(0,0,0,0.5); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; z-index: 3; font-size: 0.9rem; backdrop-filter: blur(4px); }
+        html[dir="ltr"] .wishlist-icon { left: auto; right: 10px; }
+        .wishlist-icon:hover { background: #e74c3c; color: #fff; transform: scale(1.1); } .wishlist-icon.active { color: #e74c3c; background: rgba(231, 76, 60, 0.2); }
+        .product-info { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .product-title { font-size: clamp(0.9rem, 2vw, 1.05rem); font-weight: 700; color: var(--text-light); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8em; }
+        .product-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 0.75rem; color: var(--text-muted); }
+        .product-meta span { background: var(--tag-bg); color: var(--text-light); padding: 3px 8px; border-radius: 4px; white-space: nowrap; border: 1px solid var(--border-color); }
+        .product-desc { font-size: 0.8rem; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-rating { display: flex; align-items: center; gap: 3px; font-size: 0.8rem; color: var(--star-color); }
+        .product-rating span { color: var(--text-muted); margin-left: 4px; font-size: 0.75rem; }
+        html[dir="ltr"] .product-rating span { margin-left: 0; margin-right: 4px; }
+        .product-price { color: var(--green); font-weight: 800; font-size: clamp(1rem, 2.5vw, 1.25rem); margin: 2px 0; display: flex; align-items: center; gap: 4px; }
+        .product-actions { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--border-color); }
+        .product-actions .btn { flex: 1; font-size: 0.8rem; padding: 9px 6px; gap: 4px; }
+        .btn-add-cart { background: var(--purple); color: #fff; } .btn-add-cart:hover { background: var(--green); color: #000; }
+        .btn-details { background: transparent; border: 1px solid var(--border-color); color: var(--text-light); } .btn-details:hover { border-color: var(--green); color: var(--green); }
+        .no-products { text-align: center; color: var(--text-muted); padding: 50px; font-size: 1.15rem; grid-column: 1/-1; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-color); }
+
+        /* Skeleton */
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .skeleton { background: linear-gradient(90deg, var(--bg-card) 25%, var(--hover-bg) 50%, var(--bg-card) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
+        .product-card.skeleton-card { pointer-events: none; border-color: var(--border-color); }
+        .skeleton-img { width: 100%; aspect-ratio: 1/1; background-color: var(--hover-bg); }
+        .skeleton-title { height: 20px; width: 85%; margin-bottom: 6px; }
+        .skeleton-meta { height: 16px; width: 50%; margin-bottom: 6px; }
+        .skeleton-desc { height: 14px; width: 95%; margin-bottom: 10px; }
+        .skeleton-price { height: 24px; width: 40%; margin-bottom: 10px; }
+        .skeleton-actions { height: 36px; width: 100%; }
+
+        /* Toast */
+        .toast-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .toast-overlay.active { opacity: 1; pointer-events: auto; }
+        .toast-box { background: var(--bg-card); padding: 30px; border-radius: 16px; text-align: center; max-width: 420px; width: 90%; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.5); transform: translateY(20px) scale(0.9); transition: transform 0.4s ease; }
+        .toast-overlay.active .toast-box { transform: translateY(0) scale(1); }
+        .toast-box i { font-size: 3rem; color: var(--green); margin-bottom: 15px; } .toast-box p { color: var(--text-light); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.6; }
+        .toast-close { padding: 10px 25px; background: var(--green); color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; transition: 0.3s; } .toast-close:hover { background: var(--text-light); }
+
+        /* ========== مودال الكمية (عدد فقط) ========== */
+        .qty-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .qty-modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .qty-modal-box { background: var(--bg-card); padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; border: 1px solid var(--border-color); box-shadow: 0 25px 50px rgba(0,0,0,0.6); transform: translateY(20px) scale(0.9); transition: transform 0.4s ease; }
+        .qty-modal-overlay.active .qty-modal-box { transform: translateY(0) scale(1); }
+        .qty-modal-box h3 { margin-bottom: 15px; color: var(--green); text-align: center; }
+        .qty-modal-product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--text-light); text-align: center; }
+        .qty-modal-controls { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0; }
+        .qty-modal-controls button { background: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-light); width: 42px; height: 42px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .qty-modal-controls button:hover { border-color: var(--green); color: var(--green); }
+        .qty-modal-controls span { font-size: 1.3rem; font-weight: 700; min-width: 40px; text-align: center; color: var(--text-light); }
+        .qty-modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px; }
+        .qty-modal-actions .btn { flex: 1; }
+
+        /* Footer */
+        footer { background: var(--footer-bg); padding: clamp(40px, 8vw, 70px) 0 20px; border-top: 4px solid var(--green); transition: 0.3s; margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--purple); margin-bottom: 20px; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 800; position: relative; padding-bottom: 8px; }
+        .footer-col h4::after { content: ''; position: absolute; right: 0; bottom: 0; width: 35px; height: 3px; background: var(--green); }
+        html[dir="ltr"] .footer-col h4::after { right: auto; left: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-muted); transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+        .footer-col ul li a::before { content: '\f104'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.75rem; color: var(--green); transition: 0.3s; }
+        html[dir="ltr"] .footer-col ul li a::before { content: '\f105'; } .footer-col ul li a:hover { color: var(--text-light); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; } .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; color: var(--green); font-size: 1.1rem; border: 1px solid var(--border-color); } .social-links a:hover { background: var(--purple); color: #fff; border-color: var(--purple); transform: translateY(-3px); }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; font-size: 0.9rem; } .footer-contact li i { color: var(--green); margin-top: 4px; }
+        .payment-methods { margin-top: 20px; font-size: 1.6rem; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; } .payment-methods i:hover { color: var(--text-light); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: flex !important; }
+            #desktopCartLink { display: flex !important; }
+            #mobileCartLink { display: none !important; }
+            .header-inner { position: relative; padding: 10px 0; }
+            .nav-links { display: flex; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--header-bg); flex-direction: column; padding: 20px; border-left: 2px solid var(--purple); transition: right 0.4s ease; align-items: flex-start; z-index: 1001; overflow-y: auto; gap: 2px; }
+            html[dir="ltr"] .nav-links { right: auto; left: -100%; border-left: none; border-right: 2px solid var(--purple); transition: left 0.4s ease; }
+            .nav-links.active { right: 0; } html[dir="ltr"] .nav-links.active { left: 0; right: auto; }
+            .mobile-icons-row { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; font-size: 1.3rem; color: var(--text-light); }
+            .mobile-icons-row a, .mobile-icons-row i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+            .mobile-icons-row a:hover i, .mobile-icons-row i:hover { color: var(--green); }
+            .nav-links li { width: 100%; }
+            .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; position: relative; z-index: 2; }
+            .dropdown > a { position: relative; z-index: 3; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; border-right: 2px solid var(--purple); margin-right: 12px; background: transparent; visibility: visible; opacity: 1; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0; }
+            .dropdown.active .dropdown-menu { max-height: 500px; padding: 0 0 5px; }
+            .dropdown-menu li a { position: relative; z-index: 2; font-size: 0.9rem; padding: 10px 14px; }
+            .menu-toggle { display: flex !important; }
+            .header-icons { gap: 12px; font-size: 1.1rem; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .filter-section { grid-template-columns: 1fr; gap: 14px; padding: 16px; }
+            .filter-actions { flex-direction: column; gap: 8px; } .btn-filter, .btn-reset { max-width: 100%; width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 15px; }
+            .nav-links li a.active::after { display: none; }
+            .nav-links li a.active { background: rgba(134,216,0,.12); color: var(--green); border-radius: 6px; padding-right: 10px; }
+            html[dir="ltr"] .nav-links li a.active { padding-right: 0; padding-left: 10px; }
+            .product-card:hover { transform: none; }
+            .search-modal { width: 95%; max-height: 85vh; }
+            .search-header { padding: 12px; gap: 6px; }
+            .search-header .search-icon, .search-header .close-btn { font-size: 1.2rem; }
+            .search-header input { flex: 0 1 200px; width: 180px; padding: 8px 10px; font-size: 0.9rem; border-radius: 8px; }
+             .header-inner {
+        padding: 12px 20px; /* مسافة أفقية 20px من كل جانب */
+    }
+        }
+        @media (max-width: 420px) {
+            .products-grid { gap: 10px; } .product-info { padding: 8px; } .product-title { font-size: 0.8rem; }
+            .product-actions { flex-direction: column; gap: 6px; } .product-actions .btn { font-size: 0.75rem; padding: 8px; width: 100%; }
+            .search-result-item { flex-wrap: wrap; } .search-result-details { width: 100%; text-align: center; }
+        }
+        
+        
+        /* ========== شارة السلة وحركة الإضافة ========== */
+.cart-link {
+    position: relative;
+}
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--green);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--header-bg);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: none; /* مخفي افتراضياً إذا كان 0 */
+}
+/* تأثير النبض عند التحديث */
+.cart-badge.pop { transform: scale(1.4); }
+
+/* العنصر الطائر (المنتج المتجه للسلة) */
+.flying-item {
+    position: fixed;
+    z-index: 99999;
+    background: var(--purple);
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(98, 16, 162, 0.6);
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+}
+
+/* حركة اهتزاز أيقونة السلة عند وصول المنتج */
+@keyframes cartShake {
+    0% { transform: scale(1) rotate(0); }
+    25% { transform: scale(1.2) rotate(-15deg); }
+    50% { transform: scale(1.2) rotate(15deg); }
+    75% { transform: scale(1.2) rotate(-15deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+.cart-shake i { animation: cartShake 0.4s ease forwards; }
+
+@font-face {
+    font-family: "Katibeh";
+    src: url("assets/fonts/katibeh-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Zodiak-Variable";
+    src: url("assets/fonts/Zodiak-Variable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* English */
+html[lang="en"] h1[data-translate="page_title"] {
+    font-family: "Zodiak-Variable", serif;
+    font-weight: 700;
+}
+
+/* Arabic */
+html[lang="ar"] h1[data-translate="page_title"] {
+    font-family: "Katibeh", serif;
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+main section:last-of-type {
+    padding-bottom: 60px;
+}
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+
+/* زر الهامبرغر المتحول */
+.menu-toggle {
+    display: none; /* سيظهر في الموبايل فقط */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1002;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* ===== زر التفاصيل بتأثير Blob ===== */
+.details-blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 8px 6px;           /* نفس حجم btn-sm تقريباً */
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-family: inherit;
+    flex: 1;                    /* ليتمدد مثل باقي الأزرار */
+}
+.details-blob-btn:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+.details-blob-btn:hover:before {
+    border-color: var(--green);
+}
+.details-blob-btn:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 5px;
+    background: transparent;
+}
+.details-blob-btn:hover {
+    color: #000;                /* نص أسود على خلفية خضراء */
+}
+.details-blob-btn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+}
+.details-blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: transparent;
+}
+.details-blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url("#goo-details");
+}
+.details-blob-btn__blob {
+    position: absolute;
+    top: 0;                    /* كان 1px سابقًا */
+    width: 25%;
+    height: 100%;
+    background: var(--green);
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.7);
+    transition: transform 0.45s;
+}
+@supports (filter: url("#goo-details")) {
+    .details-blob-btn__blob {
+        transform: translate3d(0, 150%, 0) scale(1.4);
+    }
+}
+.details-blob-btn__blob:nth-child(1) { left: 0%; transition-delay: 0s; }
+.details-blob-btn__blob:nth-child(2) { left: 25%; transition-delay: 0.08s; }   /* كان 30% */
+.details-blob-btn__blob:nth-child(3) { left: 50%; transition-delay: 0.16s; }  /* كان 60% */
+.details-blob-btn__blob:nth-child(4) { left: 75%; transition-delay: 0.24s; }  /* كان 90% */
+.details-blob-btn:hover .details-blob-btn__blob {
+    transform: translateZ(0) scale(1.7);
+}
+@supports (filter: url("#goo-details")) {
+    .details-blob-btn:hover .details-blob-btn__blob {
+        transform: translateZ(0) scale(1.4);
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- ========== الهيدر الجديد ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Aiken <span>Vape</span></div>
+            <ul class="nav-links" id="navMenu">
+                <li class="mobile-only mobile-icons-row">
+                    <a href="cart.html" id="mobileCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge cart-count">0</span>
+</a>
+                    <a href="account.html" id="mobileAccountIcon" class="account-link" title="حسابي" data-translate-title="account" style="display: none;">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <i id="mobileLoginIcon" class="fas fa-sign-in-alt" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                    <i class="fas fa-moon theme-toggle" title="المظهر" data-translate-title="theme"></i>
+                    <div class="lang-dropdown">
+                        <i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i>
+                        <ul class="lang-menu">
+                            <li onclick="setLang('ar')">العربية</li>
+                            <li onclick="setLang('en')">English</li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="index.html" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
+                <li class="dropdown" id="dropdownCategories">
+                    <a href="#" class="nav-link dropdown-toggle active">
+                        <span data-translate="nav_categories">الأقسام</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="disposables.html" class="nav-link" data-translate="cat_disposables">السحبات الجاهزة</a></li>
+                        <li><a href="vapes.html" class="nav-link" data-translate="cat_devices">أجهزة الفيب</a></li>
+                        <li><a href="e-liquids.html" class="nav-link" data-translate="cat_flavors">نكهات الفيب</a></li>
+                        <li><a href="pods-coils.html" class="nav-link" data-translate="cat_pods">البودات والكويلات</a></li>
+                        <li><a href="nicotine-pouches.html" class="nav-link" data-translate="cat_nicotine">أكياس النيكوتين</a></li>
+                        <li><a href="thc.html" class="nav-link" data-translate="cat_thc">THC</a></li>
+                        <li><a href="cbd.html" class="nav-link active" data-translate="cat_cbd">CBD</a></li>
+                        <li><a href="glass.html" class="nav-link" data-translate="cat_glass">الزجاج Glass</a></li>
+                        <li><a href="accessories.html" class="nav-link" data-translate="cat_accessories">الملحقات والإكسسوارات</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#shop" class="nav-link" data-translate="nav_shop">المتجر</a></li>
+                <li><a href="index.html#offers" class="nav-link" data-translate="nav_offers">العروض والتخفيضات</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="nav_about">من نحن</a></li>
+                <li><a href="contact.html" class="nav-link" data-translate="nav_contact">تواصل معنا</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class="fas fa-search" id="searchIcon" title="بحث" data-translate-title="search_placeholder" style="cursor:pointer;"></i>
+                <a href="cart.html" id="desktopCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge cart-count">0</span>
+</a>
+                <a href="account.html" id="desktopAccountIcon" class="account-link desktop-only" title="حسابي" data-translate-title="account" style="display: none;">
+                    <i class="fas fa-user"></i>
+                </a>
+                <i id="desktopLoginIcon" class="fas fa-sign-in-alt desktop-only" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                <i class="fas fa-moon theme-toggle desktop-only" title="المظهر" data-translate-title="theme"></i>
+                <div class="lang-dropdown desktop-only">
+                    <i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i>
+                    <ul class="lang-menu">
+                        <li onclick="setLang('ar')">العربية</li>
+                        <li onclick="setLang('en')">English</li>
+                    </ul>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ========== نموذج البحث المميز ========== -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج CBD..." data-translate-placeholder="search_placeholder">
+                <i class="fas fa-times close-btn" id="closeSearchBtn" title="إغلاق" data-translate-title="close_search"></i>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-empty" data-translate="search_results">ابدأ البحث عن المنتجات</div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1 data-translate="page_title">قسم CBD</h1>
+                <p data-translate="page_desc" style="color:var(--text-muted);">منتجات CBD أصلية بأعلى جودة</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="filter-section">
+                    <div class="filter-group"><label><i class="fa-solid fa-box"></i> <span data-translate="product_type">نوع المنتج</span></label><select id="filterProductType" onchange="applyFilters()"><option value="all" data-translate="all_types">الكل</option><option value="cbd_vape" data-translate="cbd_vape">CBD Vape</option><option value="cbd_oil" data-translate="cbd_oil">CBD Oil</option><option value="cbd_gummies" data-translate="cbd_gummies">CBD Gummies</option><option value="cbd_capsules" data-translate="cbd_capsules">CBD Capsules</option><option value="cbd_topicals" data-translate="cbd_topicals">CBD Topicals</option></select></div>
+                    <div class="filter-group"><label><i class="fa-solid fa-money-bill-wave"></i> <span data-translate="price">السعر</span></label><select id="filterPrice" onchange="applyFilters()"><option value="all" data-translate="all_prices">جميع الأسعار</option><option value="0-100">0 - 100</option><option value="100-200">100 - 200</option><option value="200-300">200 - 300</option><option value="300+">300+</option></select></div>
+                    <div class="filter-group"><label><i class="fa-solid fa-tags"></i> <span data-translate="brand">الماركة</span></label><select id="filterBrand" onchange="applyFilters()"><option value="all" data-translate="all_brands">جميع الماركات</option><option value="Bloom">Bloom</option><option value="Charlotte's Web">Charlotte's Web</option><option value="MoonWlkr">MoonWlkr</option><option value="CBDfx">CBDfx</option><option value="Lord Jones">Lord Jones</option><option value="3Chi">3Chi</option></select></div>
+                    <div class="filter-group"><label><i class="fa-solid fa-dumbbell"></i> <span data-translate="cbd_concentration">تركيز CBD</span></label><select id="filterConcentration" onchange="applyFilters()"><option value="all" data-translate="all_concentrations">الكل</option><option value="250mg">250mg</option><option value="500mg">500mg</option><option value="1000mg">1000mg</option><option value="2000mg">2000mg</option></select></div>
+                    <div class="filter-group"><label><i class="fa-solid fa-lemon"></i> <span data-translate="flavor">النكهة</span></label><input type="text" id="filterFlavor" placeholder="اسم النكهة" oninput="applyFilters()"></div>
+                    <div class="filter-group"><label><i class="fa-solid fa-seedling"></i> <span data-translate="extract_type">نوع المستخلص</span></label><select id="filterExtract" onchange="applyFilters()"><option value="all" data-translate="all_extracts">الكل</option><option value="full" data-translate="full_spectrum">Full Spectrum</option><option value="broad" data-translate="broad_spectrum">Broad Spectrum</option><option value="isolate" data-translate="isolate">CBD Isolate</option></select></div>
+                    <div class="filter-actions">
+                        <button class="btn-filter" onclick="applyFilters()"><i class="fa-solid fa-filter"></i> <span data-translate="apply_filter">تطبيق</span></button>
+                        <button class="btn-reset" onclick="resetFilters()"><i class="fa-solid fa-rotate-left"></i> <span data-translate="reset_filter">إعادة تعيين</span></button>
+                    </div>
+                </div>
+                <div class="products-grid" id="productsContainer"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="logo" style="font-size:1.6rem;margin-bottom:15px;">Aiken <span>Vape</span></div><p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;line-height:1.6;" data-translate="footer_desc">الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.</p><div class="social-links">
+                    <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==&amp;igsi=MWE5eW4xb3U0ZnhrMQ=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/193wnE9jcr/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@hamzahalydrws?_r=1&amp;_t=ZS-98wVIRKlJge"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/12175308866"><i class="fab fa-whatsapp"></i></a>
+                </div></div>
+               <div class="footer-col"><h4 data-translate="footer_links">روابط هامة</h4><ul><li><a href="index.html" data-translate="nav_home">الرئيسية</a></li><li><a href="index.html#shop" data-translate="nav_shop">المتجر</a></li><li><a href="disposables.html" data-translate="nav_disposables">السحبات الجاهزة</a></li><li><a href="index.html#offers" data-translate="nav_offers">العروض</a></li><li><a href="cbd.html" data-translate="nav_cbd"> CBD</a></li><li><a href="about.html" data-translate="nav_about">من نحن</a></li><li><a href="contact.html" data-translate="nav_contact">تواصل معنا</a></li></ul></div>
+                <div class="footer-col">
+    <h4 data-translate="footer_policies">السياسات</h4>
+    <ul>
+        <li><a href="policies.html#terms" data-translate="policy_terms">الشروط والأحكام</a></li>
+        <li><a href="policies.html#privacy" data-translate="policy_privacy">سياسة الخصوصية</a></li>
+        <li><a href="policies.html#shipping" data-translate="policy_shipping">سياسة الشحن</a></li>
+        <li><a href="policies.html#age" data-translate="policy_age">تأكيد العمر</a></li>
+    </ul>
+</div>
+                <div class="footer-col"><h4 data-translate="footer_contact">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i> <span>2567 Whiskey Rd, Aiken, SC 29803</span></li><li><i class="fas fa-envelope"></i> <span>zubair007207@gmail.com</span></li><li><i class="fas fa-phone"></i> <span dir="ltr">+1 803-226-0066</span></li></ul><div class="payment-methods"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-apple-pay"></i></div></div>
+            </div>
+            <div class="footer-bottom" data-translate="copyright">&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.</div>
+        </div>
+    </footer>
+
+    <div class="toast-overlay" id="toastOverlay">
+        <div class="toast-box"><i class="fas fa-lock" id="toastIcon"></i><p id="toastMessage"></p><button class="toast-close" id="toastCloseBtn" data-translate="close">إغلاق</button></div>
+    </div>
+
+    <!-- ========== مودال تحديد الكمية (عدد فقط) ========== -->
+        <!-- ========== مودال تحديد الكمية ========== -->
+    <div class="qty-modal-overlay" id="qtyModal">
+        <div class="qty-modal-box">
+            <h3 data-translate="choose_quantity">تحديد الكمية</h3>
+            <div class="qty-modal-product-name" id="qtyModalProductName"></div>
+            
+            <!-- عنصر السعر الإجمالي الجديد -->
+            <div class="qty-modal-price" id="qtyModalTotalPrice" style="text-align: center; font-size: 1.3rem; font-weight: 800; color: var(--green); margin-bottom: 10px;"></div>
+
+            <div class="qty-modal-controls">
+                <button onclick="changeQty(-1)">-</button>
+                <span id="qtyDisplay">1</span>
+                <button onclick="changeQty(1)">+</button>
+            </div>
+            <div class="qty-modal-actions">
+                <button class="btn btn-outline" onclick="closeQtyModal()" data-translate="cancel">إلغاء</button>
+                <button class="btn btn-purple" onclick="confirmQtyAddToCart()" data-translate="confirm_add">أضف للسلة</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ==================== الترجمات الكاملة ====================
+    const translations = {
+        ar: {
+            account: 'حسابي', theme: 'المظهر', language: 'اللغة', login_title: 'تسجيل الدخول', logout_title: 'تسجيل الخروج',
+            search: 'بحث', search_placeholder: 'ابحث عن منتج CBD...', search_results: 'نتائج البحث', no_search_results: 'لا توجد نتائج مطابقة', close_search: 'إغلاق البحث',
+            cart: 'السلة', nav_home: 'الرئيسية', nav_categories: 'الأقسام', nav_shop: 'المتجر', nav_offers: 'العروض والتخفيضات',
+            nav_about: 'من نحن', nav_contact: 'تواصل معنا', nav_cbd: 'قسم CBD', nav_disposables: 'السحبات الجاهزة', nav_devices: 'أجهزة الفيب', nav_juice: 'نكهات الفيب', nav_nicotine: 'أكياس النيكوتين', nav_pods: 'البودات والكويلات',
+            cat_disposables: 'السحبات الجاهزة', cat_devices: 'أجهزة الفيب', cat_flavors: 'نكهات الفيب', cat_pods: 'البودات والكويلات',
+            cat_nicotine: 'أكياس النيكوتين', cat_thc: 'THC', cat_cbd: 'CBD', cat_glass: 'الزجاج', cat_accessories: 'الملحقات والإكسسوارات',
+            page_title: 'قسم CBD', page_desc: 'منتجات CBD أصلية بأعلى جودة',
+            product_type: 'نوع المنتج', price: 'السعر', brand: 'الماركة', cbd_concentration: 'تركيز CBD', flavor: 'النكهة', extract_type: 'نوع المستخلص',
+            all_types: 'الكل', cbd_vape: 'CBD Vape', cbd_oil: 'CBD Oil', cbd_gummies: 'CBD Gummies', cbd_capsules: 'CBD Capsules', cbd_topicals: 'CBD Topicals',
+            all_prices: 'جميع الأسعار', all_brands: 'جميع الماركات', all_concentrations: 'الكل', all_extracts: 'الكل',
+            full_spectrum: 'Full Spectrum', broad_spectrum: 'Broad Spectrum', isolate: 'CBD Isolate',
+            apply_filter: 'تطبيق', reset_filter: 'إعادة تعيين',
+            add_to_cart: 'أضف للسلة', details: 'عرض التفاصيل', no_products: 'لا توجد منتجات مطابقة للفلتر.',
+            currency: '$',      
+            login_required: 'يجب عليك <a href="login.html" style="color:var(--green); text-decoration:underline;">تسجيل الدخول</a> أولاً لتتمكن من استخدام هذه الميزة.',
+            choose_quantity: 'تحديد الكمية', cancel: 'إلغاء', confirm_add: 'أضف للسلة',
+            added_to_cart: 'تمت إضافة المنتج للسلة!',
+            footer_desc: 'الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.', footer_links: 'روابط هامة', footer_policies: 'السياسات', footer_contact: 'تواصل معنا',
+            policy_terms: 'الشروط والأحكام', policy_privacy: 'سياسة الخصوصية', policy_return: 'سياسة الاسترجاع', policy_shipping: 'سياسة الشحن', policy_age: 'تأكيد العمر',
+            address: 'اليمن - إب، الفرع الرئيسي', copyright: '&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.', close: 'إغلاق', logout_success: 'تم تسجيل الخروج بنجاح.',
+            added_to_wishlist: 'تمت الإضافة إلى المفضلة', removed_from_wishlist: 'تمت الإزالة من المفضلة'
+        },
+        en: {
+            account: 'My Account', theme: 'Theme', language: 'Language', login_title: 'Login', logout_title: 'Logout',
+            search: 'Search', search_placeholder: 'Search for a CBD product...', search_results: 'Search Results', no_search_results: 'No matching results', close_search: 'Close Search',
+            cart: 'Cart', nav_home: 'Home', nav_categories: 'Categories', nav_shop: 'Shop', nav_offers: 'Offers & Deals',
+            nav_about: 'About Us', nav_contact: 'Contact Us', nav_cbd: 'CBD Section', nav_disposables: 'Disposable Vapes', nav_devices: 'Vape Devices', nav_juice: 'E-Liquids', nav_nicotine: 'Nicotine Pouches', nav_pods: 'Pods & Coils',
+            cat_disposables: 'Disposables', cat_devices: 'Vape Devices', cat_flavors: 'E-Liquids', cat_pods: 'Pods & Coils',
+            cat_nicotine: 'Nicotine Pouches', cat_thc: 'THC', cat_cbd: 'CBD', cat_glass: 'Glass', cat_accessories: 'Accessories',
+            page_title: 'CBD Section', page_desc: 'Original CBD products with highest quality',
+            product_type: 'Product Type', price: 'Price', brand: 'Brand', cbd_concentration: 'CBD Concentration', flavor: 'Flavor', extract_type: 'Extract Type',
+            all_types: 'All', cbd_vape: 'CBD Vape', cbd_oil: 'CBD Oil', cbd_gummies: 'CBD Gummies', cbd_capsules: 'CBD Capsules', cbd_topicals: 'CBD Topicals',
+            all_prices: 'All Prices', all_brands: 'All Brands', all_concentrations: 'All', all_extracts: 'All',
+            full_spectrum: 'Full Spectrum', broad_spectrum: 'Broad Spectrum', isolate: 'CBD Isolate',
+            apply_filter: 'Apply', reset_filter: 'Reset',
+            add_to_cart: 'Add to Cart', details: 'Details', no_products: 'No products match your filter.',
+            currency: '$',
+            login_required: 'You need to <a href="login.html" style="color:var(--green); text-decoration:underline;">login</a> first to use this feature.',
+            choose_quantity: 'Choose Quantity', cancel: 'Cancel', confirm_add: 'Add to Cart',
+            added_to_cart: 'Product added to cart!',
+            footer_desc: 'The premier destination for the finest vape devices and accessories.', footer_links: 'Important Links', footer_policies: 'Policies', footer_contact: 'Contact Us',
+            policy_terms: 'Terms & Conditions', policy_privacy: 'Privacy Policy', policy_return: 'Return Policy', policy_shipping: 'Shipping Policy', policy_age: 'Age Verification',
+            address: 'Yemen - Ibb, Main Branch', copyright: '&copy; 2026 AIKEN VAPE & TOBACCO. All rights reserved.', close: 'Close', logout_success: 'Logged out successfully.',
+            added_to_wishlist: 'Added to Wishlist', removed_from_wishlist: 'Removed from Wishlist'
+        }
+    };
+
+    // ==================== المنتجات ====================
+        const products = [
+        { id:801, type:'cbd_vape', name:{ar:'CBD Vape Full Spectrum - فراولة', en:'CBD Vape Full Spectrum - Strawberry'}, brand:'Bloom', concentration:'500mg', flavor:'Strawberry', extract:'full', price:95, rating:4.5, reviews:45, desc:{ar:'فيب CBD بنكهة الفراولة مع مستخلص كامل الطيف', en:'CBD vape with strawberry flavor using full spectrum extract'}, imgSrc:'assets/img/cbd/1.webp' },
+        { id:802, type:'cbd_oil', name:{ar:'زيت CBD واسع الطيف - 1000mg', en:'CBD Oil Broad Spectrum - 1000mg'}, brand:"Charlotte's Web", concentration:'1000mg', flavor:'Natural', extract:'broad', price:150, rating:4.7, reviews:68, desc:{ar:'زيت CBD واسع الطيف نقي وخالي من THC', en:'Pure broad spectrum CBD oil with no THC'}, imgSrc:'assets/img/cbd/2.webp' },
+        { id:803, type:'cbd_gummies', name:{ar:'حلوى CBD معزولة - مانجو', en:'CBD Gummies Isolate - Mango'}, brand:'MoonWlkr', concentration:'250mg', flavor:'Mango', extract:'isolate', price:55, rating:4.4, reviews:52, desc:{ar:'حلوى CBD معزولة بنكهة المانجو المنعشة', en:'Isolate CBD gummies with refreshing mango flavor'}, imgSrc:'assets/img/cbd/3.webp' },
+        { id:804, type:'cbd_capsules', name:{ar:'كبسولات CBD كاملة الطيف - 2000mg', en:'CBD Capsules Full Spectrum - 2000mg'}, brand:'CBDfx', concentration:'2000mg', flavor:'Neutral', extract:'full', price:210, rating:4.8, reviews:78, desc:{ar:'كبسولات CBD عالية التركيز مع طيف كامل', en:'High potency CBD capsules with full spectrum extract'}, imgSrc:'assets/img/cbd/4.webp' },
+        { id:805, type:'cbd_topicals', name:{ar:'كريم CBD واسع الطيف - نعناع', en:'CBD Cream Broad Spectrum - Mint'}, brand:'Lord Jones', concentration:'500mg', flavor:'Mint', extract:'broad', price:85, rating:4.3, reviews:34, desc:{ar:'كريم CBD واسع الطيف بنكهة النعناع المهدئ', en:'Broad spectrum CBD cream with soothing mint flavor'}, imgSrc:'assets/img/cbd/5.webp' },
+        { id:806, type:'cbd_vape', name:{ar:'CBD Vape معزول - توت أزرق', en:'CBD Vape Isolate - Blueberry'}, brand:'3Chi', concentration:'1000mg', flavor:'Blueberry', extract:'isolate', price:110, rating:4.6, reviews:63, desc:{ar:'فيب CBD معزول بنكهة التوت الأزرق', en:'Isolate CBD vape with blueberry flavor'}, imgSrc:'assets/img/cbd/6.webp' },
+        { id:807, type:'cbd_oil', name:{ar:'زيت CBD كامل الطيف - 500mg', en:'CBD Oil Full Spectrum - 500mg'}, brand:'Bloom', concentration:'500mg', flavor:'Natural', extract:'full', price:80, rating:4.2, reviews:40, desc:{ar:'زيت CBD كامل الطيف للاسترخاء اليومي', en:'Full spectrum CBD oil for daily relaxation'}, imgSrc:'assets/img/cbd/7.webp' },
+        { id:808, type:'cbd_gummies', name:{ar:'حلوى CBD واسعة الطيف - عنب', en:'CBD Gummies Broad Spectrum - Grape'}, brand:"Charlotte's Web", concentration:'500mg', flavor:'Grape', extract:'broad', price:70, rating:4.5, reviews:56, desc:{ar:'حلوى CBD واسعة الطيف بنكهة العنب', en:'Broad spectrum CBD gummies with grape flavor'}, imgSrc:'assets/img/cbd/8.webp' }
+    ];
+
+
+    // ==================== حالة تسجيل الدخول ====================
+    function isLoggedIn() { return localStorage.getItem('isLoggedIn') === 'true'; }
+
+    function handleCartClick(event) {
+        if (!isLoggedIn()) {
+            event.preventDefault();
+            const lang = localStorage.getItem('lang') || 'ar';
+            showToast(translations[lang].login_required);
+            return false;
+        }
+        return true;
+    }
+
+    function updateLoginIcon() {
+        const lang = localStorage.getItem('lang') || 'ar';
+        const desktopLoginIcon = document.getElementById('desktopLoginIcon');
+        const mobileLoginIcon = document.getElementById('mobileLoginIcon');
+        const desktopAccountIcon = document.getElementById('desktopAccountIcon');
+        const mobileAccountIcon = document.getElementById('mobileAccountIcon');
+        [desktopLoginIcon, mobileLoginIcon].forEach(icon => {
+            if (!icon) return;
+            if (isLoggedIn()) {
+                icon.className = icon.className.includes('fa-sign-out-alt') ? icon.className : icon.className.replace('fa-sign-in-alt', 'fa-sign-out-alt');
+                icon.setAttribute('data-translate-title', 'logout_title');
+                icon.setAttribute('title', translations[lang].logout_title);
+            } else {
+                icon.className = icon.className.includes('fa-sign-in-alt') ? icon.className : icon.className.replace('fa-sign-out-alt', 'fa-sign-in-alt');
+                icon.setAttribute('data-translate-title', 'login_title');
+                icon.setAttribute('title', translations[lang].login_title);
+            }
+        });
+        const display = isLoggedIn() ? 'flex' : 'none';
+        if (desktopAccountIcon) desktopAccountIcon.style.display = display;
+        if (mobileAccountIcon) mobileAccountIcon.style.display = display;
+    }
+
+    function handleLoginClick() {
+        if (isLoggedIn()) {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            updateLoginIcon();
+            const lang = localStorage.getItem('lang') || 'ar';
+            showToast(translations[lang].logout_success);
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+
+    // ==================== إدارة اللغة ====================
+    function applyLanguage(lang) {
+        document.getElementById('htmlRoot').setAttribute('lang', lang);
+        document.getElementById('htmlRoot').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        document.querySelectorAll('[data-translate-title]').forEach(el => {
+            const key = el.getAttribute('data-translate-title');
+            if (translations[lang] && translations[lang][key]) el.setAttribute('title', translations[lang][key]);
+        });
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.placeholder = translations[lang].search_placeholder;
+        const closeBtn = document.getElementById('closeSearchBtn');
+        if (closeBtn) closeBtn.setAttribute('title', translations[lang].close_search);
+        localStorage.setItem('lang', lang);
+        updateLoginIcon();
+        updateActiveLangInDropdowns(lang);
+        applyFilters();
+        if (document.getElementById('searchOverlay').classList.contains('active')) performSearch();
+    }
+
+    function updateActiveLangInDropdowns(lang) {
+        document.querySelectorAll('.lang-menu li').forEach(li => {
+            const langAttr = li.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+            li.style.color = langAttr === lang ? 'var(--green)' : '';
+            li.style.fontWeight = langAttr === lang ? 'bold' : '';
+        });
+    }
+
+    function setLang(lang) {
+        applyLanguage(lang);
+        document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+    }
+
+    // ==================== القائمة الجانبية ====================
+    const body = document.body;
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdown = document.getElementById('dropdownCategories');
+
+    function openMenu() {
+    navMenu.classList.add('active');
+    navOverlay.classList.add('active');
+    body.classList.add('lock-scroll');
+    menuToggle.classList.add('active');        // ← أضف هذا السطر
+}
+
+function closeMenu() {
+    navMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    body.classList.remove('lock-scroll');
+    menuToggle.classList.remove('active');     // ← أضف هذا السطر
+    dropdown.classList.remove('active');
+}
+    menuToggle.addEventListener('click', () => navMenu.classList.contains('active') ? closeMenu() : openMenu());
+    navOverlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !link.classList.contains('dropdown-toggle')) closeMenu();
+        });
+    });
+    dropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { e.preventDefault(); dropdown.classList.toggle('active'); }
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+
+    // ==================== قائمة اللغة ====================
+    document.querySelectorAll('.lang-dropdown').forEach(dropdownEl => {
+        const toggle = dropdownEl.querySelector('.lang-toggle');
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelectorAll('.lang-dropdown').forEach(d => { if (d !== dropdownEl) d.classList.remove('active'); });
+            dropdownEl.classList.toggle('active');
+        });
+    });
+    document.addEventListener('click', () => document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active')));
+
+    // ==================== المظهر ====================
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const currentThemeStorage = localStorage.getItem('theme') || 'dark';
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.classList.add('light-mode');
+            themeToggles.forEach(t => t.classList.replace('fa-moon', 'fa-sun'));
+        } else {
+            document.documentElement.classList.remove('light-mode');
+            themeToggles.forEach(t => t.classList.replace('fa-sun', 'fa-moon'));
+        }
+    }
+    applyTheme(currentThemeStorage);
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme); applyTheme(newTheme);
+        });
+    });
+
+    // ==================== نظام البحث ====================
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.getElementById('searchInput');
+    const closeSearchBtn = document.getElementById('closeSearchBtn');
+    const searchResultsDiv = document.getElementById('searchResults');
+    const searchIcon = document.getElementById('searchIcon');
+
+    function openSearchModal() {
+        searchOverlay.classList.add('active');
+        document.body.classList.add('lock-scroll');
+        searchInput.value = '';
+        searchInput.focus();
+        performSearch();
+    }
+    function closeSearchModal() {
+        searchOverlay.classList.remove('active');
+        document.body.classList.remove('lock-scroll');
+    }
+    searchIcon.addEventListener('click', openSearchModal);
+    closeSearchBtn.addEventListener('click', closeSearchModal);
+    searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearchModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchOverlay.classList.contains('active')) closeSearchModal(); });
+    searchInput.addEventListener('input', performSearch);
+
+    function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        const lang = localStorage.getItem('lang') || 'ar';
+        if (query === '') { searchResultsDiv.innerHTML = `<div class="search-empty">${translations[lang].search_results}</div>`; return; }
+        const results = products.filter(p => 
+            p.name.ar.toLowerCase().includes(query) || p.name.en.toLowerCase().includes(query) ||
+            p.brand.toLowerCase().includes(query) || p.concentration.toLowerCase().includes(query) ||
+            p.flavor.toLowerCase().includes(query) || p.desc.ar.toLowerCase().includes(query) ||
+            p.desc.en.toLowerCase().includes(query) || p.type.toLowerCase().includes(query)
+        );
+        if (results.length === 0) { searchResultsDiv.innerHTML = `<div class="search-empty">${translations[lang].no_search_results}</div>`; return; }
+        searchResultsDiv.innerHTML = results.map(p => `
+    <div class="search-result-item">
+        <div class="search-result-img"><img src="${p.imgSrc}" alt="${p.name[lang]}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"></div>
+        <div class="search-result-info">
+
+                    <div class="search-result-title">${p.name[lang]}</div>
+                    <div class="search-result-meta"><span>${translations[lang][p.type] || p.type}</span><span>${p.brand}</span><span>${p.concentration}</span></div>
+                    <div class="search-result-price">${p.price} ${translations[lang].currency}</div>
+                    <div class="search-result-rating">${generateStars(p.rating)} <span>(${p.reviews})</span></div>
+                </div>
+                <a href="cbd-details.html?id=${p.id}" class="search-result-details">${translations[lang].details}</a>
+            </div>
+        `).join('');
+    }
+
+    // ==================== عرض المنتجات ====================
+    function renderSkeleton() {
+        const container = document.getElementById('productsContainer');
+        container.innerHTML = Array(4).fill(0).map(() => `
+            <div class="product-card skeleton-card"><div class="product-img skeleton"></div><div class="product-info"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-meta"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-price"></div><div class="skeleton skeleton-actions"></div></div></div>
+        `).join('');
+    }
+
+        function renderProducts(filtered) {
+        const container = document.getElementById('productsContainer');
+        const lang = localStorage.getItem('lang') || 'ar';
+        if (!filtered || filtered.length === 0) { container.innerHTML = `<div class="no-products" data-translate="no_products">${translations[lang].no_products}</div>`; return; }
+        container.innerHTML = filtered.map(p => {
+    const isWish = localStorage.getItem(`wishlist_${p.id}`) === 'true';
+    
+    // إضافة مسارات الصور الجديدة
+    const heartIcon = isWish ? 'assets/img/logo/favorite-filled.ico' : 'assets/img/logo/favorite-outline.ico';
+    
+    return `
+    <div class="product-card">
+        <div class="product-img">
+            <img src="${p.imgSrc}" alt="${p.name[lang]}" style="width: 100%; height: 100%; object-fit: cover;">
+            
+            <!-- تغيير وسم <i> إلى <img> -->
+            <span class="wishlist-icon ${isWish ? 'active' : ''}" onclick="toggleWishlist(event, ${p.id})">
+                <img src="${heartIcon}" alt="favorite" style="width: 40px; height: 40px; object-fit: contain;">
+            </span>
+        </div>
+        <div class="product-info">
+
+
+                    <h3 class="product-title">${p.name[lang]}</h3>
+                    <div class="product-meta"><span>${translations[lang][p.type] || p.type}</span><span>${p.brand}</span><span>${p.concentration}</span></div>
+                    <p class="product-desc">${p.desc[lang]}</p>
+                    <div class="product-rating">${generateStars(p.rating)}<span>(${p.reviews})</span></div>
+                    <div class="product-price">${p.price} <span>${translations[lang].currency}</span></div>
+                    <div class="product-actions">
+                        <button class="btn btn-add-cart btn-sm" onclick="openQtyModal(${p.id})"><i class="fas fa-cart-plus"></i> ${translations[lang].add_to_cart}</button>
+                        <button class="details-blob-btn" onclick="location.href='cbd-details.html?id=${p.id}'">
+    ${translations[lang].details}
+    <span class="details-blob-btn__inner">
+        <span class="details-blob-btn__blobs">
+            <span class="details-blob-btn__blob"></span>
+            <span class="details-blob-btn__blob"></span>
+            <span class="details-blob-btn__blob"></span>
+            <span class="details-blob-btn__blob"></span>
+        </span>
+    </span>
+</button>
+                    </div>
+                </div>
+            </div>
+            `;
+        }).join('');
+    }
+
+    function generateStars(rating) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) stars += i <= rating ? '<i class="fas fa-star"></i>' : (i - 0.5 <= rating ? '<i class="fas fa-star-half-alt"></i>' : '<i class="far fa-star"></i>');
+        return stars;
+    }
+
+    // ==================== المفضلة (متوافقة مع صفحة التفاصيل) ====================
+        function toggleWishlist(e, id) {
+        e.stopPropagation();
+        if (!requireAuth()) return;
+        const icon = e.currentTarget;
+        
+        // البحث عن وسم img بدلاً من i
+        const heart = icon.querySelector('img'); 
+        
+        const isWish = localStorage.getItem(`wishlist_${id}`) === 'true';
+        const lang = localStorage.getItem('lang') || 'ar';
+        
+        if (isWish) {
+            localStorage.removeItem(`wishlist_${id}`);
+            // وضع صورة القلب المفرغ
+            heart.src = 'assets/img/logo/favorite-outline.ico';
+            icon.classList.remove('active');
+            showToast(translations[lang].removed_from_wishlist, 'fa-heart-broken');
+        } else {
+            localStorage.setItem(`wishlist_${id}`, 'true');
+            // وضع صورة القلب الممتلئ
+            heart.src = 'assets/img/logo/favorite-filled.ico';
+            icon.classList.add('active');
+            showToast(translations[lang].added_to_wishlist, 'fa-heart');
+        }
+    }
+
+
+    // ==================== سلة التسوق (localStorage) ====================
+    function addToCart(productId, quantity) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // البحث عن عنصر بنفس id و option = 'single'
+    const existingIndex = cart.findIndex(item => item.id === productId && (item.option || 'single') === 'single');
+
+    if (existingIndex > -1) {
+        // زيادة الكمية
+        cart[existingIndex].qty = (cart[existingIndex].qty || 1) + quantity;
+    } else {
+        // إضافة عنصر جديد مع البيانات الكاملة
+        cart.push({
+            id: productId,
+            qty: quantity,
+            option: 'single',
+            unitPrice: product.price,
+            nameAr: product.name.ar,
+            nameEn: product.name.en
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+        function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+
+    const cartCountEls = document.querySelectorAll('.cart-count');
+    cartCountEls.forEach(el => {
+        el.textContent = count;
+        if (count > 0) {
+            el.style.display = 'flex';
+            el.classList.add('pop');
+            setTimeout(() => el.classList.remove('pop'), 300);
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
+
+    // ==================== دالة حركة الطيران (مُصلَحة) ====================
+
+    // تحديد أيقونة السلة الظاهرة فعلياً على الشاشة حالياً (تتجاهل أي عنصر مخفي display:none)
+    // هذا هو الإصلاح الأساسي: الكود القديم كان يختار العنصر حسب عرض الشاشة فقط،
+    // لكن حسب الـ CSS فإن mobileCartLink مخفي دائماً (display:none) على الموبايل،
+    // مما كان يجعل الحركة تطير لموقع (0,0) بدلاً من أيقونة السلة الحقيقية.
+    function getVisibleCartIcon() {
+        const desktopCart = document.getElementById('desktopCartLink');
+        const mobileCart = document.getElementById('mobileCartLink');
+        const candidates = [desktopCart, mobileCart];
+        for (const el of candidates) {
+            if (!el) continue;
+            const style = window.getComputedStyle(el);
+            if (style.display === 'none' || style.visibility === 'hidden') continue;
+            const rect = el.getBoundingClientRect();
+            if (rect.width > 0 && rect.height > 0) return el;
+        }
+        // احتياطي في حال تعذر إيجاد عنصر ظاهر
+        return desktopCart || mobileCart;
+    }
+
+    function flyToCart(startX, startY) {
+        // تحديد السلة الظاهرة فعلياً في الهيدر حالياً
+        const targetCart = getVisibleCartIcon();
+        if (!targetCart) return;
+
+        // نستهدف مركز أيقونة السلة نفسها (fa-shopping-cart) وليس الرابط كاملاً، لدقة أعلى في الهبوط
+        const iconEl = targetCart.querySelector('i') || targetCart;
+        const initialRect = iconEl.getBoundingClientRect();
+
+        // إن كانت الأيقونة غير مرئية فعلياً (rect صفري)، لا تُشغّل الحركة لتفادي أي خطأ بصري
+        if (initialRect.width === 0 && initialRect.height === 0) return;
+
+        // إنشاء العنصر الطائر
+        const flyingItem = document.createElement('div');
+        flyingItem.className = 'flying-item';
+        flyingItem.innerHTML = '<i class="fas fa-cart-plus"></i>'; 
+        document.body.appendChild(flyingItem);
+
+        // تعيين موقع البداية (مكان الزر الذي تم النقر عليه)
+        flyingItem.style.left = `${startX - 15}px`;
+        flyingItem.style.top = `${startY - 15}px`;
+
+        // إجبار المتصفح على رسم العنصر قبل بدء الحركة
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                // إعادة حساب موقع الأيقونة لحظة الانطلاق (تحسباً لأي تمرير أو تغيير مقاس أثناء ذلك)
+                const freshRect = iconEl.getBoundingClientRect();
+                const targetX = freshRect.left + freshRect.width / 2;
+                const targetY = freshRect.top + freshRect.height / 2;
+
+                // الانطلاق نحو مركز أيقونة السلة تماماً
+                flyingItem.style.left = `${targetX - 15}px`;
+                flyingItem.style.top = `${targetY - 15}px`;
+                flyingItem.style.transform = 'scale(0.2)';
+                flyingItem.style.opacity = '0.5';
+            });
+        });
+
+        // بعد انتهاء الحركة (0.7 ثانية كما في الـ CSS)
+        setTimeout(() => {
+            flyingItem.remove();
+            // تشغيل تأثير الاهتزاز على السلة نفسها
+            targetCart.classList.add('cart-shake');
+            setTimeout(() => targetCart.classList.remove('cart-shake'), 400);
+        }, 700); 
+    }
+
+
+
+
+    // ==================== مودال الكمية (عدد فقط) ====================
+    let activeQtyProductId = null;
+    let qty = 1;
+
+    function updateQtyPriceDisplay() {
+        const product = products.find(p => p.id === activeQtyProductId);
+        if (!product) return;
+        const lang = localStorage.getItem('lang') || 'ar';
+        const totalPrice = product.price * qty;
+        document.getElementById('qtyModalTotalPrice').innerHTML = `<span>${translations[lang].currency}</span>${totalPrice}`;
+    }
+
+    function openQtyModal(productId) {
+        if (!requireAuth()) return;
+        activeQtyProductId = productId;
+        qty = 1;
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        const lang = localStorage.getItem('lang') || 'ar';
+        document.getElementById('qtyModalProductName').textContent = product.name[lang];
+        document.getElementById('qtyDisplay').textContent = qty;
+        updateQtyPriceDisplay();
+        document.getElementById('qtyModal').classList.add('active');
+        document.body.classList.add('lock-scroll');
+    }
+
+    function closeQtyModal() {
+        document.getElementById('qtyModal').classList.remove('active');
+        document.body.classList.remove('lock-scroll');
+        activeQtyProductId = null;
+    }
+
+    function changeQty(delta) {
+        qty = Math.max(1, qty + delta);
+        document.getElementById('qtyDisplay').textContent = qty;
+        updateQtyPriceDisplay();
+    }
+
+        // ==================== تحديث دالة تأكيد الإضافة ====================
+    function confirmQtyAddToCart() {
+        if (!activeQtyProductId) return;
+        const product = products.find(p => p.id === activeQtyProductId);
+        const lang = localStorage.getItem('lang') || 'ar';
+        if (product) {
+            addToCart(activeQtyProductId, qty); // تخزين في السلة وتحديث الرقم
+            showToast(`"${product.name[lang]}" x${qty} ${translations[lang].added_to_cart}`, 'fa-cart-plus');
+            
+            // جلب إحداثيات زر التأكيد في المودال لبدء الحركة منه
+            const btn = document.querySelector('.qty-modal-actions .btn-purple');
+            if(btn) {
+                const rect = btn.getBoundingClientRect();
+                flyToCart(rect.left + rect.width / 2, rect.top + rect.height / 2);
+            }
+        }
+        closeQtyModal();
+    }
+
+    // إغلاق مودال الكمية عند الضغط خارج الصندوق
+    document.getElementById('qtyModal').addEventListener('click', function(e) {
+        if (e.target === this) closeQtyModal();
+    });
+
+    // ==================== الفلاتر ====================
+    function applyFilters() {
+        renderSkeleton();
+        setTimeout(() => {
+            const type = document.getElementById('filterProductType').value;
+            const price = document.getElementById('filterPrice').value;
+            const brand = document.getElementById('filterBrand').value;
+            const conc = document.getElementById('filterConcentration').value;
+            const flavor = document.getElementById('filterFlavor').value.trim().toLowerCase();
+            const extract = document.getElementById('filterExtract').value;
+            let filtered = [...products];
+            if (type !== 'all') filtered = filtered.filter(p => p.type === type);
+            if (price !== 'all') { const [min, max] = price.split('-').map(v => v === '+' ? Infinity : Number(v)); filtered = filtered.filter(p => p.price >= min && (max === Infinity ? true : p.price <= max)); }
+            if (brand !== 'all') filtered = filtered.filter(p => p.brand === brand);
+            if (conc !== 'all') filtered = filtered.filter(p => p.concentration === conc);
+            if (flavor) filtered = filtered.filter(p => p.flavor.toLowerCase().includes(flavor));
+            if (extract !== 'all') filtered = filtered.filter(p => p.extract === extract);
+            renderProducts(filtered);
+        }, 350);
+    }
+
+    function resetFilters() {
+        ['filterProductType', 'filterPrice', 'filterBrand', 'filterConcentration', 'filterExtract'].forEach(id => document.getElementById(id).value = 'all');
+        document.getElementById('filterFlavor').value = '';
+        applyFilters();
+    }
+
+    // ==================== Toast ====================
+    function showToast(message, iconClass = 'fa-lock') {
+        const overlay = document.getElementById('toastOverlay');
+        document.getElementById('toastMessage').innerHTML = message;
+        document.getElementById('toastIcon').className = `fas ${iconClass}`;
+        overlay.classList.add('active');
+        document.getElementById('toastCloseBtn').onclick = () => overlay.classList.remove('active');
+        overlay.onclick = (e) => { if (e.target === overlay) overlay.classList.remove('active'); };
+    }
+
+    function requireAuth() {
+        if (!isLoggedIn()) { showToast(translations[localStorage.getItem('lang')||'ar'].login_required); return false; }
+        return true;
+    }
+
+    // ==================== بدء التشغيل ====================
+    applyLanguage(localStorage.getItem('lang') || 'ar');
+    updateLoginIcon();
+    updateCartCount(); // تحديث عدد السلة عند التحميل
+    applyFilters();
+</script>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+  <defs>
+    <filter id="goo-details">
+      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="goo"></feColorMatrix>
+      <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+    </filter>
+  </defs>
+</svg>
+</body>
+</html>

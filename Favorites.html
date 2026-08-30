@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المفضلة | AIKEN VAPE</title>
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/fonts/remixicon.css">
+
+    <!--=============== GOOGLE FONTS ===============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /*=============== VARIABLES CSS ===============*/
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            --sidebar-bg: rgba(0, 0, 0, 0.85);
+            --sidebar-text: #ffffff;
+            --sidebar-link-hover: rgba(255, 255, 255, 0.1);
+            --sidebar-active: rgba(134, 216, 0, 0.15);
+            --sidebar-border: rgba(255, 255, 255, 0.12);
+            --status-available: #86D800;
+            --status-limited: #FFA500;
+            --status-out: #FF4444;
+            --badge-bg: rgba(0, 0, 0, 0.6);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.5);
+            --body-font: "Poppins", sans-serif;
+            --header-height: 3.5rem;
+            --transition-speed: 0.3s;
+        }
+
+        :root.light-mode {
+            --bg-dark: #f3f5f7;
+            --bg-card: #ffffff;
+            --bg-alt: #e9edf2;
+            --bg-img: #f7f8fa;
+            --text-light: #101828;
+            --text-muted: #667085;
+            --border-color: #d9dee7;
+            --header-bg: #ffffff;
+            --footer-bg: #f8fafc;
+            --hover-bg: #eef2f6;
+            --tag-bg: #edf1f5;
+            --hero-bg-end: #f3f5f7;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            --sidebar-bg: rgba(255, 255, 255, 0.9);
+            --sidebar-text: #101828;
+            --sidebar-link-hover: rgba(0, 0, 0, 0.06);
+            --sidebar-active: rgba(91, 185, 0, 0.12);
+            --sidebar-border: rgba(0, 0, 0, 0.1);
+            --status-available: #5bb900;
+            --status-limited: #e68a00;
+            --status-out: #d92d20;
+            --badge-bg: rgba(255, 255, 255, 0.85);
+            --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --shadow-card-hover: 0 16px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /*=============== BASE ===============*/
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: 0.938rem;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            font-family: var(--body-font);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        /*=============== LAYOUT ===============*/
+        .main {
+            padding-top: calc(var(--header-height) + 2rem);
+            padding-bottom: 3rem;
+            margin-inline: 1.5rem;
+            color: var(--text-light);
+            transition: color var(--transition-speed);
+        }
+
+        .main__container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /*=============== HEADER ===============*/
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            margin: 1rem;
+        }
+
+        .header__container {
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--header-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-inline: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .header__logo {
+            display: flex;
+            align-items: center;
+            column-gap: 0.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .header__logo i {
+            font-size: 1.5rem;
+            color: var(--green);
+        }
+
+        .header__toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            background-color: var(--tag-bg);
+            color: var(--text-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .header__toggle:hover {
+            background-color: var(--hover-bg);
+        }
+
+        /*=============== SIDEBAR ===============*/
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -120%;
+            bottom: 0;
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 1.5rem 1rem 2rem;
+            margin: 1rem;
+            border-radius: 1.25rem;
+            border: 1px solid var(--sidebar-border);
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar.show-sidebar {
+            right: 0;
+        }
+
+        .sidebar__logo {
+            display: flex;
+            align-items: center;
+            column-gap: 0.75rem;
+            color: var(--sidebar-text);
+            padding: 0 0 1.25rem 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--sidebar-border);
+            transition: color var(--transition-speed);
+        }
+
+        .sidebar__logo i {
+            font-size: 1.75rem;
+            color: var(--green);
+        }
+
+        .sidebar__content {
+            display: grid;
+            row-gap: 0.4rem;
+            padding-top: 1.5rem;
+            flex: 1;
+        }
+
+        .sidebar__link {
+            display: flex;
+            align-items: center;
+            column-gap: 0.75rem;
+            color: var(--sidebar-text);
+            padding: 0.75rem 0.9rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .sidebar__link i {
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar__link:hover {
+            background-color: var(--sidebar-link-hover);
+        }
+
+        .sidebar__link.active-link {
+            background-color: var(--sidebar-active);
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .sidebar__link.active-link::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 24px;
+            background-color: var(--green);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .sidebar__logout {
+            margin-top: auto;
+            border-top: 1px solid var(--sidebar-border);
+            padding-top: 1rem;
+            color: #ff6b6b;
+        }
+
+        .sidebar__logout:hover {
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+
+        /* Dropdown */
+        .drop__button {
+            width: 100%;
+            flex-direction: row;
+            border: none;
+            outline: none;
+            background: none;
+            font: 500 0.95rem var(--body-font);
+            cursor: pointer;
+            color: var(--sidebar-text);
+        }
+
+        .drop__arrow {
+            margin-right: auto;
+            transition: transform 0.4s;
+        }
+
+        .drop__list {
+            display: grid;
+            row-gap: 0.25rem;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s;
+        }
+
+        .drop__item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            column-gap: 0.75rem;
+            color: var(--sidebar-text);
+            padding: 0.6rem 0.5rem 0.6rem 1.5rem;
+            border-radius: 0.6rem;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .drop__item i {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .drop__item:hover {
+            background-color: var(--sidebar-link-hover);
+        }
+
+        .show-drop .drop__arrow {
+            transform: rotate(-180deg);
+        }
+
+        /*=============== PAGE HEADER ===============*/
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .page-title i {
+            color: var(--green);
+            font-size: 2.2rem;
+        }
+
+        .page-count {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .page-count strong {
+            color: var(--green);
+            font-size: 1.2rem;
+        }
+
+        /*=============== WISHLIST GRID ===============*/
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /*=============== PRODUCT CARD (Premium) ===============*/
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            animation: fadeInUp 0.5s ease both;
+            animation-delay: calc(var(--i, 0) * 0.05s);
+            box-shadow: var(--shadow-card);
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: rgba(134,216,0,0.5);
+        }
+
+        .product-card__image-wrapper {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: var(--bg-img);
+            cursor: pointer;
+        }
+
+        .product-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-card__image {
+            transform: scale(1.05);
+        }
+
+        /* Wishlist heart button */
+        .wishlist-heart-btn {
+            position: absolute;
+            top: 10px;
+            inset-inline-end: 10px; /* works for RTL/LTR */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #ff4444;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .wishlist-heart-btn:hover {
+            transform: scale(1.15);
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .wishlist-heart-btn i {
+            transition: transform 0.2s ease;
+        }
+
+        .wishlist-heart-btn.removing i {
+            animation: heartPop 0.3s ease;
+        }
+
+        @keyframes heartPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(0); }
+        }
+
+        /* Status Badge */
+        .product-card__status {
+            position: absolute;
+            top: 0.9rem;
+            inset-inline-start: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background-color: var(--badge-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.available { background-color: var(--status-available); box-shadow: 0 0 6px var(--status-available); }
+        .status-dot.limited { background-color: var(--status-limited); box-shadow: 0 0 6px var(--status-limited); }
+        .status-dot.out { background-color: var(--status-out); box-shadow: 0 0 6px var(--status-out); }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Card Body */
+        .product-card__body {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 0.4rem;
+        }
+
+        .product-card__brand {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .product-card__name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.8em;
+        }
+
+        .product-card__price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-top: 0.25rem;
+        }
+
+        .product-card__price span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .product-card__rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .product-card__rating i {
+            color: var(--star-color);
+            font-size: 0.9rem;
+        }
+
+        /* Actions row - aligned to opposite end */
+        .product-card__actions {
+            display: flex;
+            justify-content: flex-end; /* يضع الزر في الطرف الآخر (اليسار في RTL) */
+            margin-top: auto; /* يدفعه إلى أسفل البطاقة */
+            padding-top: 0.75rem; /* مسافة بسيطة فوق الزر */
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-details {
+            background-color: transparent;
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        .btn-details:hover {
+            background-color: var(--green);
+            color: #000;
+            box-shadow: 0 2px 8px rgba(134,216,0,0.3);
+        }
+
+        /* Removing animation */
+        .product-card.removing {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /*=============== EMPTY STATE ===============*/
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--bg-card);
+            border: 1px dashed var(--border-color);
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .empty-state__icon {
+            font-size: 5rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .empty-state__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .empty-state__desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .btn-shop {
+            background-color: var(--green);
+            color: #000000;
+            padding: 0.85rem 2.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid var(--green);
+        }
+
+        .btn-shop:hover {
+            background-color: transparent;
+            color: var(--green);
+        }
+
+        /*=============== RESPONSIVE ===============*/
+        @media screen and (max-width: 768px) {
+            .main { margin-inline: 1rem; padding-top: calc(var(--header-height) + 1.5rem); }
+            .page-title { font-size: 1.5rem; }
+            .page-title i { font-size: 1.7rem; }
+            .wishlist-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+            .product-card__body { padding: 0.8rem; }
+            .product-card__name { font-size: 0.9rem; }
+            .product-card__price { font-size: 1.1rem; }
+            .btn { padding: 0.45rem 0.9rem; font-size: 0.8rem; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .wishlist-grid { grid-template-columns: 1fr; }
+            .page-header { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* For large devices */
+        @media screen and (min-width: 1150px) {
+            .header { margin: 1.5rem; padding-right: 300px; transition: padding 0.4s; }
+            .header__container { height: calc(var(--header-height) + 2rem); padding-inline: 1.5rem; }
+            .header__toggle { display: none; }
+            .sidebar { right: 0; width: 280px; margin: 1.5rem; padding: 2rem 1.5rem; border-radius: 1.5rem; }
+            .main { padding-right: 300px; padding-top: calc(var(--header-height) + 3rem); transition: padding 0.4s; }
+        }
+
+        @media screen and (max-width: 320px) {
+            .header { margin-inline: 0.5rem; }
+            .sidebar { width: 200px; margin-inline: 0.5rem; }
+            .main { margin-inline: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!--=============== HEADER ===============-->
+    <header class="header">
+        <div class="header__container">
+            <a href="shop.html" class="header__logo">
+                <i class="ri-leaf-line"></i>
+                <span>AIKEN VAPE & TOBACCO</span>
+            </a>
+            <button class="header__toggle" id="header-toggle" aria-label="Toggle Menu">
+                <i class="ri-apps-2-line"></i>
+            </button>
+        </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar__logo">
+            <i class="ri-user-3-line"></i>
+            <span id="user-name-display">مستخدم</span>
+        </div>
+        <div class="sidebar__content">
+            <a href="account.html" class="sidebar__link"><i class="ri-home-5-line"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="Favorites.html" class="sidebar__link active-link"><i class="ri-heart-line"></i><span data-i18n="wishlist">المفضلة</span></a>
+            <a href="orders.html" class="sidebar__link"><i class="ri-shopping-bag-3-line"></i><span data-i18n="orders">طلباتي</span></a>
+            <div class="drop">
+                <button class="sidebar__link drop__button">
+                    <i class="ri-settings-3-line"></i><span data-i18n="settings">الإعدادات</span>
+                    <i class="ri-arrow-down-s-line drop__arrow"></i>
+                </button>
+                <ul class="drop__list">
+    <li>
+        <a href="settings.html#profile-section" class="drop__item">
+            <i class="ri-user-line"></i>
+            <span data-i18n="personal_info">البيانات الشخصية</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="settings.html#notifications-section" class="drop__item">
+            <i class="ri-notification-2-line"></i>
+            <span data-i18n="notifications">الإشعارات</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="settings.html#language-section" class="drop__item">
+            <i class="ri-global-line"></i>
+            <span data-i18n="language_theme">اللغة والمظهر</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="settings.html#delete-section" class="drop__item">
+            <i class="ri-delete-bin-line"></i>
+            <span data-i18n="delete_account">حذف الحساب</span>
+        </a>
+    </li>
+</ul>
+            </div>
+            <a href="index.html" class="sidebar__link"><i class="ri-shopping-cart-2-line"></i><span data-i18n="back_shop">العودة للتسوق</span></a>
+            <a href="#" class="sidebar__link sidebar__logout" id="logout-btn"><i class="ri-logout-box-r-line"></i><span data-i18n="logout">تسجيل الخروج</span></a>
+        </div>
+    </nav>
+
+    <!--=============== MAIN CONTENT ===============-->
+    <main class="main">
+        <div class="main__container">
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="ri-heart-3-line"></i>
+                    <span data-i18n="wishlist_title">قائمة المفضلة</span>
+                </h1>
+                <div class="page-count">
+                    <span data-i18n="items_count">عدد المنتجات</span>
+                    <strong id="wishlist-count">0</strong>
+                </div>
+            </div>
+            <div id="wishlist-container"><!-- Cards rendered here --></div>
+        </div>
+    </main>
+
+    <!--=============== JAVASCRIPT ===============-->
+    <script>
+        // ==================== ALL PRODUCTS DATA ====================
+        const allProducts = [
+            { id: 701, type: 'thc_vape', name: { ar: 'THC Vape Delta-9 - فراولة', en: 'THC Vape Delta-9 - Strawberry' }, brand: 'Bloom', price: 120, rating: 4.6, reviews: 55, image: 'assets/img/thc/1.webp', status: 'available' },
+            { id: 702, type: 'gummies', name: { ar: 'Delta-8 Gummies - مانجو', en: 'Delta-8 Gummies - Mango' }, brand: 'MoonWlkr', price: 80, rating: 4.3, reviews: 70, image: 'assets/img/thc/2.webp', status: 'limited' },
+            { id: 703, type: 'pre_rolls', name: { ar: 'Pre-Roll THCA - نعناع', en: 'Pre-Roll THCA - Mint' }, brand: 'Raw Garden', price: 150, rating: 4.8, reviews: 40, image: 'assets/img/thc/3.webp', status: 'available' },
+            { id: 704, type: 'gummies', name: { ar: 'THCP Gummies - عنب', en: 'THCP Gummies - Grape' }, brand: 'Binoid', price: 95, rating: 4.5, reviews: 60, image: 'assets/img/thc/4.webp', status: 'out_of_stock' },
+            { id: 705, type: 'thc_vape', name: { ar: 'Delta-9 Vape - بطيخ', en: 'Delta-9 Vape - Watermelon' }, brand: '3Chi', price: 130, rating: 4.7, reviews: 85, image: 'assets/img/thc/5.webp', status: 'available' },
+            { id: 706, type: 'pre_rolls', name: { ar: 'THCV Pre-Roll - ليمون', en: 'THCV Pre-Roll - Lemon' }, brand: 'Raw Garden', price: 160, rating: 4.9, reviews: 30, image: 'assets/img/thc/6.webp', status: 'limited' },
+            { id: 707, type: 'thc_vape', name: { ar: 'Delta-8 Vape - توت أزرق', en: 'Delta-8 Vape - Blueberry' }, brand: 'MoonWlkr', price: 110, rating: 4.4, reviews: 65, image: 'assets/img/thc/7.webp', status: 'available' },
+            { id: 708, type: 'gummies', name: { ar: 'THCB Gummies - أناناس', en: 'THCB Gummies - Pineapple' }, brand: 'Binoid', price: 85, rating: 4.2, reviews: 48, image: 'assets/img/thc/8.webp', status: 'out_of_stock' },
+            { id: 101, name: { ar: 'Vaporesso XROS 3', en: 'Vaporesso XROS 3' }, brand: 'Vaporesso', price: 120, rating: 4.7, reviews: 180, image: 'assets/img/vapes/1.webp', status: 'available' },
+            { id: 102, name: { ar: 'SMOK RPM 5', en: 'SMOK RPM 5' }, brand: 'SMOK', price: 250, rating: 4.5, reviews: 95, image: 'assets/img/vapes/2.webp', status: 'limited' },
+            { id: 103, name: { ar: 'GeekVape Aegis Boost', en: 'GeekVape Aegis Boost' }, brand: 'GeekVape', price: 200, rating: 4.8, reviews: 210, image: 'assets/img/vapes/3.webp', status: 'available' },
+            { id: 104, name: { ar: 'Uwell Caliburn G2', en: 'Uwell Caliburn G2' }, brand: 'Uwell', price: 90, rating: 4.6, reviews: 156, image: 'assets/img/vapes/4.webp', status: 'available' },
+            { id: 105, name: { ar: 'Voopoo Drag X', en: 'Voopoo Drag X' }, brand: 'Voopoo', price: 280, rating: 4.4, reviews: 88, image: 'assets/img/vapes/5.webp', status: 'out_of_stock' },
+            { id: 106, name: { ar: 'Oxva Xlim Pro', en: 'Oxva Xlim Pro' }, brand: 'Oxva', price: 130, rating: 4.5, reviews: 67, image: 'assets/img/vapes/6.webp', status: 'available' },
+            { id: 107, name: { ar: 'SMOK Nord 5', en: 'SMOK Nord 5' }, brand: 'SMOK', price: 220, rating: 4.3, reviews: 145, image: 'assets/img/vapes/7.webp', status: 'limited' },
+            { id: 108, name: { ar: 'Vaporesso Gen 200', en: 'Vaporesso Gen 200' }, brand: 'Vaporesso', price: 320, rating: 4.9, reviews: 230, image: 'assets/img/vapes/8.webp', status: 'available' },
+            { id: 109, name: { ar: 'GeekVape Wenax H1', en: 'GeekVape Wenax H1' }, brand: 'GeekVape', price: 110, rating: 4.2, reviews: 54, image: 'assets/img/vapes/1.webp', status: 'available' },
+            { id: 110, name: { ar: 'Uwell Valyrian 3', en: 'Uwell Valyrian 3' }, brand: 'Uwell', price: 300, rating: 4.7, reviews: 198, image: 'assets/img/vapes/2.webp', status: 'limited' },
+            { id: 111, name: { ar: 'Voopoo Vinci 3', en: 'Voopoo Vinci 3' }, brand: 'Voopoo', price: 190, rating: 4.4, reviews: 122, image: 'assets/img/vapes/3.webp', status: 'out_of_stock' },
+            { id: 112, name: { ar: 'Oxva Origin 2', en: 'Oxva Origin 2' }, brand: 'Oxva', price: 240, rating: 4.6, reviews: 175, image: 'assets/img/vapes/4.webp', status: 'available' },
+            { id: 501, name: { ar: 'ZYN Cool Mint 6mg', en: 'ZYN Cool Mint 6mg' }, brand: 'ZYN', price: 30, rating: 4.5, reviews: 120, image: 'assets/img/nicotine-pouches/1.webp', status: 'available' },
+            { id: 502, name: { ar: 'VELO Citrus Burst 3mg', en: 'VELO Citrus Burst 3mg' }, brand: 'VELO', price: 28, rating: 4.3, reviews: 85, image: 'assets/img/nicotine-pouches/2.webp', status: 'limited' },
+            { id: 503, name: { ar: 'Nordic Spirit Coffee 12mg', en: 'Nordic Spirit Coffee 12mg' }, brand: 'Nordic Spirit', price: 35, rating: 4.7, reviews: 95, image: 'assets/img/nicotine-pouches/3.webp', status: 'available' },
+            { id: 504, name: { ar: 'Lyft Freeze 20mg+', en: 'Lyft Freeze 20mg+' }, brand: 'Lyft', price: 45, rating: 4.8, reviews: 200, image: 'assets/img/nicotine-pouches/4.webp', status: 'out_of_stock' },
+            { id: 505, name: { ar: 'Skruf Fresh 6mg', en: 'Skruf Fresh 6mg' }, brand: 'Skruf', price: 32, rating: 4.4, reviews: 65, image: 'assets/img/nicotine-pouches/5.webp', status: 'available' },
+            { id: 506, name: { ar: 'ZYN Tropical 12mg', en: 'ZYN Tropical 12mg' }, brand: 'ZYN', price: 38, rating: 4.6, reviews: 150, image: 'assets/img/nicotine-pouches/6.webp', status: 'limited' },
+            { id: 507, name: { ar: 'VELO Tobacco 6mg', en: 'VELO Tobacco 6mg' }, brand: 'VELO', price: 30, rating: 4.2, reviews: 70, image: 'assets/img/nicotine-pouches/7.webp', status: 'available' },
+            { id: 508, name: { ar: 'Nordic Spirit Mint 3mg', en: 'Nordic Spirit Mint 3mg' }, brand: 'Nordic Spirit', price: 18, rating: 4.1, reviews: 40, image: 'assets/img/nicotine-pouches/8.webp', status: 'out_of_stock' },
+            { id: 401, name: { ar: 'Vaporesso GTX Coil 0.2Ω', en: 'Vaporesso GTX Coil 0.2Ω' }, brand: 'Vaporesso', price: 5, rating: 4.5, reviews: 25, image: 'assets/img/pods-coils/1.webp', status: 'available' },
+            { id: 402, name: { ar: 'Uwell Caliburn G Pod', en: 'Uwell Caliburn G Pod' }, brand: 'Uwell', price: 8, rating: 4.7, reviews: 40, image: 'assets/img/pods-coils/2.webp', status: 'limited' },
+            { id: 403, name: { ar: 'Voopoo PnP Coil 0.3Ω', en: 'Voopoo PnP Coil 0.3Ω' }, brand: 'Voopoo', price: 6, rating: 4.4, reviews: 32, image: 'assets/img/pods-coils/3.webp', status: 'available' },
+            { id: 404, name: { ar: 'Smok Nord Pod 0.6Ω', en: 'Smok Nord Pod 0.6Ω' }, brand: 'Smok', price: 7, rating: 4.3, reviews: 18, image: 'assets/img/pods-coils/4.webp', status: 'out_of_stock' },
+            { id: 405, name: { ar: 'GeekVape Aegis Coil 0.2Ω', en: 'GeekVape Aegis Coil 0.2Ω' }, brand: 'GeekVape', price: 6, rating: 4.6, reviews: 37, image: 'assets/img/pods-coils/5.webp', status: 'available' },
+            { id: 406, name: { ar: 'Uwell Caliburn A2 Pod 1.0Ω', en: 'Uwell Caliburn A2 Pod 1.0Ω' }, brand: 'Uwell', price: 9, rating: 4.8, reviews: 55, image: 'assets/img/pods-coils/6.webp', status: 'limited' },
+            { id: 407, name: { ar: 'Vaporesso XROS Pod 0.8Ω', en: 'Vaporesso XROS Pod 0.8Ω' }, brand: 'Vaporesso', price: 10, rating: 4.5, reviews: 42, image: 'assets/img/pods-coils/7.webp', status: 'available' },
+            { id: 408, name: { ar: 'Smok RPM Coil 0.4Ω', en: 'Smok RPM Coil 0.4Ω' }, brand: 'Smok', price: 5, rating: 4.2, reviews: 20, image: 'assets/img/pods-coils/8.webp', status: 'out_of_stock' },
+            { id: 'prod1', name: { ar: 'سحبة جاهزة 5000 موشة - عنب مثلج', en: 'Disposable 5000 Puffs - Icy Grape' }, brand: 'Elf Bar', price: 65, rating: 4.5, reviews: 88, image: 'assets/img/home/best-sellers/1.webp', status: 'available' },
+            { id: 'prod2', name: { ar: 'جهاز Vaporesso XROS 3 Kit', en: 'Vaporesso XROS 3 Kit' }, brand: 'Vaporesso', price: 180, rating: 4.7, reviews: 150, image: 'assets/img/home/best-sellers/2.webp', status: 'limited' },
+            { id: 'prod3', name: { ar: 'نكهة Nasty Juice - Slow Blow', en: 'Nasty Juice - Slow Blow' }, brand: 'Nasty', price: 55, rating: 4.6, reviews: 210, image: 'assets/img/home/best-sellers/3.webp', status: 'available' },
+            { id: 'prod4', name: { ar: 'كويلات GeekVape Z 0.2ohm', en: 'GeekVape Z Coils 0.2ohm' }, brand: 'GeekVape', price: 45, rating: 4.4, reviews: 65, image: 'assets/img/home/best-sellers/4.webp', status: 'out_of_stock' },
+            { id: 'prod5', name: { ar: 'أكياس نيكوتين ZYN - نعناع مثلج', en: 'ZYN Nicotine Pouches - Cool Mint' }, brand: 'ZYN', price: 30, rating: 4.3, reviews: 95, image: 'assets/img/home/offers/1.webp', status: 'available' },
+            { id: 'prod6', name: { ar: 'طقم SMOK RPM 5 Kit كامل', en: 'SMOK RPM 5 Kit Full' }, brand: 'SMOK', price: 200, rating: 4.6, reviews: 130, image: 'assets/img/home/offers/2.webp', status: 'limited' },
+            { id: 'prod7', name: { ar: 'نكهة VGOD - Cubano Silver', en: 'VGOD - Cubano Silver' }, brand: 'VGOD', price: 49, rating: 4.5, reviews: 78, image: 'assets/img/home/offers/3.webp', status: 'available' },
+            { id: 'prod8', name: { ar: 'حقيبة حمل أجهزة الفيب', en: 'Vape Carrying Case' }, brand: 'AIKEN', price: 51, rating: 4.2, reviews: 35, image: 'assets/img/home/offers/4.webp', status: 'out_of_stock' },
+            { id: 'prod9', name: { ar: 'سحبة Elf Bar 8000 - توت مشكل', en: 'Elf Bar 8000 - Mixed Berry' }, brand: 'Elf Bar', price: 85, rating: 4.7, reviews: 160, image: 'assets/img/home/latest-products/1.webp', status: 'available' },
+            { id: 'prod10', name: { ar: 'بودات Uwell Caliburn G3', en: 'Uwell Caliburn G3 Pods' }, brand: 'Uwell', price: 38, rating: 4.4, reviews: 55, image: 'assets/img/home/latest-products/2.webp', status: 'limited' },
+            { id: 'prod11', name: { ar: 'نكهة Pod Salt - Mango Ice', en: 'Pod Salt - Mango Ice' }, brand: 'Pod Salt', price: 42, rating: 4.3, reviews: 70, image: 'assets/img/home/latest-products/3.webp', status: 'available' },
+            { id: 'prod12', name: { ar: 'شاحن Nitecore i2', en: 'Nitecore i2 Charger' }, brand: 'Nitecore', price: 75, rating: 4.6, reviews: 90, image: 'assets/img/home/latest-products/4.webp', status: 'out_of_stock' },
+            { id: 901, name: { ar: 'Bong زجاجي شفاف مع Ice Catcher', en: 'Clear Glass Bong with Ice Catcher' }, brand: 'AIKEN Glass', price: 150, rating: 4.5, reviews: 22, image: 'assets/img/glass/1.webp', status: 'available' },
+            { id: 902, name: { ar: 'Dab Rig كوارتز مع Percolator', en: 'Quartz Dab Rig with Percolator' }, brand: 'AIKEN Glass', price: 200, rating: 4.7, reviews: 18, image: 'assets/img/glass/2.webp', status: 'limited' },
+            { id: 903, name: { ar: 'Water Pipe زجاجي أزرق', en: 'Blue Glass Water Pipe' }, brand: 'AIKEN Glass', price: 120, rating: 4.3, reviews: 15, image: 'assets/img/glass/3.webp', status: 'available' },
+            { id: 904, name: { ar: 'Hand Pipe سيراميك أخضر', en: 'Green Ceramic Hand Pipe' }, brand: 'AIKEN Glass', price: 60, rating: 4.1, reviews: 30, image: 'assets/img/glass/4.webp', status: 'out_of_stock' },
+            { id: 905, name: { ar: 'Bubbler زجاجي متعدد الألوان', en: 'Multicolor Glass Bubbler' }, brand: 'AIKEN Glass', price: 180, rating: 4.6, reviews: 25, image: 'assets/img/glass/5.webp', status: 'available' },
+            { id: 906, name: { ar: 'Hookah زجاجي كبير', en: 'Large Glass Hookah' }, brand: 'AIKEN Glass', price: 250, rating: 4.8, reviews: 12, image: 'assets/img/glass/6.webp', status: 'limited' },
+            { id: 907, name: { ar: 'Chillum زجاجي أسود', en: 'Black Glass Chillum' }, brand: 'AIKEN Glass', price: 40, rating: 4.0, reviews: 20, image: 'assets/img/glass/7.webp', status: 'available' },
+            { id: 908, name: { ar: 'Sherlock Pipe زجاجي ملون', en: 'Colored Glass Sherlock Pipe' }, brand: 'AIKEN Glass', price: 90, rating: 4.4, reviews: 16, image: 'assets/img/glass/8.webp', status: 'out_of_stock' },
+            { id: 601, name: { ar: 'زجاج تانك GeekVape Aegis', en: 'GeekVape Aegis Tank Glass' }, brand: 'GeekVape', price: 25, rating: 4.5, reviews: 30, image: 'assets/img/accessories/1.webp', status: 'available' },
+            { id: 602, name: { ar: 'شاحن Nitecore i2', en: 'Nitecore i2 Charger' }, brand: 'Nitecore', price: 75, rating: 4.7, reviews: 65, image: 'assets/img/accessories/2.webp', status: 'limited' },
+            { id: 603, name: { ar: 'بطارية Sony VTC6 18650', en: 'Sony VTC6 18650 Battery' }, brand: 'Sony', price: 40, rating: 4.8, reviews: 120, image: 'assets/img/accessories/3.webp', status: 'available' },
+            { id: 604, name: { ar: 'جراب سيليكون لـ Vaporesso XROS', en: 'Silicone Case for Vaporesso XROS' }, brand: 'Vaporesso', price: 20, rating: 4.3, reviews: 22, image: 'assets/img/accessories/4.webp', status: 'out_of_stock' },
+            { id: 605, name: { ar: 'أدوات تنظيف كويل متكاملة', en: 'Complete Coil Cleaning Kit' }, brand: 'GeekVape', price: 15, rating: 4.1, reviews: 18, image: 'assets/img/accessories/5.webp', status: 'available' },
+            { id: 606, name: { ar: 'حامل أجهزة فيب خشبي', en: 'Wooden Vape Stand' }, brand: 'Smok', price: 60, rating: 4.6, reviews: 40, image: 'assets/img/accessories/6.webp', status: 'limited' },
+            { id: 607, name: { ar: 'كابل شحن Type-C سريع', en: 'Fast Type-C Charging Cable' }, brand: 'Voopoo', price: 30, rating: 4.4, reviews: 55, image: 'assets/img/accessories/7.webp', status: 'available' },
+            { id: 608, name: { ar: 'زجاج تانك Smok TFV18', en: 'Smok TFV18 Tank Glass' }, brand: 'Smok', price: 22, rating: 4.2, reviews: 25, image: 'assets/img/accessories/8.webp', status: 'out_of_stock' },
+            { id: 201, name: { ar: 'Nasty Juice Salt - Slow Blow', en: 'Nasty Juice Salt - Slow Blow' }, brand: 'Nasty', price: 55, rating: 4.5, reviews: 210, image: 'assets/img/e-liquids/1.webp', status: 'available' },
+            { id: 202, name: { ar: 'Pod Salt - Mango Ice', en: 'Pod Salt - Mango Ice' }, brand: 'Pod Salt', price: 42, rating: 4.3, reviews: 112, image: 'assets/img/e-liquids/2.webp', status: 'limited' },
+            { id: 203, name: { ar: 'VGOD Salt - Cubano', en: 'VGOD Salt - Cubano' }, brand: 'VGOD', price: 70, rating: 4.7, reviews: 89, image: 'assets/img/e-liquids/3.webp', status: 'available' },
+            { id: 204, name: { ar: 'Dinner Lady Salt - Lemon Tart', en: 'Dinner Lady Salt - Lemon Tart' }, brand: 'Dinner Lady', price: 48, rating: 4.6, reviews: 156, image: 'assets/img/e-liquids/4.webp', status: 'out_of_stock' },
+            { id: 205, name: { ar: 'Nasty Juice - Slow Blow', en: 'Nasty Juice - Slow Blow' }, brand: 'Nasty', price: 85, rating: 4.6, reviews: 310, image: 'assets/img/e-liquids/5.webp', status: 'available' },
+            { id: 206, name: { ar: 'Dinner Lady - Lemon Tart', en: 'Dinner Lady - Lemon Tart' }, brand: 'Dinner Lady', price: 75, rating: 4.8, reviews: 256, image: 'assets/img/e-liquids/6.webp', status: 'limited' },
+            { id: 207, name: { ar: 'BLVK - Unicorn', en: 'BLVK - Unicorn' }, brand: 'BLVK', price: 95, rating: 4.7, reviews: 189, image: 'assets/img/e-liquids/7.webp', status: 'available' },
+            { id: 208, name: { ar: 'Twist - Mint 0°', en: 'Twist - Mint 0°' }, brand: 'Twist', price: 90, rating: 4.3, reviews: 67, image: 'assets/img/e-liquids/8.webp', status: 'out_of_stock' },
+            { id: 801, name: { ar: 'CBD Vape Full Spectrum - فراولة', en: 'CBD Vape Full Spectrum - Strawberry' }, brand: 'Bloom', price: 95, rating: 4.5, reviews: 45, image: 'assets/img/cbd/1.webp', status: 'available' },
+            { id: 802, name: { ar: 'زيت CBD واسع الطيف - 1000mg', en: 'CBD Oil Broad Spectrum - 1000mg' }, brand: "Charlotte's Web", price: 150, rating: 4.7, reviews: 68, image: 'assets/img/cbd/2.webp', status: 'limited' },
+            { id: 803, name: { ar: 'حلوى CBD معزولة - مانجو', en: 'CBD Gummies Isolate - Mango' }, brand: 'MoonWlkr', price: 55, rating: 4.4, reviews: 52, image: 'assets/img/cbd/3.webp', status: 'available' },
+            { id: 804, name: { ar: 'كبسولات CBD كاملة الطيف - 2000mg', en: 'CBD Capsules Full Spectrum - 2000mg' }, brand: 'CBDfx', price: 210, rating: 4.8, reviews: 78, image: 'assets/img/cbd/4.webp', status: 'out_of_stock' },
+            { id: 805, name: { ar: 'كريم CBD واسع الطيف - نعناع', en: 'CBD Cream Broad Spectrum - Mint' }, brand: 'Lord Jones', price: 85, rating: 4.3, reviews: 34, image: 'assets/img/cbd/5.webp', status: 'available' },
+            { id: 806, name: { ar: 'CBD Vape معزول - توت أزرق', en: 'CBD Vape Isolate - Blueberry' }, brand: '3Chi', price: 110, rating: 4.6, reviews: 63, image: 'assets/img/cbd/6.webp', status: 'limited' },
+            { id: 807, name: { ar: 'زيت CBD كامل الطيف - 500mg', en: 'CBD Oil Full Spectrum - 500mg' }, brand: 'Bloom', price: 80, rating: 4.2, reviews: 40, image: 'assets/img/cbd/7.webp', status: 'available' },
+            { id: 808, name: { ar: 'حلوى CBD واسعة الطيف - عنب', en: 'CBD Gummies Broad Spectrum - Grape' }, brand: "Charlotte's Web", price: 70, rating: 4.5, reviews: 56, image: 'assets/img/cbd/8.webp', status: 'out_of_stock' },
+            { id: 1, name: { ar: 'إلف بار 3000 - مانجو آيس', en: 'Elf Bar 3000 - Mango Ice' }, brand: 'Elf Bar', price: 45, rating: 4.5, reviews: 128, image: 'assets/img/disposables/1.webp', status: 'available' },
+            { id: 2, name: { ar: 'فابوريسو 5000 - نعناع', en: 'Vaporesso 5000 - Mint' }, brand: 'Vaporesso', price: 65, rating: 4.8, reviews: 95, image: 'assets/img/disposables/2.webp', status: 'limited' },
+            { id: 3, name: { ar: 'ناستي 8000 - توت ازرق', en: 'Nasty 8000 - Blueberry' }, brand: 'Nasty', price: 85, rating: 4.3, reviews: 210, image: 'assets/img/disposables/3.webp', status: 'available' },
+            { id: 4, name: { ar: 'بود سالت 10000 - فراوله', en: 'Pod Salt 10000 - Strawberry' }, brand: 'Pod Salt', price: 110, rating: 4.7, reviews: 156, image: 'assets/img/disposables/4.webp', status: 'out_of_stock' },
+            { id: 5, name: { ar: 'زين 3000 - ليمون', en: 'ZYN 3000 - Lemon' }, brand: 'ZYN', price: 40, rating: 4.2, reviews: 42, image: 'assets/img/disposables/5.webp', status: 'available' },
+            { id: 6, name: { ar: 'إلف بار 5000 - مانجو آيس', en: 'Elf Bar 5000 - Mango Ice' }, brand: 'Elf Bar', price: 70, rating: 4.6, reviews: 180, image: 'assets/img/disposables/6.webp', status: 'limited' },
+            { id: 7, name: { ar: 'فابوريسو 8000 - نعناع', en: 'Vaporesso 8000 - Mint' }, brand: 'Vaporesso', price: 90, rating: 4.4, reviews: 67, image: 'assets/img/disposables/7.webp', status: 'available' },
+            { id: 8, name: { ar: 'ناستي 10000 - توت ازرق', en: 'Nasty 10000 - Blueberry' }, brand: 'Nasty', price: 120, rating: 4.9, reviews: 230, image: 'assets/img/disposables/8.webp', status: 'out_of_stock' },
+            { id: 9, name: { ar: 'بود سالت 3000 - فراوله', en: 'Pod Salt 3000 - Strawberry' }, brand: 'Pod Salt', price: 38, rating: 4.1, reviews: 88, image: 'assets/img/disposables/9.webp', status: 'available' },
+            { id: 10, name: { ar: 'زين 5000 - ليمون', en: 'ZYN 5000 - Lemon' }, brand: 'ZYN', price: 55, rating: 4.0, reviews: 34, image: 'assets/img/disposables/10.webp', status: 'limited' },
+            { id: 11, name: { ar: 'إلف بار 8000 - نعناع', en: 'Elf Bar 8000 - Mint' }, brand: 'Elf Bar', price: 80, rating: 4.7, reviews: 145, image: 'assets/img/disposables/11.webp', status: 'available' },
+            { id: 12, name: { ar: 'فابوريسو 10000 - مانجو آيس', en: 'Vaporesso 10000 - Mango Ice' }, brand: 'Vaporesso', price: 115, rating: 4.8, reviews: 198, image: 'assets/img/disposables/12.webp', status: 'out_of_stock' }
+        ];
+
+        // ==================== UTILITY FUNCTIONS ====================
+        function getDetailsPage(productId) {
+            const id = productId;
+            if (typeof id === 'string' && id.startsWith('prod')) return 'index-details.html';
+            const numId = Number(id);
+            if (numId >= 701 && numId <= 708) return 'thc-details.html';
+            if (numId >= 101 && numId <= 112) return 'vape-details.html';
+            if (numId >= 501 && numId <= 508) return 'nicotine-pouches-details.html';
+            if (numId >= 401 && numId <= 408) return 'pods-coils-details.html';
+            if (numId >= 901 && numId <= 908) return 'glass-details.html';
+            if (numId >= 601 && numId <= 608) return 'accessories-details.html';
+            if (numId >= 201 && numId <= 208) return 'e-liquid-details.html';
+            if (numId >= 801 && numId <= 808) return 'cbd-details.html';
+            if (numId >= 1 && numId <= 12) return 'details.html';
+            return 'index.html';
+        }
+
+        function getProductById(id) {
+            return allProducts.find(p => String(p.id) === String(id));
+        }
+
+        function getStatusText(status, lang) {
+            const statusMap = {
+                available: { ar: '🟢 متوفر', en: '🟢 Available' },
+                limited: { ar: '🟠 كمية محدودة', en: '🟠 Limited Quantity' },
+                out_of_stock: { ar: '🔴 غير متوفر', en: '🔴 Out of Stock' },
+            };
+            return statusMap[status]?.[lang] || statusMap.available[lang];
+        }
+
+        function getStatusClass(status) {
+            return status === 'available' ? 'available' : status === 'limited' ? 'limited' : 'out';
+        }
+
+        // ==================== TRANSLATIONS ====================
+        const translations = {
+            ar: {
+                home: 'الرئيسية', wishlist: 'المفضلة', orders: 'طلباتي', settings: 'الإعدادات',
+                personal_info: 'البيانات الشخصية', notifications: 'الإشعارات',language_theme: "اللغة والمظهر", delete_account: 'حذف الحساب',
+                back_shop: 'العودة للتسوق', logout: 'تسجيل الخروج', wishlist_title: 'قائمة المفضلة',
+                items_count: 'عدد المنتجات', empty_title: 'لا توجد منتجات في المفضلة',
+                empty_desc: 'استكشف متجرنا وأضف منتجاتك المفضلة لتظهر هنا.', shop_now: 'تسوق الآن',
+                view_details: 'عرض التفاصيل', removed_from_wishlist: 'تمت إزالة المنتج من المفضلة',
+                added_to_wishlist: 'تمت الإضافة إلى المفضلة'
+            },
+            en: {
+                home: 'Home', wishlist: 'Wishlist', orders: 'My Orders', settings: 'Settings',
+                personal_info: 'Personal Info', notifications: 'Notifications', language_theme: "Language & Appearance", delete_account: 'Delete Account',
+                back_shop: 'Back to Shop', logout: 'Logout', wishlist_title: 'Wishlist',
+                items_count: 'Items', empty_title: 'No products in wishlist',
+                empty_desc: 'Explore our store and add your favorite products to see them here.',
+                shop_now: 'Shop Now', view_details: 'View Details',
+                removed_from_wishlist: 'Removed from wishlist', added_to_wishlist: 'Added to wishlist'
+            }
+        };
+
+        // ==================== STATE ====================
+        let currentLang = localStorage.getItem('lang') || 'ar';
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+
+        function applyTheme() {
+            if (currentTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            } else {
+                document.documentElement.classList.remove('light-mode');
+            }
+        }
+
+        function applyLanguage() {
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang]?.[key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+            renderWishlist();
+        }
+
+        function getUserName() {
+            return localStorage.getItem('username') || 'مستخدم';
+        }
+
+        function isLoggedIn() {
+            return localStorage.getItem('isLoggedIn') === 'true';
+        }
+
+        function requireAuth() {
+            if (!isLoggedIn()) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            return true;
+        }
+
+        // ==================== WISHLIST OPERATIONS ====================
+        function getWishlistItems() {
+            const items = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('wishlist_') && localStorage.getItem(key) === 'true') {
+                    const id = key.replace('wishlist_', '');
+                    const product = getProductById(id);
+                    if (product) items.push(product);
+                }
+            }
+            return items;
+        }
+
+        function removeWithAnimation(heartBtn, productId) {
+            // تغيير الأيقونة مع أنيميشن صغير
+            heartBtn.classList.add('removing');
+            const icon = heartBtn.querySelector('i');
+            icon.className = 'ri-heart-line'; // تغيير إلى قلب فارغ
+            // بعد انتهاء أنيميشن القلب، نبدأ أنيميشن إزالة البطاقة
+            setTimeout(() => {
+                const card = heartBtn.closest('.product-card');
+                if (card) {
+                    card.classList.add('removing');
+                    setTimeout(() => {
+                        localStorage.removeItem(`wishlist_${productId}`);
+                        renderWishlist();
+                        showToast(translations[currentLang].removed_from_wishlist, 'ri-heart-broken-line');
+                    }, 300);
+                }
+            }, 200);
+        }
+
+        function renderWishlist() {
+            const container = document.getElementById('wishlist-container');
+            const countEl = document.getElementById('wishlist-count');
+            const wishlistItems = getWishlistItems();
+
+            if (countEl) countEl.textContent = wishlistItems.length;
+            if (!container) return;
+
+            if (wishlistItems.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="ri-heart-3-line empty-state__icon"></i>
+                        <h2 class="empty-state__title">${translations[currentLang].empty_title}</h2>
+                        <p class="empty-state__desc">${translations[currentLang].empty_desc}</p>
+                        <a href="shop.html" class="btn-shop">
+                            <i class="ri-shopping-cart-2-line"></i>
+                            ${translations[currentLang].shop_now}
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            const cardsHTML = wishlistItems.map((product, index) => {
+                const productName = product.name?.[currentLang] || product.name?.ar || product.nameAr || 'Unknown';
+                const brand = product.brand || 'AIKEN';
+                const price = product.price ?? 0;
+                const rating = product.rating || 0;
+                const reviews = product.reviews || 0;
+                const statusText = getStatusText(product.status, currentLang);
+                const statusClass = getStatusClass(product.status);
+                const detailsPage = getDetailsPage(product.id);
+                const imageSrc = product.image || product.imgSrc || product.img || 'assets/img/placeholder.webp';
+
+                return `
+                    <div class="product-card" style="--i:${index}">
+                        <div class="product-card__image-wrapper" onclick="window.location.href='${detailsPage}?id=${product.id}'">
+                            <img src="${imageSrc}" alt="${productName}" class="product-card__image" loading="lazy">
+                            <button class="wishlist-heart-btn" onclick="event.stopPropagation(); removeWithAnimation(this, '${product.id}')">
+                                <i class="ri-heart-fill"></i>
+                            </button>
+                            <div class="product-card__status">
+                                <span class="status-dot ${statusClass}"></span>
+                                ${statusText}
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__brand">${brand}</span>
+                            <h3 class="product-card__name">${productName}</h3>
+                            <div class="product-card__price">
+                                ${price} <span>${currentLang === 'ar' ? '$' : '$'}</span>
+                            </div>
+                            <div class="product-card__rating">
+                                <i class="ri-star-fill"></i>
+                                ${rating} (${reviews})
+                            </div>
+                            <div class="product-card__actions">
+                                <button class="btn btn-details" onclick="window.location.href='${detailsPage}?id=${product.id}'">
+                                    <i class="ri-eye-line"></i> ${translations[currentLang].view_details}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `<div class="wishlist-grid">${cardsHTML}</div>`;
+        }
+
+        // ==================== TOAST ====================
+        function showToast(message, iconClass = 'ri-information-line') {
+            let toast = document.getElementById('toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.style.cssText = `
+                    position: fixed; bottom: 2rem; left: 50%;
+                    transform: translateX(-50%) translateY(100px);
+                    background-color: var(--bg-card); color: var(--text-light);
+                    border: 1px solid var(--border-color); border-radius: 1rem;
+                    padding: 0.9rem 1.8rem; font-size: 0.95rem; font-weight: 500;
+                    display: flex; align-items: center; gap: 0.6rem;
+                    box-shadow: var(--shadow-card-hover); z-index: 9999;
+                    transition: transform 0.4s ease, opacity 0.4s ease;
+                    opacity: 0; pointer-events: none;
+                `;
+                document.body.appendChild(toast);
+            }
+            toast.innerHTML = `<i class="${iconClass}" style="color: var(--green); font-size: 1.2rem;"></i> ${message}`;
+            requestAnimationFrame(() => {
+                toast.style.transform = 'translateX(-50%) translateY(0)';
+                toast.style.opacity = '1';
+            });
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(100px)';
+                toast.style.opacity = '0';
+            }, 2500);
+        }
+
+        // ==================== SIDEBAR ====================
+        function initSidebar() {
+            const usernameDisplay = document.getElementById('user-name-display');
+            if (usernameDisplay) usernameDisplay.textContent = getUserName();
+
+            const toggle = document.getElementById('header-toggle');
+            const sidebar = document.getElementById('sidebar');
+            if (toggle && sidebar) {
+                toggle.addEventListener('click', () => sidebar.classList.toggle('show-sidebar'));
+                document.addEventListener('click', (e) => {
+                    if (!sidebar.contains(e.target) && !toggle.contains(e.target) && window.innerWidth < 1150) {
+                        sidebar.classList.remove('show-sidebar');
+                    }
+                });
+            }
+
+            const drops = document.querySelectorAll('.drop');
+            drops.forEach(item => {
+                const dropBtn = item.querySelector('.drop__button');
+                const dropList = item.querySelector('.drop__list');
+                if (dropBtn && dropList) {
+                    dropBtn.addEventListener('click', () => {
+                        const openItem = document.querySelector('.show-drop');
+                        if (openItem && openItem !== item) {
+                            openItem.querySelector('.drop__list').removeAttribute('style');
+                            openItem.classList.remove('show-drop');
+                        }
+                        if (item.classList.contains('show-drop')) {
+                            dropList.removeAttribute('style');
+                            item.classList.remove('show-drop');
+                        } else {
+                            dropList.style.height = dropList.scrollHeight + 'px';
+                            item.classList.add('show-drop');
+                        }
+                    });
+                }
+            });
+
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('isLoggedIn', 'false');
+                    window.location.href = 'login.html';
+                });
+            }
+        }
+
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!requireAuth()) return;
+            applyTheme();
+            applyLanguage();
+            initSidebar();
+
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'theme') {
+                    currentTheme = e.newValue || 'dark';
+                    applyTheme();
+                }
+                if (e.key === 'lang') {
+                    currentLang = e.newValue || 'ar';
+                    applyLanguage();
+                }
+                if (e.key && e.key.startsWith('wishlist_')) {
+                    renderWishlist();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

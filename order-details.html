@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الطلب | AIKEN VAPE</title>
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+
+    <!--=============== GOOGLE FONTS ===============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /*=============== VARIABLES CSS ===============*/
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            --sidebar-bg: rgba(0, 0, 0, 0.85);
+            --sidebar-text: #ffffff;
+            --sidebar-link-hover: rgba(255, 255, 255, 0.1);
+            --sidebar-active: rgba(134, 216, 0, 0.15);
+            --sidebar-border: rgba(255, 255, 255, 0.12);
+            --status-available: #86D800;
+            --status-limited: #FFA500;
+            --status-out: #FF4444;
+            --badge-bg: rgba(0, 0, 0, 0.6);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.5);
+            --body-font: "Poppins", sans-serif;
+            --header-height: 3.5rem;
+            --transition-speed: 0.3s;
+        }
+
+        :root.light-mode {
+            --bg-dark: #f3f5f7;
+            --bg-card: #ffffff;
+            --bg-alt: #e9edf2;
+            --bg-img: #f7f8fa;
+            --text-light: #101828;
+            --text-muted: #667085;
+            --border-color: #d9dee7;
+            --header-bg: #ffffff;
+            --footer-bg: #f8fafc;
+            --hover-bg: #eef2f6;
+            --tag-bg: #edf1f5;
+            --hero-bg-end: #f3f5f7;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            --sidebar-bg: rgba(255, 255, 255, 0.9);
+            --sidebar-text: #101828;
+            --sidebar-link-hover: rgba(0, 0, 0, 0.06);
+            --sidebar-active: rgba(91, 185, 0, 0.12);
+            --sidebar-border: rgba(0, 0, 0, 0.1);
+            --status-available: #5bb900;
+            --status-limited: #e68a00;
+            --status-out: #d92d20;
+            --badge-bg: rgba(255, 255, 255, 0.85);
+            --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --shadow-card-hover: 0 16px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /*=============== BASE ===============*/
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: 0.938rem;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            font-family: var(--body-font);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        /*=============== LAYOUT ===============*/
+        .main {
+            padding-top: calc(var(--header-height) + 2rem);
+            padding-bottom: 3rem;
+            margin-inline: 1.5rem;
+            color: var(--text-light);
+            transition: color var(--transition-speed);
+        }
+
+        .main__container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /*=============== HEADER ===============*/
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            margin: 1rem;
+        }
+
+        .header__container {
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--header-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-inline: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .header__logo {
+            display: flex;
+            align-items: center;
+            column-gap: 0.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .header__logo i {
+            font-size: 1.5rem;
+            color: var(--green);
+        }
+
+        .header__toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            background-color: var(--tag-bg);
+            color: var(--text-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .header__toggle:hover {
+            background-color: var(--hover-bg);
+        }
+
+        /*=============== SIDEBAR ===============*/
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -120%;
+            bottom: 0;
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 1.5rem 1rem 2rem;
+            margin: 1rem;
+            border-radius: 1.25rem;
+            border: 1px solid var(--sidebar-border);
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar.show-sidebar {
+            right: 0;
+        }
+
+        .sidebar__logo {
+            display: flex;
+            align-items: center;
+            column-gap: 0.75rem;
+            color: var(--sidebar-text);
+            padding: 0 0 1.25rem 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--sidebar-border);
+            transition: color var(--transition-speed);
+        }
+
+        .sidebar__logo i {
+            font-size: 1.75rem;
+            color: var(--green);
+        }
+
+        .sidebar__content {
+            display: grid;
+            row-gap: 0.4rem;
+            padding-top: 1.5rem;
+            flex: 1;
+        }
+
+        .sidebar__link {
+            display: flex;
+            align-items: center;
+            column-gap: 0.75rem;
+            color: var(--sidebar-text);
+            padding: 0.75rem 0.9rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .sidebar__link i {
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar__link:hover {
+            background-color: var(--sidebar-link-hover);
+        }
+
+        .sidebar__link.active-link {
+            background-color: var(--sidebar-active);
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .sidebar__link.active-link::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 24px;
+            background-color: var(--green);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .sidebar__logout {
+            margin-top: auto;
+            border-top: 1px solid var(--sidebar-border);
+            padding-top: 1rem;
+            color: #ff6b6b;
+        }
+
+        .sidebar__logout:hover {
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+
+        /* Dropdown */
+        .drop__button {
+            width: 100%;
+            flex-direction: row;
+            border: none;
+            outline: none;
+            background: none;
+            font: 500 0.95rem var(--body-font);
+            cursor: pointer;
+            color: var(--sidebar-text);
+        }
+
+        .drop__arrow {
+            margin-right: auto;
+            transition: transform 0.4s;
+        }
+
+        .drop__list {
+            display: grid;
+            row-gap: 0.25rem;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s;
+        }
+
+        .drop__item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            column-gap: 0.75rem;
+            color: var(--sidebar-text);
+            padding: 0.6rem 0.5rem 0.6rem 1.5rem;
+            border-radius: 0.6rem;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .drop__item i {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .drop__item:hover {
+            background-color: var(--sidebar-link-hover);
+        }
+
+        .show-drop .drop__arrow {
+            transform: rotate(-180deg);
+        }
+
+        /*=============== PAGE HEADER ===============*/
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .page-title i {
+            color: var(--green);
+            font-size: 2.2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--green);
+        }
+
+        /*=============== ORDER DETAILS ===============*/
+        .details-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .detail-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .detail-card:hover {
+            box-shadow: var(--shadow-card-hover);
+            border-color: rgba(134, 216, 0, 0.3);
+        }
+
+        .detail-card__header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background-color: var(--bg-alt);
+        }
+
+        .detail-card__title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .detail-card__title i {
+            color: var(--green);
+        }
+
+        .detail-card__body {
+            padding: 1.5rem;
+        }
+
+        /* Order info grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .info-value.highlight {
+            color: var(--green);
+            font-size: 1.2rem;
+        }
+
+        /* Items table */
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .items-table th {
+            text-align: right;
+            padding: 0.75rem 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .items-table td {
+            padding: 1rem 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .items-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: var(--bg-img);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-image .placeholder {
+            font-size: 1.5rem;
+            color: var(--green);
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .item-option {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .item-quantity,
+        .item-unit-price,
+        .item-total {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .item-total {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* Shipping & payment */
+        .address-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .address-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .address-line i {
+            color: var(--green);
+            margin-top: 0.2rem;
+            width: 1.2rem;
+            text-align: center;
+        }
+
+        .address-line span {
+            flex: 1;
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--green);
+            color: #000000;
+            border-color: var(--green);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-muted);
+            border-color: var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .btn-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--bg-card);
+            border: 1px dashed var(--border-color);
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .empty-state__icon {
+            font-size: 5rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .empty-state__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .empty-state__desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .btn-shop {
+            background-color: var(--green);
+            color: #000000;
+            padding: 0.85rem 2.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid var(--green);
+        }
+
+        .btn-shop:hover {
+            background-color: transparent;
+            color: var(--green);
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px 20px;
+            box-shadow: var(--shadow-card);
+            pointer-events: auto;
+            animation: toastIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            max-width: 380px;
+        }
+
+        .toast.removing {
+            animation: toastOut 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 0; transform: translateY(-15px) scale(0.85); }
+        }
+
+        .toast-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .toast-icon.success { background: var(--green); }
+        .toast-icon.error { background: #ff6b6b; color: #fff; }
+
+        .toast-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /*=============== RESPONSIVE ===============*/
+        @media screen and (max-width: 768px) {
+            .main {
+                margin-inline: 1rem;
+                padding-top: calc(var(--header-height) + 1.5rem);
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .page-title i {
+                font-size: 1.7rem;
+            }
+
+            .detail-card__header,
+            .detail-card__body {
+                padding: 1rem;
+            }
+
+            .items-table th,
+            .items-table td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .item-image {
+                width: 45px;
+                height: 45px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .detail-card__header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* For large devices */
+        @media screen and (min-width: 1150px) {
+            .header {
+                margin: 1.5rem;
+                padding-right: 300px;
+                transition: padding 0.4s;
+            }
+
+            .header__container {
+                height: calc(var(--header-height) + 2rem);
+                padding-inline: 1.5rem;
+            }
+
+            .header__toggle {
+                display: none;
+            }
+
+            .sidebar {
+                right: 0;
+                width: 280px;
+                margin: 1.5rem;
+                padding: 2rem 1.5rem;
+                border-radius: 1.5rem;
+            }
+
+            .main {
+                padding-right: 300px;
+                padding-top: calc(var(--header-height) + 3rem);
+                transition: padding 0.4s;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            .header { margin-inline: 0.5rem; }
+            .sidebar { width: 200px; margin-inline: 0.5rem; }
+            .main { margin-inline: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!--=============== HEADER ===============-->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <i class="ri-leaf-line"></i>
+                <span>AIKEN VAPE & TOBACCO</span>
+            </a>
+
+            <button class="header__toggle" id="header-toggle" aria-label="Toggle Menu">
+                <i class="ri-apps-2-line"></i>
+            </button>
+        </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar__logo">
+            <i class="ri-user-3-line"></i>
+            <span id="user-name-display">مستخدم</span>
+        </div>
+
+        <div class="sidebar__content">
+            <!-- الرئيسية -->
+            <a href="account.html" class="sidebar__link">
+                <i class="ri-home-5-line"></i>
+                <span data-i18n="home">الرئيسية</span>
+            </a>
+
+            <!-- المفضلة -->
+            <a href="Favorites.html" class="sidebar__link">
+                <i class="ri-heart-line"></i>
+                <span data-i18n="wishlist">المفضلة</span>
+            </a>
+
+            <!-- طلباتي (نشط) -->
+            <a href="orders.html" class="sidebar__link active-link">
+                <i class="ri-shopping-bag-3-line"></i>
+                <span data-i18n="orders">طلباتي</span>
+            </a>
+
+            <!-- الإعدادات -->
+            <div class="drop">
+                <button class="sidebar__link drop__button">
+                    <i class="ri-settings-3-line"></i>
+                    <span data-i18n="settings">الإعدادات</span>
+                    <i class="ri-arrow-down-s-line drop__arrow"></i>
+                </button>
+
+                <ul class="drop__list">
+                    <li><a href="settings.html#profile-section" class="drop__item"><i class="ri-user-line"></i><span data-i18n="personal_info">البيانات الشخصية</span></a></li>
+                    <li><a href="settings.html#notifications-section" class="drop__item"><i class="ri-notification-2-line"></i><span data-i18n="notifications">الإشعارات</span></a></li>
+                    <li><a href="settings.html#language-section" class="drop__item"><i class="ri-global-line"></i><span data-i18n="language_theme">اللغة والمظهر</span></a></li>
+                    <li><a href="settings.html#delete-section" class="drop__item"><i class="ri-delete-bin-line"></i><span data-i18n="delete_account">حذف الحساب</span></a></li>
+                </ul>
+            </div>
+
+            <!-- العودة للتسوق -->
+            <a href="index.html" class="sidebar__link">
+                <i class="ri-shopping-cart-2-line"></i>
+                <span data-i18n="back_shop">العودة للتسوق</span>
+            </a>
+
+            <!-- تسجيل الخروج -->
+            <a href="#" class="sidebar__link sidebar__logout" id="logout-btn">
+                <i class="ri-logout-box-r-line"></i>
+                <span data-i18n="logout">تسجيل الخروج</span>
+            </a>
+        </div>
+    </nav>
+
+    <!--=============== MAIN CONTENT ===============-->
+    <main class="main">
+        <div class="main__container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                    <h1 class="page-title">
+                        <i class="ri-file-list-3-line"></i>
+                        <span data-i18n="order_details">تفاصيل الطلب</span>
+                    </h1>
+                </div>
+                <a href="orders.html" class="back-link">
+                    <i class="ri-arrow-right-line"></i>
+                    <span data-i18n="back_orders">العودة إلى الطلبات</span>
+                </a>
+            </div>
+
+            <!-- Order details container -->
+            <div id="order-details-container">
+                <!-- سيتم ملء المحتوى ديناميكياً -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!--=============== JAVASCRIPT ===============-->
+    <script>
+        /* ============================================
+           TRANSLATIONS (متوافقة مع صفحة الطلبات)
+           ============================================ */
+        const translations = {
+            ar: {
+                home: 'الرئيسية',
+                wishlist: 'المفضلة',
+                orders: 'طلباتي',
+                settings: 'الإعدادات',
+                personal_info: 'البيانات الشخصية',
+                notifications: 'الإشعارات',
+                language_theme: "اللغة والمظهر",
+                delete_account: 'حذف الحساب',
+                back_shop: 'العودة للتسوق',
+                logout: 'تسجيل الخروج',
+                orders_title: 'طلباتي',
+                order_details: 'تفاصيل الطلب',
+                back_orders: 'العودة إلى الطلبات',
+                order_number: 'رقم الطلب',
+                order_date: 'تاريخ الطلب',
+                order_status: 'حالة الطلب',
+                items: 'المنتجات',
+                unit_price: 'سعر الوحدة',
+                quantity: 'الكمية',
+                total_price: 'المجموع',
+                shipping_address: 'عنوان الشحن',
+                payment_method: 'طريقة الدفع',
+                order_total: 'الإجمالي الكلي',
+                reorder: 'إعادة طلب المنتجات',
+                reorder_success: 'تمت إضافة المنتجات إلى السلة بنجاح',
+                no_order_found: 'الطلب غير موجود',
+                no_order_desc: 'تعذر العثور على الطلب المطلوب، ربما تم حذفه أو أن الرابط غير صحيح.',
+                go_orders: 'الذهاب إلى طلباتي',
+                full_name: 'الاسم الكامل',
+                phone: 'رقم الهاتف',
+                address: 'العنوان',
+                apartment: 'الشقة / الوحدة',
+                zip_code: 'الرمز البريدي',
+                delivery_notes: 'ملاحظات التوصيل',
+                not_specified: 'غير محدد',
+                card: 'بطاقة ائتمان',
+                wallet: 'محفظة إلكترونية',
+                apple_pay: 'Apple Pay',
+                google_pay: 'Google Pay',
+                paypal: 'PayPal',
+                last4: 'آخر 4 أرقام',
+                card_holder: 'اسم حامل البطاقة',
+                order_status_pending: 'قيد المراجعة',
+                order_status_shipping: 'قيد الشحن',
+                order_status_delivered: 'تم التوصيل',
+                order_status_cancelled: 'ملغي',
+                pieces: 'قطعة',
+                pack: 'باك (4 حبات)',
+                single: 'حبة واحدة',
+                sar: 'ر.س',
+                delivery_fee: 'رسوم التوصيل',  /* <<< تمت الإضافة */
+            },
+            en: {
+                home: 'Home',
+                wishlist: 'Wishlist',
+                orders: 'My Orders',
+                settings: 'Settings',
+                personal_info: 'Personal Info',
+                notifications: 'Notifications',
+                language_theme: "Language & Appearance",
+                delete_account: 'Delete Account',
+                back_shop: 'Back to Shop',
+                logout: 'Logout',
+                orders_title: 'My Orders',
+                order_details: 'Order Details',
+                back_orders: 'Back to Orders',
+                order_number: 'Order Number',
+                order_date: 'Date',
+                order_status: 'Status',
+                items: 'Items',
+                unit_price: 'Unit Price',
+                quantity: 'Qty',
+                total_price: 'Total',
+                shipping_address: 'Shipping Address',
+                payment_method: 'Payment Method',
+                order_total: 'Total Amount',
+                reorder: 'Reorder Items',
+                reorder_success: 'Items added to cart successfully',
+                no_order_found: 'Order Not Found',
+                no_order_desc: 'The requested order could not be found. It may have been deleted or the link is invalid.',
+                go_orders: 'Go to My Orders',
+                full_name: 'Full Name',
+                phone: 'Phone',
+                address: 'Address',
+                apartment: 'Apartment / Unit',
+                zip_code: 'ZIP Code',
+                delivery_notes: 'Delivery Notes',
+                not_specified: 'Not specified',
+                card: 'Credit Card',
+                wallet: 'Digital Wallet',
+                apple_pay: 'Apple Pay',
+                google_pay: 'Google Pay',
+                paypal: 'PayPal',
+                last4: 'Last 4 digits',
+                card_holder: 'Card Holder',
+                order_status_pending: 'Under Review',
+                order_status_shipping: 'Shipping',
+                order_status_delivered: 'Delivered',
+                order_status_cancelled: 'Cancelled',
+                pieces: 'pcs',
+                pack: 'Pack (4 pcs)',
+                single: 'Single piece',
+                sar: 'SAR',
+                delivery_fee: 'Delivery Fee',  /* <<< تمت الإضافة */
+            }
+        };
+
+        /* ============================================
+           STATE & UTILITIES
+           ============================================ */
+        let currentLang = localStorage.getItem('lang') || 'ar';
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+
+        function t(key) {
+            return translations[currentLang]?.[key] || translations.ar[key] || key;
+        }
+
+        function applyTheme() {
+            if (currentTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            } else {
+                document.documentElement.classList.remove('light-mode');
+            }
+        }
+
+        function applyLanguage() {
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang]?.[key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+            renderOrderDetails();
+        }
+
+        function getUserName() {
+            return localStorage.getItem('username') || 'مستخدم';
+        }
+
+        function isLoggedIn() {
+            return localStorage.getItem('isLoggedIn') === 'true';
+        }
+
+        function requireAuth() {
+            if (!isLoggedIn()) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            return true;
+        }
+
+        function getOrders() {
+            try {
+                return JSON.parse(localStorage.getItem('orders') || '[]');
+            } catch {
+                return [];
+            }
+        }
+
+        function getOrderById(orderId) {
+            if (!orderId) return null;
+            const orders = getOrders();
+            return orders.find(order => {
+                const id = order.orderNumber || order.id || order.orderId || '';
+                return id.toString() === orderId.toString();
+            }) || null;
+        }
+
+        function getStatusText(status) {
+            if (status === 'قيد المراجعة' || status === 'pending') return t('order_status_pending');
+            if (status === 'قيد الشحن' || status === 'shipping') return t('order_status_shipping');
+            if (status === 'تم التوصيل' || status === 'delivered') return t('order_status_delivered');
+            if (status === 'ملغي' || status === 'cancelled') return t('order_status_cancelled');
+            return status || t('order_status_pending');
+        }
+
+        function getStatusClass(status) {
+            if (status === 'قيد المراجعة' || status === 'pending') return 'pending';
+            if (status === 'قيد الشحن' || status === 'shipping') return 'shipping';
+            if (status === 'تم التوصيل' || status === 'delivered') return 'delivered';
+            if (status === 'ملغي' || status === 'cancelled') return 'cancelled';
+            return 'pending';
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString(currentLang === 'ar' ? 'ar' : 'en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            });
+        }
+
+        function getItemOptionText(item) {
+            if (item.option === 'pack') return t('pack');
+            return t('single');
+        }
+
+        function getPaymentDescription(order) {
+            const payment = order.payment || {};
+            if (payment.method === 'card') {
+                const last4 = payment.card?.number ? payment.card.number.slice(-4) : '----';
+                return `${t('card')} (Visa •••• ${last4})<br><small>${t('card_holder')}: ${payment.card?.name || t('not_specified')}</small>`;
+            } else if (payment.method === 'wallet') {
+                const walletNames = {
+                    apple: t('apple_pay'),
+                    google: t('google_pay'),
+                    paypal: t('paypal')
+                };
+                return `${t('wallet')} (${walletNames[payment.wallet] || payment.wallet})`;
+            }
+            return t('not_specified');
+        }
+
+        /* ============================================
+           RENDER ORDER DETAILS
+           ============================================ */
+        function renderOrderDetails() {
+            const container = document.getElementById('order-details-container');
+            if (!container) return;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id');
+            const order = getOrderById(orderId);
+
+            if (!order) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="ri-file-list-3-line empty-state__icon"></i>
+                        <h2 class="empty-state__title">${t('no_order_found')}</h2>
+                        <p class="empty-state__desc">${t('no_order_desc')}</p>
+                        <a href="orders.html" class="btn-shop">
+                            <i class="ri-arrow-right-line"></i>
+                            ${t('go_orders')}
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            const items = order.items || order.products || [];
+            const shipping = order.shipping || {};
+            const payment = order.payment || {};
+            const orderNumber = order.orderNumber || order.id || order.orderId || '---';
+            const orderDate = formatDate(order.createdAt || order.date);
+            const statusText = getStatusText(order.status);
+            const statusClass = getStatusClass(order.status);
+            const total = order.total || items.reduce((sum, item) => sum + (item.unitPrice || item.price || 0) * (item.quantity || 1), 0);
+            const currency = order.currency || t('sar');
+
+            // رسوم التوصيل (إن وجدت)
+            const deliveryFee = order.deliveryFee !== undefined ? order.deliveryFee : 0;
+
+            // بناء جدول المنتجات
+            let itemsRows = '';
+            if (items.length === 0) {
+                itemsRows = `<tr><td colspan="5" style="text-align:center; padding:2rem;">${t('no_order_found')}</td></tr>`;
+            } else {
+                items.forEach(item => {
+                    const unitPrice = item.unitPrice || item.price || 0;
+                    const qty = item.quantity || 1;
+                    const lineTotal = unitPrice * qty;
+                    const img = item.image || item.imgSrc || item.img || '';
+                    const name = item.nameAr || item.nameEn || 'منتج';
+                    const optionText = getItemOptionText(item);
+
+                    itemsRows += `
+                        <tr>
+                            <td>
+                                <div class="item-info">
+                                    <div class="item-image">
+                                        ${img ? `<img src="${img}" alt="${name}" loading="lazy">` : '<i class="ri-box-3-line placeholder"></i>'}
+                                    </div>
+                                    <div class="item-details">
+                                        <span class="item-name">${name}</span>
+                                        <span class="item-option">${optionText}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="item-unit-price">${unitPrice} ${currency}</td>
+                            <td class="item-quantity">${qty}</td>
+                            <td class="item-total">${lineTotal} ${currency}</td>
+                        </tr>
+                    `;
+                });
+            }
+
+            // عنوان الشحن
+            const addressLines = [];
+            if (shipping.fullName) addressLines.push(`<div class="address-line"><i class="ri-user-line"></i><span>${t('full_name')}: ${shipping.fullName}</span></div>`);
+            if (shipping.phone) addressLines.push(`<div class="address-line"><i class="ri-phone-line"></i><span>${t('phone')}: ${shipping.phone}</span></div>`);
+            if (shipping.streetAddress) addressLines.push(`<div class="address-line"><i class="ri-map-pin-line"></i><span>${t('address')}: ${shipping.streetAddress}${shipping.apartment ? '، ' + shipping.apartment : ''}</span></div>`);
+            if (shipping.zipCode) addressLines.push(`<div class="address-line"><i class="ri-mail-line"></i><span>${t('zip_code')}: ${shipping.zipCode}</span></div>`);
+            if (shipping.deliveryNotes) addressLines.push(`<div class="address-line"><i class="ri-sticky-note-line"></i><span>${t('delivery_notes')}: ${shipping.deliveryNotes}</span></div>`);
+            // إضافة رسوم التوصيل إذا كانت أكبر من صفر
+            if (deliveryFee > 0) {
+                addressLines.push(`<div class="address-line"><i class="ri-truck-line"></i><span>${t('delivery_fee')}: ${deliveryFee} ${currency}</span></div>`);
+            }
+            if (addressLines.length === 0) addressLines.push(`<div class="address-line"><i class="ri-close-circle-line"></i><span>${t('not_specified')}</span></div>`);
+
+            const addressHTML = addressLines.join('');
+
+            // طريقة الدفع
+            const paymentHTML = getPaymentDescription(order);
+
+            // زر إعادة الطلب
+            const reorderBtn = `
+                <button class="btn btn-primary" id="reorder-btn" onclick="reorderOrder('${orderNumber}')">
+                    <i class="ri-refresh-line"></i>
+                    ${t('reorder')}
+                </button>
+            `;
+
+            container.innerHTML = `
+                <div class="details-container">
+                    <!-- معلومات الطلب -->
+                    <div class="detail-card">
+                        <div class="detail-card__header">
+                            <h2 class="detail-card__title"><i class="ri-information-line"></i> ${t('order_details')}</h2>
+                            <span class="order-card__status ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="detail-card__body">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">${t('order_number')}</span>
+                                    <span class="info-value highlight">${orderNumber}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">${t('order_date')}</span>
+                                    <span class="info-value">${orderDate}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">${t('order_total')}</span>
+                                    <span class="info-value highlight">${total} ${currency}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- المنتجات -->
+                    <div class="detail-card">
+                        <div class="detail-card__header">
+                            <h2 class="detail-card__title"><i class="ri-shopping-bag-line"></i> ${t('items')} (${items.length})</h2>
+                        </div>
+                        <div class="detail-card__body">
+                            <table class="items-table">
+                                <thead>
+                                    <tr>
+                                        <th>${t('items')}</th>
+                                        <th>${t('unit_price')}</th>
+                                        <th>${t('quantity')}</th>
+                                        <th>${t('total_price')}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${itemsRows}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- الشحن -->
+                    <div class="detail-card">
+                        <div class="detail-card__header">
+                            <h2 class="detail-card__title"><i class="ri-truck-line"></i> ${t('shipping_address')}</h2>
+                        </div>
+                        <div class="detail-card__body">
+                            <div class="address-details">
+                                ${addressHTML}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الدفع -->
+                    <div class="detail-card">
+                        <div class="detail-card__header">
+                            <h2 class="detail-card__title"><i class="ri-bank-card-line"></i> ${t('payment_method')}</h2>
+                        </div>
+                        <div class="detail-card__body">
+                            <div class="info-value">${paymentHTML}</div>
+                        </div>
+                    </div>
+
+                    <!-- أزرار الإجراءات -->
+                    <div class="action-buttons">
+                        ${reorderBtn}
+                        <a href="orders.html" class="btn btn-outline">
+                            <i class="ri-arrow-right-line"></i>
+                            ${t('back_orders')}
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* ============================================
+           REORDER FUNCTIONALITY
+           ============================================ */
+        function reorderOrder(orderNumber) {
+            const order = getOrderById(orderNumber);
+            if (!order) {
+                showToast(t('no_order_found'), 'error');
+                return;
+            }
+
+            const items = order.items || order.products || [];
+            if (items.length === 0) {
+                showToast(t('no_order_found'), 'error');
+                return;
+            }
+
+            // جلب السلة الحالية
+            let cart = [];
+            try {
+                cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            } catch {
+                cart = [];
+            }
+
+            // إضافة العناصر إلى السلة
+            items.forEach(item => {
+                const id = item.id;
+                const qty = item.quantity || 1;
+                const option = item.option || 'single';
+                const unitPrice = item.unitPrice || item.price || 0;
+
+                // البحث عن عنصر مماثل في السلة
+                const existingItem = cart.find(ci => ci.id == id && ci.option == option);
+                if (existingItem) {
+                    existingItem.qty = (existingItem.qty || 0) + qty;
+                } else {
+                    cart.push({
+                        id: id,
+                        qty: qty,
+                        option: option,
+                        unitPrice: unitPrice,
+                        nameAr: item.nameAr,
+                        nameEn: item.nameEn,
+                        image: item.image
+                    });
+                }
+            });
+
+            // حفظ السلة
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // عرض رسالة نجاح وتحويل للسلة
+            showToast(t('reorder_success'), 'success');
+            setTimeout(() => {
+                window.location.href = 'cart.html';
+            }, 1200);
+        }
+
+        /* ============================================
+           SIDEBAR FUNCTIONALITY (مطابقة لصفحة الطلبات)
+           ============================================ */
+        function initSidebar() {
+            const usernameDisplay = document.getElementById('user-name-display');
+            if (usernameDisplay) {
+                usernameDisplay.textContent = getUserName();
+            }
+
+            const toggle = document.getElementById('header-toggle');
+            const sidebar = document.getElementById('sidebar');
+            if (toggle && sidebar) {
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('show-sidebar');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!sidebar.contains(e.target) && !toggle.contains(e.target) && window.innerWidth < 1150) {
+                        sidebar.classList.remove('show-sidebar');
+                    }
+                });
+            }
+
+            const drops = document.querySelectorAll('.drop');
+            drops.forEach(item => {
+                const dropBtn = item.querySelector('.drop__button');
+                const dropList = item.querySelector('.drop__list');
+                if (dropBtn && dropList) {
+                    dropBtn.addEventListener('click', () => {
+                        const openItem = document.querySelector('.show-drop');
+                        if (openItem && openItem !== item) {
+                            const openList = openItem.querySelector('.drop__list');
+                            openList.removeAttribute('style');
+                            openItem.classList.remove('show-drop');
+                        }
+                        if (item.classList.contains('show-drop')) {
+                            dropList.removeAttribute('style');
+                            item.classList.remove('show-drop');
+                        } else {
+                            dropList.style.height = dropList.scrollHeight + 'px';
+                            item.classList.add('show-drop');
+                        }
+                    });
+                }
+            });
+
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('isLoggedIn', 'false');
+                    window.location.href = 'login.html';
+                });
+            }
+        }
+
+        /* ============================================
+           TOAST SYSTEM
+           ============================================ */
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            const icon = type === 'success' ? 'ri-check-line' : 'ri-error-warning-line';
+            toast.innerHTML = `
+                <div class="toast-icon ${type}"><i class="${icon}"></i></div>
+                <span class="toast-text">${message}</span>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('removing');
+                toast.addEventListener('animationend', () => {
+                    if (toast.parentNode) toast.parentNode.removeChild(toast);
+                }, { once: true });
+                setTimeout(() => {
+                    if (toast.parentNode) toast.parentNode.removeChild(toast);
+                }, 400);
+            }, 2800);
+        }
+
+        /* ============================================
+           INITIALIZATION
+           ============================================ */
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!requireAuth()) return;
+
+            applyTheme();
+            applyLanguage();
+            initSidebar();
+
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'theme') {
+                    currentTheme = e.newValue || 'dark';
+                    applyTheme();
+                }
+                if (e.key === 'lang') {
+                    currentLang = e.newValue || 'ar';
+                    applyLanguage();
+                }
+                if (e.key === 'orders') {
+                    renderOrderDetails();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

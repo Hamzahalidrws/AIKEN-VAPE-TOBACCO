@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحقق من العمر - Aiken Vape</title>
+
+    <!-- خطوط وأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <style>
+        /* ... نفس التنسيقات السابقة بدون تغيير ... */
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        :root.light-mode {
+            --bg-dark: #f3f5f7;
+            --bg-card: #ffffff;
+            --bg-alt: #e9edf2;
+            --bg-img: #f7f8fa;
+            --text-light: #101828;
+            --text-muted: #667085;
+            --border-color: #d9dee7;
+            --header-bg: #ffffff;
+            --footer-bg: #f8fafc;
+            --hover-bg: #eef2f6;
+            --tag-bg: #edf1f5;
+            --hero-bg-end: #f3f5f7;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .lock-scroll { overflow: hidden !important; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+            font-family: inherit;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--text-light); color: var(--green); box-shadow: 0 0 15px rgba(134,216,0,0.4); }
+        .btn-purple { background: var(--purple); color: #fff; }
+        .btn-purple:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(98,16,162,0.4); }
+        .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
+        .btn-outline:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(134,216,0,0.2); }
+        .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 5px; }
+
+        /* ========== الهيدر ========== */
+        header {
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--purple);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        .logo {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--purple); }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-links li a {
+            position: relative;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -6px;
+            width: 0;
+            height: 3px;
+            background: var(--green);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(134,216,0,.5);
+            transition: width .3s ease;
+        }
+        .nav-links li a:hover { color: var(--green); text-shadow: 0 0 10px rgba(134,216,0,.3); }
+        .nav-links li a:hover::after, .nav-links li a.active::after { width: 100%; }
+        .nav-links li a.active { color: var(--green); }
+
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--green);
+            min-width: 210px;
+            z-index: 10;
+            padding: 8px 0;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .dropdown-menu li:last-child a { border-bottom: none; }
+        .dropdown-menu li a:hover { background: var(--hover-bg); color: var(--green); padding-right: 22px; }
+
+        .header-icons {
+            display: flex;
+            gap: 16px;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            align-items: center;
+        }
+        .header-icons a, .header-icons i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .header-icons a:hover i, .header-icons i:hover { color: var(--green); transform: scale(1.1); }
+        .header-icons a.active i { color: var(--green); text-shadow: 0 0 12px rgba(134,216,0,0.7); }
+        .menu-toggle { display: none; color: var(--green); font-size: 1.6rem; cursor: pointer; }
+        .desktop-only { display: block; }
+        .mobile-only { display: none !important; }
+
+        .lang-dropdown { position: relative; display: flex; align-items: center; cursor: pointer; }
+        .lang-menu {
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            transform: translateX(-90%);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--purple);
+            border-radius: 5px;
+            list-style: none;
+            padding: 5px 0;
+            min-width: 110px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+        }
+        html[dir="ltr"] .lang-menu { left: 50%; right: auto; transform: translateX(-90%); }
+        html[dir="rtl"] .lang-menu { right: 50%; left: auto; transform: translateX(90%); }
+        .lang-dropdown.active .lang-menu { display: block; }
+        .lang-menu li { padding: 10px; font-size: 0.95rem; color: var(--text-light); transition: 0.3s; cursor: pointer; }
+        .lang-menu li:hover { background: var(--hover-bg); color: var(--green); }
+        .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
+        .nav-overlay.active { display: block; }
+
+        /* ========== تقدم خطوات الشراء ========== */
+        .steps-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0 40px;
+            flex-wrap: wrap;
+        }
+        .step-dot {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .step-dot i {
+            font-size: 1.1rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+        }
+        .step-dot.completed i {
+            background: var(--green);
+            border-color: var(--green);
+            color: #000;
+        }
+        .step-dot.active i {
+            border-color: var(--green);
+            color: var(--green);
+            box-shadow: 0 0 10px rgba(134,216,0,0.3);
+        }
+
+        /* ========== محتوى صفحة التحقق ========== */
+        .age-verification-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .page-title span { color: var(--green); }
+        .page-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .verification-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: 0.2s;
+        }
+        .verification-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+        }
+        .verification-card h3 i { color: var(--green); }
+        .verification-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem; }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            background: var(--bg-alt);
+        }
+        .upload-area:hover { border-color: var(--green); background: var(--bg-dark); }
+        .upload-area i { font-size: 3rem; color: var(--green); margin-bottom: 10px; }
+        .upload-area span { display: block; color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; }
+
+        .preview-container { display: none; text-align: center; }
+        .preview-container img { max-width: 200px; border-radius: 12px; border: 2px solid var(--border-color); }
+        .preview-actions { display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+
+        .camera-container {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .camera-container video, .camera-container canvas {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            margin: 0 auto;
+        }
+        .selfie-preview { display: none; text-align: center; }
+        .selfie-preview img { max-width: 200px; border-radius: 12px; }
+
+        .dob-selects {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .dob-selects select {
+            flex: 1;
+            min-width: 100px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-alt);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .checkbox-agree {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            margin: 30px 0 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .checkbox-agree input { width: 20px; height: 20px; accent-color: var(--green); }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            background: var(--green);
+            color: #000;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: inherit;
+            opacity: 0.5;
+            pointer-events: none;
+            box-shadow: 0 6px 20px rgba(134,216,0,0.2);
+        }
+        .btn-submit.enabled {
+            opacity: 1;
+            pointer-events: auto;
+            background: var(--green);
+        }
+        .btn-submit.enabled:hover {
+            background: #9de820;
+            box-shadow: 0 10px 30px rgba(134,216,0,0.4);
+            transform: translateY(-2px);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            flex-direction: column;
+            backdrop-filter: blur(4px);
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: var(--text-light); font-size: 1.1rem; }
+
+        .rejection-message {
+            text-align: center;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+        }
+        .rejection-message i { font-size: 4rem; color: #f8717a; margin-bottom: 20px; }
+
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            pointer-events: auto;
+            animation: toastIn 0.4s ease forwards;
+            max-width: 380px;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .toast-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .toast-icon.success { background: var(--green); color: #000; }
+        .toast-icon.error { background: #f8717a; color: #fff; }
+        .toast-text { font-weight: 600; font-size: 0.9rem; color: var(--text-light); }
+
+        footer {
+            background: var(--footer-bg);
+            padding: clamp(40px, 8vw, 70px) 0 20px;
+            border-top: 4px solid var(--green);
+            transition: 0.3s;
+            margin-top: auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: var(--purple);
+            margin-bottom: 20px;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 35px;
+            height: 3px;
+            background: var(--green);
+        }
+        html[dir="ltr"] .footer-col h4::after { right: auto; left: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-muted); transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+        .footer-col ul li a::before { content: '\f104'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.75rem; color: var(--green); transition: 0.3s; }
+        html[dir="ltr"] .footer-col ul li a::before { content: '\f105'; }
+        .footer-col ul li a:hover { color: var(--text-light); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; color: var(--green); font-size: 1.1rem; border: 1px solid var(--border-color); }
+        .social-links a:hover { background: var(--purple); color: #fff; border-color: var(--purple); transform: translateY(-3px); }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; font-size: 0.9rem; }
+        .footer-contact li i { color: var(--green); margin-top: 4px; }
+        .payment-methods { margin-top: 20px; font-size: 1.6rem; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; }
+        .payment-methods i:hover { color: var(--text-light); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: flex !important; }
+            #desktopCartLink { display: flex !important; }
+            #mobileCartLink { display: none !important; }
+            .header-inner { position: relative; padding: 10px 0; }
+            .nav-links {
+                display: flex;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 20px;
+                border-left: 2px solid var(--purple);
+                transition: right 0.4s ease;
+                align-items: flex-start;
+                z-index: 1001;
+                overflow-y: auto;
+                gap: 2px;
+            }
+            html[dir="ltr"] .nav-links { right: auto; left: -100%; border-left: none; border-right: 2px solid var(--purple); transition: left 0.4s ease; }
+            .nav-links.active { right: 0; }
+            html[dir="ltr"] .nav-links.active { left: 0; right: auto; }
+            .mobile-icons-row { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; font-size: 1.3rem; color: var(--text-light); }
+            .nav-links li { width: 100%; }
+            .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; border-right: 2px solid var(--purple); margin-right: 12px; background: transparent; visibility: visible; opacity: 1; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0; }
+            .dropdown.active .dropdown-menu { max-height: 500px; padding: 0 0 5px; }
+            .menu-toggle { display: block; }
+            .header-icons { gap: 12px; font-size: 1.1rem; }
+            .page-title { font-size: 1.8rem; }
+            .verification-card { padding: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 15px; }
+            .header-inner {
+                padding: 12px 20px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+/* ===== زر الهامبرغر المتحول ===== */
+.menu-toggle {
+    display: none;              /* مخفي افتراضيًا */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1002;             /* فوق القائمة الجانبية */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+}
+
+/* تحويل الخطوط إلى X عند إضافة كلاس active */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* إظهار الزر في شاشات الموبايل */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- ========== الهيدر ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Aiken <span>Vape</span></div>
+            <ul class="nav-links" id="navMenu">
+                <li class="mobile-only mobile-icons-row">
+                    <a href="cart.html" id="mobileCartLink" class="cart-link" title="السلة" data-translate-title="cart"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="account.html" id="mobileAccountIcon" class="account-link" title="حسابي" data-translate-title="account" style="display:none;"><i class="fas fa-user"></i></a>
+                    <i id="mobileLoginIcon" class="fas fa-sign-in-alt" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                    <i class="fas fa-moon theme-toggle" title="المظهر" data-translate-title="theme"></i>
+                    <div class="lang-dropdown"><i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i><ul class="lang-menu"><li onclick="setLang('ar')">العربية</li><li onclick="setLang('en')">English</li></ul></div>
+                </li>
+                <li><a href="index.html" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
+                <li class="dropdown" id="dropdownCategories">
+                    <a href="#" class="nav-link dropdown-toggle"><span data-translate="nav_categories">الأقسام</span> <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="disposables.html" data-translate="cat_disposables">السحبات الجاهزة</a></li>
+                        <li><a href="vapes.html" data-translate="cat_devices">أجهزة الفيب</a></li>
+                        <li><a href="e-liquids.html" data-translate="cat_flavors">نكهات الفيب</a></li>
+                        <li><a href="pods-coils.html" data-translate="cat_pods">البودات والكويلات</a></li>
+                        <li><a href="nicotine-pouches.html" data-translate="cat_nicotine">أكياس النيكوتين</a></li>
+                        <li><a href="thc.html" data-translate="cat_thc">THC</a></li>
+                        <li><a href="cbd.html" data-translate="cat_cbd">CBD</a></li>
+                        <li><a href="glass.html" data-translate="cat_glass">الزجاج Glass</a></li>
+                        <li><a href="accessories.html" data-translate="cat_accessories">الملحقات والإكسسوارات</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#shop" class="nav-link" data-translate="nav_shop">المتجر</a></li>
+                <li><a href="index.html#offers" class="nav-link" data-translate="nav_offers">العروض والتخفيضات</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="nav_about">من نحن</a></li>
+                <li><a href="contact.html" class="nav-link" data-translate="nav_contact">تواصل معنا</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class="fas fa-search" id="searchIcon" title="بحث" data-translate-title="search" style="cursor:pointer;"></i>
+                <a href="cart.html" id="desktopCartLink" class="cart-link" title="السلة" data-translate-title="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a href="account.html" id="desktopAccountIcon" class="account-link desktop-only" title="حسابي" data-translate-title="account" style="display:none;"><i class="fas fa-user"></i></a>
+                <i id="desktopLoginIcon" class="fas fa-sign-in-alt desktop-only" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                <i class="fas fa-moon theme-toggle desktop-only" title="المظهر" data-translate-title="theme"></i>
+                <div class="lang-dropdown desktop-only"><i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i><ul class="lang-menu"><li onclick="setLang('ar')">العربية</li><li onclick="setLang('en')">English</li></ul></div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ========== محتوى الصفحة ========== -->
+    <main class="age-verification-container">
+        <!-- مؤشر التقدم -->
+        <div class="steps-indicator">
+            <div class="step-dot completed"><i class="fas fa-check"></i> <span data-translate="step_cart">السلة</span></div>
+            <div class="step-dot active"><i class="fas fa-circle"></i> <span data-translate="step_age">التحقق من العمر</span></div>
+            <div class="step-dot"><i class="far fa-circle"></i> <span data-translate="step_shipping">الشحن</span></div>
+            <div class="step-dot"><i class="far fa-circle"></i> <span data-translate="step_payment">الدفع</span></div>
+            <div class="step-dot"><i class="far fa-circle"></i> <span data-translate="step_confirm">التأكيد</span></div>
+        </div>
+
+        <h1 class="page-title"><span data-translate="age_title_highlight">التحقق</span> <span data-translate="age_title_rest">من العمر</span></h1>
+        <p class="page-desc" data-translate="age_desc">نحتاج إلى التحقق من عمرك قبل إكمال عملية الشراء للتأكد من أهليتك لشراء هذه المنتجات.</p>
+
+        <!-- قسم رفع الهوية -->
+        <div class="verification-card" id="idCard">
+            <h3><i class="fas fa-id-card"></i> <span data-translate="id_card_title">صورة الهوية</span></h3>
+            <p data-translate="id_card_desc">قم برفع صورة واضحة للهوية الشخصية.</p>
+            <div class="upload-area" id="idUploadArea" onclick="document.getElementById('idFileInput').click()">
+                <i class="fas fa-id-card"></i>
+                <div data-translate="upload_id">رفع صورة الهوية</div>
+                <span data-translate="id_file_hint">JPG, PNG, PDF (الحد الأقصى 5MB)</span>
+            </div>
+            <input type="file" id="idFileInput" accept="image/*,.pdf" style="display:none" onchange="handleIDUpload(event)">
+            <div class="preview-container" id="idPreview">
+                <img id="idPreviewImg" src="" alt="معاينة الهوية">
+                <p style="color:var(--green); margin-top:8px;"><i class="fas fa-check-circle"></i> <span data-translate="id_uploaded">تم رفع الصورة</span></p>
+                <div class="preview-actions">
+                    <button class="btn btn-outline btn-sm" onclick="resetID()" data-translate="change_photo">تغيير الصورة</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم السيلفي -->
+        <div class="verification-card" id="selfieCard">
+            <h3><i class="fas fa-camera"></i> <span data-translate="selfie_title">صورة السيلفي</span></h3>
+            <p data-translate="selfie_desc">التقط صورة مباشرة للتحقق من مطابقة الهوية.</p>
+            <div class="upload-area" id="selfieUploadArea" onclick="openCamera()">
+                <i class="fas fa-camera"></i>
+                <div data-translate="take_selfie">التقاط صورة سيلفي</div>
+                <span data-translate="selfie_hint">يجب أن يكون الوجه كاملاً وواضحاً</span>
+            </div>
+            <div class="camera-container" id="cameraContainer">
+                <video id="cameraVideo" autoplay playsinline></video>
+                <canvas id="cameraCanvas" style="display:none;"></canvas>
+                <div style="margin-top:10px; display:flex; gap:10px; justify-content:center;">
+                    <button class="btn btn-green btn-sm" onclick="captureSelfie()"><i class="fas fa-camera"></i> <span data-translate="capture">التقاط</span></button>
+                    <button class="btn btn-outline btn-sm" onclick="closeCamera()" data-translate="cancel">إلغاء</button>
+                </div>
+            </div>
+            <div class="selfie-preview" id="selfiePreview">
+                <img id="selfiePreviewImg" src="" alt="سيلفي">
+                <p style="color:var(--green); margin-top:8px;"><i class="fas fa-check-circle"></i> <span data-translate="photo_clear">الصورة واضحة</span></p>
+                <div class="preview-actions">
+                    <button class="btn btn-outline btn-sm" onclick="retakeSelfie()" data-translate="retake">إعادة الالتقاط</button>
+                    <button class="btn btn-green btn-sm" onclick="confirmSelfie()" data-translate="confirm_selfie">تأكيد الصورة</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- تاريخ الميلاد -->
+        <div class="verification-card">
+            <h3><i class="fas fa-cake-candles"></i> <span data-translate="dob_title">تاريخ الميلاد</span></h3>
+            <div class="dob-selects">
+                <select id="dobDay"></select>
+                <select id="dobMonth"></select>
+                <select id="dobYear"></select>
+            </div>
+        </div>
+
+        <!-- تأكيد المستخدم -->
+        <label class="checkbox-agree">
+            <input type="checkbox" id="agreeCheckbox" onchange="updateSubmitButton()">
+            <span data-translate="agree_text">أؤكد أن عمري يسمح لي بشراء هذه المنتجات.</span>
+        </label>
+
+        <!-- زر الإرسال -->
+        <button class="btn-submit" id="submitVerificationBtn" disabled onclick="submitVerification()">
+            <i class="fas fa-shield-check"></i> <span data-translate="submit_btn">إرسال التحقق والمتابعة</span>
+        </button>
+        <p id="incompleteMsg" style="text-align:center; color: var(--text-muted); margin-top:10px; display:none;" data-translate="incomplete_msg">يرجى إكمال جميع بيانات التحقق.</p>
+    </main>
+
+    <!-- شاشة التحميل -->
+    <div class="loading-overlay" id="loadingOverlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" data-translate="loading_text">جاري التحقق من بياناتك... قد تستغرق العملية لحظات.</div>
+    </div>
+
+    <!-- توست -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- الفوتر -->
+   <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="logo" style="font-size:1.6rem;margin-bottom:15px;">Aiken <span>Vape</span></div><p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;line-height:1.6;" data-translate="footer_desc">الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.</p><div class="social-links">
+                    <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==&amp;igsi=MWE5eW4xb3U0ZnhrMQ=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/193wnE9jcr/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@hamzahalydrws?_r=1&amp;_t=ZS-98wVIRKlJge"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/12175308866"><i class="fab fa-whatsapp"></i></a>
+                </div></div>
+                <div class="footer-col"><h4 data-translate="footer_links">روابط هامة</h4><ul><li><a href="index.html" data-translate="nav_home">الرئيسية</a></li><li><a href="index.html#shop" data-translate="nav_shop">المتجر</a></li><li><a href="disposables.html" data-translate="nav_disposables">السحبات الجاهزة</a></li><li><a href="index.html#offers" data-translate="nav_offers">العروض</a></li><li><a href="cbd.html" data-translate="nav_cbd"> CBD</a></li><li><a href="about.html" data-translate="nav_about">من نحن</a></li><li><a href="contact.html" data-translate="nav_contact">تواصل معنا</a></li></ul></div>
+                <div class="footer-col">
+    <h4 data-translate="footer_policies">السياسات</h4>
+    <ul>
+        <li><a href="policies.html#terms" data-translate="policy_terms">الشروط والأحكام</a></li>
+        <li><a href="policies.html#privacy" data-translate="policy_privacy">سياسة الخصوصية</a></li>
+        <li><a href="policies.html#shipping" data-translate="policy_shipping">سياسة الشحن</a></li>
+        <li><a href="policies.html#age" data-translate="policy_age">تأكيد العمر</a></li>
+    </ul>
+</div>
+                <div class="footer-col"><h4 data-translate="footer_contact">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i> <span>2567 Whiskey Rd, Aiken, SC 29803</span></li><li><i class="fas fa-envelope"></i> <span>zubair007207@gmail.com</span></li><li><i class="fas fa-phone"></i> <span dir="ltr">+1 803-226-0066</span></li></ul><div class="payment-methods"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-apple-pay"></i></div></div>
+            </div>
+            <div class="footer-bottom" data-translate="copyright">&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.</div>
+        </div>
+    </footer>
+
+    <script>
+        // =============== الترجمات ===============
+        const translations = {
+            ar: {
+                account: 'حسابي', theme: 'المظهر', language: 'اللغة', login_title: 'تسجيل الدخول', logout_title: 'تسجيل الخروج',
+                search: 'بحث', cart: 'السلة',
+                nav_home: 'الرئيسية', nav_categories: 'الأقسام', nav_shop: 'المتجر', nav_offers: 'العروض والتخفيضات',
+                nav_about: 'من نحن', nav_contact: 'تواصل معنا',
+                cat_disposables: 'السحبات الجاهزة', cat_devices: 'أجهزة الفيب', cat_flavors: 'نكهات الفيب',
+                cat_pods: 'البودات والكويلات', cat_nicotine: 'أكياس النيكوتين', cat_thc: 'THC', cat_cbd: 'CBD',
+                cat_glass: 'الزجاج', cat_accessories: 'الملحقات والإكسسوارات',
+                step_cart: 'السلة', step_age: 'التحقق من العمر', step_shipping: 'الشحن', step_payment: 'الدفع', step_confirm: 'التأكيد',
+                age_title_highlight: 'التحقق', age_title_rest: 'من العمر',
+                age_desc: 'نحتاج إلى التحقق من عمرك قبل إكمال عملية الشراء للتأكد من أهليتك لشراء هذه المنتجات.',
+                id_card_title: 'صورة الهوية', id_card_desc: 'قم برفع صورة واضحة للهوية الشخصية.',
+                upload_id: 'رفع صورة الهوية', id_file_hint: 'JPG, PNG, PDF (الحد الأقصى 5MB)',
+                id_uploaded: 'تم رفع الصورة', change_photo: 'تغيير الصورة',
+                selfie_title: 'صورة السيلفي', selfie_desc: 'التقط صورة مباشرة للتحقق من مطابقة الهوية.',
+                take_selfie: 'التقاط صورة سيلفي', selfie_hint: 'يجب أن يكون الوجه كاملاً وواضحاً',
+                capture: 'التقاط', cancel: 'إلغاء', photo_clear: 'الصورة واضحة', retake: 'إعادة الالتقاط', confirm_selfie: 'تأكيد الصورة',
+                dob_title: 'تاريخ الميلاد',
+                agree_text: 'أؤكد أن عمري يسمح لي بشراء هذه المنتجات.',
+                submit_btn: 'إرسال التحقق والمتابعة',
+                incomplete_msg: 'يرجى إكمال جميع بيانات التحقق.',
+                loading_text: 'جاري التحقق من بياناتك... قد تستغرق العملية لحظات.',
+                file_too_large: 'حجم الملف كبير جداً. الحد الأقصى 5MB',
+                camera_error: 'تعذر الوصول إلى الكاميرا. تأكد من الصلاحيات.',
+                logout_success: 'تم تسجيل الخروج',
+                rejection_title: 'لم يتم قبول التحقق',
+                rejection_desc: 'لا يمكنك إكمال عملية الشراء لأن العمر لا يسمح بشراء هذه المنتجات.',
+                back_to_shop: 'العودة للمتجر',
+                footer_desc: 'الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.',
+                footer_links: 'روابط هامة', footer_policies: 'السياسات', footer_contact: 'تواصل معنا',
+                nav_disposables: 'السحبات الجاهزة',
+                policy_terms: 'الشروط والأحكام', policy_privacy: 'سياسة الخصوصية', policy_return: 'سياسة الاسترجاع',
+                policy_shipping: 'سياسة الشحن', policy_age: 'تأكيد العمر',
+                address: 'اليمن - إب، الفرع الرئيسي',
+                copyright: '&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.'
+            },
+            en: {
+                account: 'My Account', theme: 'Theme', language: 'Language', login_title: 'Login', logout_title: 'Logout',
+                search: 'Search', cart: 'Cart',
+                nav_home: 'Home', nav_categories: 'Categories', nav_shop: 'Shop', nav_offers: 'Offers & Deals',
+                nav_about: 'About Us', nav_contact: 'Contact Us',
+                cat_disposables: 'Disposables', cat_devices: 'Vape Devices', cat_flavors: 'E-Liquids',
+                cat_pods: 'Pods & Coils', cat_nicotine: 'Nicotine Pouches', cat_thc: 'THC', cat_cbd: 'CBD',
+                cat_glass: 'Glass', cat_accessories: 'Accessories',
+                step_cart: 'Cart', step_age: 'Age Verification', step_shipping: 'Shipping', step_payment: 'Payment', step_confirm: 'Confirmation',
+                age_title_highlight: 'Age', age_title_rest: 'Verification',
+                age_desc: 'We need to verify your age before completing the purchase to ensure eligibility.',
+                id_card_title: 'ID Photo', id_card_desc: 'Upload a clear photo of your personal ID.',
+                upload_id: 'Upload ID Photo', id_file_hint: 'JPG, PNG, PDF (max 5MB)',
+                id_uploaded: 'Image uploaded', change_photo: 'Change photo',
+                selfie_title: 'Selfie Photo', selfie_desc: 'Take a live photo to verify ID match.',
+                take_selfie: 'Take Selfie', selfie_hint: 'Face must be fully visible and clear',
+                capture: 'Capture', cancel: 'Cancel', photo_clear: 'Photo is clear', retake: 'Retake', confirm_selfie: 'Confirm photo',
+                dob_title: 'Date of Birth',
+                agree_text: 'I confirm that my age allows me to purchase these products.',
+                submit_btn: 'Submit Verification & Continue',
+                incomplete_msg: 'Please complete all verification data.',
+                loading_text: 'Verifying your data... This may take a moment.',
+                file_too_large: 'File too large. Max 5MB',
+                camera_error: 'Could not access camera. Check permissions.',
+                logout_success: 'Logged out successfully',
+                rejection_title: 'Verification Rejected',
+                rejection_desc: 'You cannot complete the purchase because your age does not allow buying these products.',
+                back_to_shop: 'Back to Shop',
+                footer_desc: 'The premier destination for the finest vape devices and accessories.',
+                footer_links: 'Important Links', footer_policies: 'Policies', footer_contact: 'Contact Us',
+                nav_disposables: 'Disposable Vapes',
+                policy_terms: 'Terms & Conditions', policy_privacy: 'Privacy Policy', policy_return: 'Return Policy',
+                policy_shipping: 'Shipping Policy', policy_age: 'Age Verification',
+                address: 'Yemen - Ibb, Main Branch',
+                copyright: '&copy; 2026 AIKEN VAPE & TOBACCO. All rights reserved.'
+            }
+        };
+
+        // =============== حالة اللغة ===============
+        let lang = localStorage.getItem('lang') || 'ar';
+        const t = (key) => translations[lang]?.[key] || key;
+
+        function updateActiveLangInDropdowns(l) {
+            document.querySelectorAll('.lang-menu li').forEach(li => {
+                const langAttr = li.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+                if (langAttr === l) {
+                    li.style.color = 'var(--green)';
+                    li.style.fontWeight = 'bold';
+                } else {
+                    li.style.color = '';
+                    li.style.fontWeight = '';
+                }
+            });
+        }
+
+        function applyLanguage(l) {
+            lang = l;
+            localStorage.setItem('lang', l);
+            document.getElementById('htmlRoot').setAttribute('lang', l);
+            document.getElementById('htmlRoot').setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];
+            });
+            document.querySelectorAll('[data-translate-title]').forEach(el => {
+                const key = el.getAttribute('data-translate-title');
+                if (translations[lang]?.[key]) el.setAttribute('title', translations[lang][key]);
+            });
+            updateActiveLangInDropdowns(l);
+            updateLoginIcon();
+        }
+
+        function setLang(l) {
+            applyLanguage(l);
+            document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+        }
+
+        // =============== متغيرات عامة ===============
+        let idFile = null, selfieData = null, selfieConfirmed = false;
+
+        // =============== تهيئة تاريخ الميلاد ===============
+        function populateDOB() {
+            const day = document.getElementById('dobDay');
+            const month = document.getElementById('dobMonth');
+            const year = document.getElementById('dobYear');
+            for (let i=1; i<=31; i++) day.innerHTML += `<option value="${i}">${i}</option>`;
+            for (let i=1; i<=12; i++) month.innerHTML += `<option value="${i}">${i}</option>`;
+            const currentYear = new Date().getFullYear();
+            for (let i=currentYear; i>=1900; i--) year.innerHTML += `<option value="${i}">${i}</option>`;
+        }
+
+        // =============== رفع الهوية ===============
+        function handleIDUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (file.size > 5*1024*1024) { showToast(t('file_too_large'), 'error'); return; }
+            idFile = file;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('idPreviewImg').src = e.target.result;
+                document.getElementById('idUploadArea').style.display = 'none';
+                document.getElementById('idPreview').style.display = 'block';
+                updateSubmitButton();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function resetID() {
+            idFile = null;
+            document.getElementById('idFileInput').value = '';
+            document.getElementById('idUploadArea').style.display = 'block';
+            document.getElementById('idPreview').style.display = 'none';
+            updateSubmitButton();
+        }
+
+        // =============== الكاميرا والسيلفي ===============
+        let stream = null;
+        async function openCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+                const video = document.getElementById('cameraVideo');
+                video.srcObject = stream;
+                document.getElementById('selfieUploadArea').style.display = 'none';
+                document.getElementById('cameraContainer').style.display = 'block';
+                selfieData = null; selfieConfirmed = false;
+                updateSubmitButton();
+            } catch (err) {
+                showToast(t('camera_error'), 'error');
+            }
+        }
+
+        function closeCamera() {
+            if (stream) { stream.getTracks().forEach(track => track.stop()); stream = null; }
+            document.getElementById('cameraContainer').style.display = 'none';
+            document.getElementById('selfieUploadArea').style.display = 'block';
+        }
+
+        function captureSelfie() {
+            const video = document.getElementById('cameraVideo');
+            const canvas = document.getElementById('cameraCanvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            selfieData = canvas.toDataURL('image/jpeg', 0.8);
+            document.getElementById('selfiePreviewImg').src = selfieData;
+            document.getElementById('cameraContainer').style.display = 'none';
+            document.getElementById('selfiePreview').style.display = 'block';
+            if (stream) { stream.getTracks().forEach(track => track.stop()); stream = null; }
+            selfieConfirmed = true;
+            updateSubmitButton();
+        }
+
+        function retakeSelfie() {
+            selfieData = null; selfieConfirmed = false;
+            document.getElementById('selfiePreview').style.display = 'none';
+            document.getElementById('selfieUploadArea').style.display = 'block';
+            updateSubmitButton();
+            openCamera();
+        }
+
+        function confirmSelfie() {
+            selfieConfirmed = true;
+            updateSubmitButton();
+        }
+
+        // =============== تحديث حالة الزر ===============
+        function updateSubmitButton() {
+            const idReady = idFile !== null;
+            const selfieReady = selfieData !== null && selfieConfirmed;
+            const dobDay = document.getElementById('dobDay').value;
+            const dobMonth = document.getElementById('dobMonth').value;
+            const dobYear = document.getElementById('dobYear').value;
+            const dobReady = dobDay && dobMonth && dobYear;
+            const agreed = document.getElementById('agreeCheckbox').checked;
+
+            const allDone = idReady && selfieReady && dobReady && agreed;
+            const btn = document.getElementById('submitVerificationBtn');
+            const msg = document.getElementById('incompleteMsg');
+            if (allDone) {
+                btn.classList.add('enabled');
+                btn.disabled = false;
+                msg.style.display = 'none';
+            } else {
+                btn.classList.remove('enabled');
+                btn.disabled = true;
+                msg.style.display = 'block';
+            }
+        }
+
+        document.getElementById('dobDay').addEventListener('change', updateSubmitButton);
+        document.getElementById('dobMonth').addEventListener('change', updateSubmitButton);
+        document.getElementById('dobYear').addEventListener('change', updateSubmitButton);
+
+        // =============== تقديم التحقق ===============
+        function submitVerification() {
+            const dobDay = parseInt(document.getElementById('dobDay').value);
+            const dobMonth = parseInt(document.getElementById('dobMonth').value);
+            const dobYear = parseInt(document.getElementById('dobYear').value);
+            const birthDate = new Date(dobYear, dobMonth-1, dobDay);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) age--;
+
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+                if (age >= 18) {
+                    localStorage.setItem('ageVerified', 'true');
+                    localStorage.setItem('userDOB', `${dobYear}-${dobMonth}-${dobDay}`);
+                    window.location.href = 'checkout.html';
+                } else {
+                    document.querySelector('.age-verification-container').innerHTML = `
+                        <div class="rejection-message">
+                            <i class="fas fa-ban"></i>
+                            <h2>${t('rejection_title')}</h2>
+                            <p style="color:var(--text-muted); margin:15px 0;">${t('rejection_desc')}</p>
+                            <a href="index.html" class="btn btn-green" style="margin-top:20px;">${t('back_to_shop')}</a>
+                        </div>`;
+                }
+            }, 2500);
+        }
+
+        // =============== توست ===============
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            const icon = type === 'success' ? 'fa-check' : 'fa-exclamation';
+            toast.innerHTML = `<div class="toast-icon ${type}"><i class="fas ${icon}"></i></div><span class="toast-text">${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // =============== هيدر وفوتر ===============
+        function isLoggedIn() { return localStorage.getItem('isLoggedIn') === 'true'; }
+        function handleLoginClick() {
+            if (isLoggedIn()) {
+                localStorage.removeItem('isLoggedIn'); localStorage.removeItem('username');
+                updateLoginIcon(); showToast(t('logout_success'), 'error');
+            } else window.location.href = 'login.html';
+        }
+        function updateLoginIcon() {
+            const di = document.getElementById('desktopLoginIcon'), mi = document.getElementById('mobileLoginIcon');
+            [di, mi].forEach(icon => {
+                if (!icon) return;
+                if (isLoggedIn()) {
+                    icon.className = icon.className.includes('fa-sign-out-alt') ? icon.className : icon.className.replace('fa-sign-in-alt', 'fa-sign-out-alt');
+                    icon.setAttribute('title', t('logout_title'));
+                } else {
+                    icon.className = icon.className.includes('fa-sign-in-alt') ? icon.className : icon.className.replace('fa-sign-out-alt', 'fa-sign-in-alt');
+                    icon.setAttribute('title', t('login_title'));
+                }
+            });
+            const da = document.getElementById('desktopAccountIcon'), ma = document.getElementById('mobileAccountIcon');
+            const display = isLoggedIn() ? 'flex' : 'none';
+            if (da) da.style.display = display;
+            if (ma) ma.style.display = display;
+        }
+
+        // قائمة جانبية
+        const bodyEl = document.body;
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+        function openMenu() {
+    navMenu.classList.add('active');
+    navOverlay.classList.add('active');
+    bodyEl.classList.add('lock-scroll');
+    menuToggle.classList.add('active');    // ← إضافة كلاس active لتحويل الخطوط إلى X
+}
+function closeMenu() {
+    navMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    bodyEl.classList.remove('lock-scroll');
+    menuToggle.classList.remove('active'); // ← إزالة كلاس active لإعادة الخطوط
+}
+        menuToggle.addEventListener('click', () => navMenu.classList.contains('active') ? closeMenu() : openMenu());
+        navOverlay.addEventListener('click', closeMenu);
+
+        // لغة
+        document.querySelectorAll('.lang-dropdown').forEach(dd => {
+            dd.querySelector('.lang-toggle').addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+                dd.classList.toggle('active');
+            });
+        });
+        document.addEventListener('click', () => document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active')));
+
+        // ثيم
+        const themeToggles = document.querySelectorAll('.theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        function applyTheme(t) {
+            if (t === 'light') { document.documentElement.classList.add('light-mode'); themeToggles.forEach(el => el.classList.replace('fa-moon','fa-sun')); }
+            else { document.documentElement.classList.remove('light-mode'); themeToggles.forEach(el => el.classList.replace('fa-sun','fa-moon')); }
+        }
+        applyTheme(currentTheme);
+        themeToggles.forEach(tg => tg.addEventListener('click', () => {
+            const newT = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newT); applyTheme(newT);
+        }));
+
+        // بدء التشغيل
+        populateDOB();
+        applyLanguage(lang);
+        updateLoginIcon();
+    </script>
+</body>
+</html>

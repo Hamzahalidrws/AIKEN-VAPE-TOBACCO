@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا | AIKEN VAPE & TOBACCO</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <!-- AOS Library -->
+     <link rel="stylesheet" href="assets/css/aos.css">
+    
+    <style>
+        /* ========== متغيرات الألوان ========== */
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+        :root.light-mode {
+            --bg-dark: #f4f6f8;
+            --bg-card: #ffffff;
+            --bg-alt: #eef2f5;
+            --bg-img: #f9f9f9;
+            --text-light: #111111;
+            --text-muted: #555555;
+            --border-color: #dddddd;
+            --header-bg: #ffffff;
+            --footer-bg: #ffffff;
+            --hover-bg: #f0f0f0;
+            --hero-bg-end: #f4f6f8;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-dark); color: var(--text-light); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+        .lock-scroll { overflow: hidden !important; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; width: 100%; }
+        .section-title { font-size: clamp(1.6rem, 5vw, 2.2rem); color: var(--green); margin-bottom: 0.5rem; text-align: center; font-weight: 800; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
+        .bg-alt { background-color: var(--bg-alt); }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 22px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; border: none; text-align: center; font-family: inherit; font-size: 0.95rem; white-space: nowrap; }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--text-light); color: var(--green); box-shadow: 0 0 15px rgba(134,216,0,0.4); }
+        .btn-purple { background: var(--purple); color: #fff; }
+        .btn-purple:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(98,16,162,0.4); }
+        .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
+        .btn-outline:hover { background: var(--green); color: #000; box-shadow: 0 0 15px rgba(134,216,0,0.2); }
+        .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 5px; }
+
+        /* ========== الهيدر ========== */
+        header { background: var(--header-bg); border-bottom: 2px solid var(--purple); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--purple); }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links li a { position: relative; font-weight: 700; font-size: clamp(0.9rem, 2vw, 1.1rem); white-space: nowrap; transition: color 0.3s; }
+        .nav-links li a::after { content: ""; position: absolute; right: 0; bottom: -6px; width: 0; height: 3px; background: var(--green); border-radius: 3px; box-shadow: 0 0 10px rgba(134,216,0,.5); transition: width .3s ease; }
+        .nav-links li a:hover { color: var(--green); text-shadow: 0 0 10px rgba(134,216,0,.3); }
+        .nav-links li a:hover::after, .nav-links li a.active::after { width: 100%; }
+        .nav-links li a.active { color: var(--green); }
+
+        .dropdown { position: relative; }
+        .dropdown-menu { display: block; visibility: hidden; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: absolute; top: 100%; right: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--green); min-width: 210px; z-index: 10; padding: 8px 0; border-radius: 0 0 5px 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 10px 18px; font-size: 0.95rem; border-bottom: 1px solid var(--border-color); }
+        .dropdown-menu li:last-child a { border-bottom: none; }
+        .dropdown-menu li a:hover { background: var(--hover-bg); color: var(--green); padding-right: 22px; }
+
+        .header-icons { display: flex; gap: 16px; color: var(--text-light); font-size: 1.2rem; align-items: center; }
+        .header-icons a, .header-icons i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .header-icons a:hover i, .header-icons i:hover { color: var(--green); transform: scale(1.1); }
+        .menu-toggle { display: none; color: var(--green); font-size: 1.6rem; cursor: pointer; }
+        .desktop-only { display: block; }
+        .mobile-only { display: none !important; }
+
+        .lang-dropdown { position: relative; display: flex; align-items: center; cursor: pointer; }
+        .lang-menu { position: absolute; top: 150%; left: 50%; transform: translateX(-90%); background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--purple); border-radius: 5px; list-style: none; padding: 5px 0; min-width: 110px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-align: center; }
+        html[dir="ltr"] .lang-menu { left: 50%; right: auto; transform: translateX(-90%); }
+        html[dir="rtl"] .lang-menu { right: 50%; left: auto; transform: translateX(90%); }
+        .lang-dropdown.active .lang-menu { display: block; }
+        .lang-menu li { padding: 10px; font-size: 0.95rem; color: var(--text-light); transition: 0.3s; cursor: pointer; }
+        .lang-menu li:hover { background: var(--hover-bg); color: var(--green); }
+        .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
+        .nav-overlay.active { display: block; }
+
+        /* ========== نموذج البحث ========== */
+        .search-overlay { position: fixed; inset: 0; background: var(--modal-overlay-bg); backdrop-filter: blur(8px); z-index: 10000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; display: flex; align-items: flex-start; justify-content: center; padding-top: 10vh; }
+        .search-overlay.active { opacity: 1; visibility: visible; }
+        .search-modal { background: var(--modal-bg); width: 90%; max-width: 620px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--modal-shadow); transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; max-height: 80vh; overflow: hidden; }
+        .search-overlay.active .search-modal { transform: translateY(0) scale(1); }
+        .search-header { display: flex; align-items: center; padding: 16px 20px; gap: 12px; border-bottom: 1px solid var(--border-color); }
+        .search-header .search-icon { font-size: 1.4rem; color: var(--green); flex-shrink: 0; }
+        .search-header input { flex: 1; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 16px; color: var(--text-light); font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .search-header input:focus { border-color: var(--green); }
+        .search-header .close-btn { font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: color 0.3s; flex-shrink: 0; width: 32px; text-align: center; }
+        .search-header .close-btn:hover { color: var(--green); }
+        .search-results { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+        .search-results::-webkit-scrollbar { width: 6px; }
+        .search-results::-webkit-scrollbar-track { background: transparent; }
+        .search-results::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        .search-result-item { display: flex; align-items: center; gap: 15px; padding: 12px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); transition: border-color 0.3s, background 0.3s; }
+        .search-result-item:hover { border-color: var(--green); background: var(--hover-bg); }
+        .search-result-img { width: 60px; height: 60px; border-radius: 12px; background: var(--bg-img); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; font-size: 2rem; color: var(--text-muted); }
+        .search-result-info { flex: 1; min-width: 0; }
+        .search-result-title { font-weight: 700; color: var(--text-light); font-size: 1rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .search-result-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
+        .search-result-meta span { background: var(--tag-bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-color); }
+        .search-result-price { color: var(--green); font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+        .search-result-rating { font-size: 0.8rem; color: var(--star-color); display: flex; align-items: center; gap: 4px; }
+        .search-result-rating span { color: var(--text-muted); margin-left: 4px; }
+        .search-result-details { padding: 8px 16px; border-radius: 8px; background: var(--purple); color: #fff; font-size: 0.85rem; white-space: nowrap; transition: background 0.3s; font-weight: 700; }
+        .search-result-details:hover { background: var(--green); color: #000; }
+        .search-empty { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* ========== شارة السلة ========== */
+        .cart-link { position: relative; }
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--green);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--header-bg);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none;
+        }
+        .cart-badge.pop { transform: scale(1.4); }
+
+        /* ========== Contact Hero ========== */
+        .contact-hero { padding: clamp(50px, 8vw, 80px) 0; background: radial-gradient(circle at center, rgba(98,16,162,0.25) 0%, var(--hero-bg-end) 70%); text-align: center; }
+        .contact-hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); color: var(--green); margin-bottom: 15px; font-weight: 800; }
+        .contact-hero p { color: var(--text-muted); font-size: clamp(0.95rem, 2.5vw, 1.2rem); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+        /* Contact Grid */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 60px 0; align-items: start; }
+        .contact-info { display: flex; flex-direction: column; gap: 25px; }
+        .info-card { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; align-items: flex-start; gap: 15px; }
+        .info-card:hover { border-color: var(--purple); transform: translateX(-5px); box-shadow: 0 8px 20px rgba(98,16,162,0.15); }
+        html[dir="ltr"] .info-card:hover { transform: translateX(5px); }
+        .info-card i { font-size: 2rem; color: var(--green); margin-top: 5px; }
+        .info-card h4 { color: var(--text-light); margin-bottom: 8px; font-size: 1.2rem; }
+        .info-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+        .info-card a { color: var(--green); transition: 0.3s; }
+        .info-card a:hover { text-decoration: underline; }
+
+        /* Contact Form */
+        .contact-form-card { background: var(--bg-card); padding: 35px 30px; border-radius: 16px; border: 1px solid var(--border-color); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--text-light); font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px 16px; background: var(--bg-dark); border: 1.5px solid var(--border-color); border-radius: 8px; color: var(--text-light); font-family: inherit; font-size: 1rem; transition: all 0.3s ease; outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--green); box-shadow: 0 0 15px rgba(134,216,0,0.15); }
+        .form-group textarea { min-height: 140px; resize: vertical; }
+        .btn-submit { width: 100%; padding: 15px; font-size: 1.1rem; background: var(--purple); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s ease; }
+        .btn-submit:hover { background: var(--green); color: #000; box-shadow: 0 0 25px rgba(134,216,0,0.4); }
+
+        /* Map Section */
+        .map-section { padding: 60px 0; }
+        .map-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .map-info { padding: 25px 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; border-bottom: 1px solid var(--border-color); }
+        .map-info h3 { font-size: 1.5rem; color: var(--green); margin-bottom: 5px; }
+        .map-info p { color: var(--text-muted); margin: 0; font-size: 1rem; }
+        .map-info .btn { flex-shrink: 0; }
+        .map-embed { position: relative; }
+        .map-embed iframe { display: block; width: 100%; height: 450px; border: 0; }
+
+        /* Social Glow Section */
+        .social-glow-section { margin-top: 60px; padding: 50px 0; text-align: center; }
+        .social-glow-section h3 { font-size: 1.8rem; color: var(--green); margin-bottom: 30px; font-weight: 800; }
+        .social-icons-wrapper { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .social-icons-wrapper a { text-decoration: none; }
+        .social-icons-wrapper i {
+            width: 90px; height: 90px; display: flex; justify-content: center; align-items: center;
+            font-size: 55px; color: #fff; background: #18191f; border-radius: 22px; cursor: pointer;
+            transition: .3s;
+            box-shadow: 2px 2px 2px #00000080, 10px 1px 12px #00000080, 2px 2px 10px #00000080,
+                        2px 2px 3px #00000080, inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080;
+            text-shadow: 0 0 30px #0072ff, 0 0 60px #0072ff, 0 0 90px #0072ff;
+            animation: hueRotate 3s linear infinite;
+        }
+        .social-icons-wrapper a:hover i { transform: scale(1.12); }
+        #instagram { animation-delay: 0s; }
+        #facebook { animation-delay: .2s; }
+        #whatsapp { animation-delay: .4s; }
+        #phone { animation-delay: .6s; }
+        @keyframes hueRotate { from { filter: hue-rotate(0deg); } to { filter: hue-rotate(360deg); } }
+
+        /* Toast */
+        .toast-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .toast-overlay.active { opacity: 1; pointer-events: auto; }
+        .toast-box { background: var(--bg-card); padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.5); transform: translateY(20px) scale(0.9); transition: transform 0.4s ease; }
+        .toast-overlay.active .toast-box { transform: translateY(0) scale(1); }
+        .toast-box i { font-size: 3rem; color: var(--green); margin-bottom: 15px; }
+        .toast-box p { color: var(--text-light); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.6; }
+        .toast-close { padding: 10px 25px; background: var(--green); color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; transition: 0.3s; }
+        .toast-close:hover { background: var(--text-light); }
+
+        /* Footer */
+        footer { background: var(--footer-bg); padding: clamp(40px, 8vw, 70px) 0 20px; border-top: 4px solid var(--green); transition: 0.3s; margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--purple); margin-bottom: 20px; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 800; position: relative; padding-bottom: 8px; }
+        .footer-col h4::after { content: ''; position: absolute; right: 0; bottom: 0; width: 35px; height: 3px; background: var(--green); }
+        html[dir="ltr"] .footer-col h4::after { right: auto; left: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-muted); transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+        .footer-col ul li a::before { content: '\f104'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.75rem; color: var(--green); transition: 0.3s; }
+        html[dir="ltr"] .footer-col ul li a::before { content: '\f105'; }
+        .footer-col ul li a:hover { color: var(--text-light); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; color: var(--green); font-size: 1.1rem; border: 1px solid var(--border-color); transition: 0.3s; }
+        .social-links a:hover { background: var(--purple); color: #fff; border-color: var(--purple); transform: translateY(-3px); }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; font-size: 0.9rem; }
+        .footer-contact li i { color: var(--green); margin-top: 4px; }
+        .payment-methods { margin-top: 20px; font-size: 1.6rem; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; }
+        .payment-methods i:hover { color: var(--text-light); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: flex !important; }
+            #desktopCartLink { display: flex !important; }
+            #mobileCartLink { display: none !important; }
+            .header-inner { position: relative; padding: 10px 0; }
+            .nav-links { display: flex; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--header-bg); flex-direction: column; padding: 20px; border-left: 2px solid var(--purple); transition: right 0.4s ease; align-items: flex-start; z-index: 1001; overflow-y: auto; gap: 2px; }
+            html[dir="ltr"] .nav-links { right: auto; left: -100%; border-left: none; border-right: 2px solid var(--purple); transition: left 0.4s ease; }
+            .nav-links.active { right: 0; }
+            html[dir="ltr"] .nav-links.active { left: 0; right: auto; }
+            .mobile-icons-row { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; font-size: 1.3rem; color: var(--text-light); }
+            .mobile-icons-row a, .mobile-icons-row i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+            .mobile-icons-row a:hover i, .mobile-icons-row i:hover { color: var(--green); }
+            .nav-links li { width: 100%; }
+            .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; position: relative; z-index: 2; }
+            .dropdown > a { position: relative; z-index: 3; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; border-right: 2px solid var(--purple); margin-right: 12px; background: transparent; visibility: visible; opacity: 1; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0; }
+            html[dir="ltr"] .dropdown-menu { border-right: none; border-left: 2px solid var(--purple); margin-right: 0; margin-left: 12px; }
+            .dropdown.active .dropdown-menu { max-height: 500px; padding: 0 0 5px; }
+            .dropdown-menu li a { position: relative; z-index: 2; font-size: 0.9rem; padding: 10px 14px; }
+            .menu-toggle { display: block; }
+            .header-icons { gap: 12px; font-size: 1.1rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 15px; }
+            .section-title { font-size: 1.5rem; }
+            .nav-links li a.active::after { display: none; }
+            .nav-links li a.active { background: rgba(134,216,0,.12); color: var(--green); border-radius: 6px; padding-right: 10px; }
+            html[dir="ltr"] .nav-links li a.active { padding-right: 0; padding-left: 10px; }
+            .map-embed iframe { height: 300px; }
+            .map-info { flex-direction: column; text-align: center; }
+            .search-modal { width: 95%; max-height: 85vh; }
+            .search-header { padding: 12px; gap: 6px; }
+            .search-header .search-icon, .search-header .close-btn { font-size: 1.2rem; }
+            .search-header input { flex: 0 1 200px; width: 180px; padding: 8px 10px; font-size: 0.9rem; border-radius: 8px; }
+             .header-inner {
+        padding: 12px 20px; /* مسافة أفقية 20px من كل جانب */
+    }
+        }
+        @media (max-width: 480px) {
+            .social-icons-wrapper { gap: 8px; }
+            .social-icons-wrapper i { width: 58px; height: 58px; font-size: 34px; border-radius: 15px; }
+            .contact-form-card { padding: 25px 18px; }
+            .map-embed iframe { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== الهيدر ==================== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Aiken <span>Vape</span></div>
+            <ul class="nav-links" id="navMenu">
+                <li class="mobile-only mobile-icons-row">
+                    <a href="cart.html" id="mobileCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge cart-count">0</span>
+                    </a>
+                    <a href="account.html" id="mobileAccountIcon" class="account-link" title="حسابي" data-translate-title="account" style="display: none;">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <i id="mobileLoginIcon" class="fas fa-sign-in-alt" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                    <i class="fas fa-moon theme-toggle" title="المظهر" data-translate-title="theme"></i>
+                    <div class="lang-dropdown">
+                        <i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i>
+                        <ul class="lang-menu">
+                            <li onclick="setLang('ar')">العربية</li>
+                            <li onclick="setLang('en')">English</li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="index.html" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
+                <li class="dropdown" id="dropdownCategories">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        <span data-translate="nav_categories">الأقسام</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="disposables.html" class="nav-link" data-translate="cat_disposables">السحبات الجاهزة</a></li>
+                        <li><a href="vapes.html" class="nav-link" data-translate="cat_devices">أجهزة الفيب</a></li>
+                        <li><a href="e-liquids.html" class="nav-link" data-translate="cat_flavors">نكهات الفيب</a></li>
+                        <li><a href="pods-coils.html" class="nav-link" data-translate="cat_pods">البودات والكويلات</a></li>
+                        <li><a href="nicotine-pouches.html" class="nav-link" data-translate="cat_nicotine">أكياس النيكوتين</a></li>
+                        <li><a href="thc.html" class="nav-link" data-translate="cat_thc">THC</a></li>
+                        <li><a href="cbd.html" class="nav-link" data-translate="cat_cbd">CBD</a></li>
+                        <li><a href="glass.html" class="nav-link" data-translate="cat_glass">الزجاج Glass</a></li>
+                        <li><a href="accessories.html" class="nav-link" data-translate="cat_accessories">الملحقات والإكسسوارات</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#shop" class="nav-link" data-translate="nav_shop">المتجر</a></li>
+                <li><a href="index.html#offers" class="nav-link" data-translate="nav_offers">العروض والتخفيضات</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="nav_about">من نحن</a></li>
+                <li><a href="contact.html" class="nav-link active" data-translate="nav_contact">تواصل معنا</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class="fas fa-search" id="searchIcon" title="بحث" data-translate-title="search_placeholder" style="cursor:pointer;"></i>
+                <a href="cart.html" id="desktopCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge cart-count">0</span>
+                </a>
+                <a href="account.html" id="desktopAccountIcon" class="account-link desktop-only" title="حسابي" data-translate-title="account" style="display: none;">
+                    <i class="fas fa-user"></i>
+                </a>
+                <i id="desktopLoginIcon" class="fas fa-sign-in-alt desktop-only" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                <i class="fas fa-moon theme-toggle desktop-only" title="المظهر" data-translate-title="theme"></i>
+                <div class="lang-dropdown desktop-only">
+                    <i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i>
+                    <ul class="lang-menu">
+                        <li onclick="setLang('ar')">العربية</li>
+                        <li onclick="setLang('en')">English</li>
+                    </ul>
+                </div>
+                <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ==================== نموذج البحث ==================== -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج..." data-translate-placeholder="search_placeholder">
+                <i class="fas fa-times close-btn" id="closeSearchBtn" title="إغلاق" data-translate-title="close_search"></i>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-empty" data-translate="search_results">ابدأ البحث عن المنتجات</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== المحتوى الرئيسي ==================== -->
+    <main>
+        <!-- Contact Hero -->
+        <section class="contact-hero" data-aos="fade-down">
+            <div class="container">
+                <h1 data-translate="contact_hero_title">تواصل معنا</h1>
+                <p data-translate="contact_hero_desc">نحن هنا للإجابة على استفساراتكم ومساعدتكم. لا تترددوا في التواصل معنا عبر القنوات التالية.</p>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section>
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- معلومات الاتصال -->
+                    <div class="contact-info">
+                        <div class="info-card" data-aos="fade-up">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4 data-translate="address_title">العنوان</h4>
+                                <p>2567 Whiskey Rd, Aiken, SC 29803</p>
+                            </div>
+                        </div>
+                        <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4 data-translate="phone_title">الهاتف</h4>
+                                <p dir="ltr"><a href="tel:+18032260066">+1 803-226-0066</a></p>
+                            </div>
+                        </div>
+                        <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4 data-translate="email_title">البريد الإلكتروني</h4>
+                                <p><a href="mailto:zubair007207@gmail.com">zubair007207@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4 data-translate="hours_title">ساعات العمل</h4>
+                                <p data-translate="hours_desc">السبت - الخميس: 9 صباحاً - 10 مساءً<br>الجمعة: 4 مساءً - 10 مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- نموذج التواصل -->
+                    <div class="contact-form-card" data-aos="fade-up" data-aos-delay="150">
+                        <h3 style="margin-bottom:25px; color:var(--green); font-size:1.4rem;" data-translate="form_title">أرسل رسالة</h3>
+                        <form id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name" data-translate="form_name">الاسم الكامل</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-translate="form_email">البريد الإلكتروني</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" data-translate="form_subject">الموضوع</label>
+                                <input type="text" id="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-translate="form_message">الرسالة</label>
+                                <textarea id="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit" data-translate="form_send">إرسال الرسالة</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Google Maps Section -->
+                <section class="map-section" data-aos="fade-up">
+                    <div class="map-card">
+                        <div class="map-info">
+                            <div>
+                                <h3 data-translate="map_title">موقعنا على الخريطة</h3>
+                                <p>2567 Whiskey Rd, Aiken, SC 29803</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=2567+Whiskey+Rd,+Aiken,+SC+29803" target="_blank" class="btn btn-green" data-translate="get_directions">احصل على الاتجاهات</a>
+                        </div>
+                        <div class="map-embed">
+                            <iframe src="https://maps.google.com/maps?q=2567%20Whiskey%20Rd,%20Aiken,%20SC%2029803&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- أيقونات التواصل الاجتماعي المتوهجة -->
+                <div class="social-glow-section" data-aos="fade-up">
+                    <h3 data-translate="social_title">تابعنا على منصات التواصل</h3>
+                    <div class="social-icons-wrapper">
+                        <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==" target="_blank">
+                            <i class="fa-brands fa-instagram" id="instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1EsukhSdJN/" target="_blank">
+                            <i class="fa-brands fa-facebook-f" id="facebook"></i>
+                        </a>
+                        <a href="https://wa.me/967770375454" target="_blank">
+                            <i class="fa-brands fa-whatsapp" id="whatsapp"></i>
+                        </a>
+                        <a href="tel:+967770375454">
+                            <i class="fa-solid fa-phone" id="phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== الفوتر ==================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="font-size:1.6rem;margin-bottom:15px;">Aiken <span>Vape</span></div>
+                    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;line-height:1.6;" data-translate="footer_desc">الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==&igsi=MWE5eW4xb3U0ZnhrMQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/193wnE9jcr/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@hamzahalydrws?_r=1&_t=ZS-98wVIRKlJge"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/12175308866"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col"><h4 data-translate="footer_links">روابط هامة</h4><ul><li><a href="index.html" data-translate="nav_home">الرئيسية</a></li><li><a href="index.html#shop" data-translate="nav_shop">المتجر</a></li><li><a href="disposables.html" data-translate="nav_disposables">السحبات الجاهزة</a></li><li><a href="index.html#offers" data-translate="nav_offers">العروض</a></li><li><a href="cbd.html" data-translate="nav_cbd"> CBD</a></li><li><a href="about.html" data-translate="nav_about">من نحن</a></li><li><a href="contact.html" data-translate="nav_contact">تواصل معنا</a></li></ul></div>
+                <div class="footer-col">
+    <h4 data-translate="footer_policies">السياسات</h4>
+    <ul>
+        <li><a href="policies.html#terms" data-translate="policy_terms">الشروط والأحكام</a></li>
+        <li><a href="policies.html#privacy" data-translate="policy_privacy">سياسة الخصوصية</a></li>
+        <li><a href="policies.html#shipping" data-translate="policy_shipping">سياسة الشحن</a></li>
+        <li><a href="policies.html#age" data-translate="policy_age">تأكيد العمر</a></li>
+    </ul>
+</div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_contact">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>2567 Whiskey Rd, Aiken, SC 29803</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>zubair007207@gmail.com</span></li>
+                        <li><i class="fas fa-phone"></i> <span dir="ltr">+1 803-226-0066</span></li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" data-translate="copyright">&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.</div>
+        </div>
+    </footer>
+
+    <!-- ==================== Toast ==================== -->
+    <div class="toast-overlay" id="toastOverlay">
+        <div class="toast-box">
+            <i class="fas fa-check-circle" id="toastIcon"></i>
+            <p id="toastMessage"></p>
+            <button class="toast-close" id="toastCloseBtn" data-translate="close">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- ==================== السكربتات ==================== -->
+    <script src="assets/js/aos.js"></script>
+    <script>
+        // تهيئة AOS
+        AOS.init({ duration: 1000, offset: 100, once: true });
+
+        // ==================== الترجمات ====================
+        const translations = {
+            ar: {
+                account: 'حسابي', theme: 'المظهر', language: 'اللغة', login_title: 'تسجيل الدخول', logout_title: 'تسجيل الخروج',
+                search: 'بحث', search_placeholder: 'ابحث عن منتج...', search_results: 'نتائج البحث', no_search_results: 'لا توجد نتائج مطابقة', close_search: 'إغلاق البحث',
+                cart: 'السلة', nav_home: 'الرئيسية', nav_categories: 'الأقسام', nav_shop: 'المتجر', nav_offers: 'العروض والتخفيضات',
+                nav_about: 'من نحن', nav_contact: 'تواصل معنا', nav_disposables: 'السحبات الجاهزة', nav_devices: 'أجهزة الفيب', nav_juice: 'نكهات الفيب', nav_nicotine: 'أكياس النيكوتين', nav_pods: 'البودات والكويلات',
+                cat_disposables: 'السحبات الجاهزة', cat_devices: 'أجهزة الفيب', cat_flavors: 'نكهات الفيب', cat_pods: 'البودات والكويلات',
+                cat_nicotine: 'أكياس النيكوتين', cat_thc: 'THC', cat_cbd: 'CBD', cat_glass: 'الزجاج', cat_accessories: 'الملحقات والإكسسوارات',
+                contact_hero_title: 'تواصل معنا',
+                contact_hero_desc: 'نحن هنا للإجابة على استفساراتكم ومساعدتكم. لا تترددوا في التواصل معنا عبر القنوات التالية.',
+                address_title: 'العنوان', phone_title: 'الهاتف', email_title: 'البريد الإلكتروني',
+                hours_title: 'ساعات العمل', hours_desc: 'السبت - الخميس: 9 صباحاً - 10 مساءً<br>الجمعة: 4 مساءً - 10 مساءً',
+                form_title: 'أرسل رسالة', form_name: 'الاسم الكامل', form_email: 'البريد الإلكتروني',
+                form_subject: 'الموضوع', form_message: 'الرسالة', form_send: 'إرسال الرسالة',
+                social_title: 'تابعنا على منصات التواصل', map_title: 'موقعنا على الخريطة', get_directions: 'احصل على الاتجاهات',
+                toast_success: 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.',
+                close: 'إغلاق', logout_success: 'تم تسجيل الخروج بنجاح.',
+                footer_desc: 'الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.',
+                footer_links: 'روابط هامة', footer_policies: 'السياسات', footer_contact: 'تواصل معنا',
+                policy_terms: 'الشروط والأحكام', policy_privacy: 'سياسة الخصوصية', policy_return: 'سياسة الاسترجاع والاستبدال',
+                policy_shipping: 'سياسة الشحن والتوصيل', policy_age: 'تأكيد العمر والمسؤولية',
+                copyright: '© 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.'
+            },
+            en: {
+                account: 'My Account', theme: 'Theme', language: 'Language', login_title: 'Login', logout_title: 'Logout',
+                search: 'Search', search_placeholder: 'Search for a product...', search_results: 'Search Results', no_search_results: 'No matching results', close_search: 'Close Search',
+                cart: 'Cart', nav_home: 'Home', nav_categories: 'Categories', nav_shop: 'Shop', nav_offers: 'Offers & Deals',
+                nav_about: 'About Us', nav_contact: 'Contact Us', nav_disposables: 'Disposable Vapes', nav_devices: 'Vape Devices', nav_juice: 'E-Liquids', nav_nicotine: 'Nicotine Pouches', nav_pods: 'Pods & Coils',
+                cat_disposables: 'Disposables', cat_devices: 'Vape Devices', cat_flavors: 'E-Liquids', cat_pods: 'Pods & Coils',
+                cat_nicotine: 'Nicotine Pouches', cat_thc: 'THC', cat_cbd: 'CBD', cat_glass: 'Glass', cat_accessories: 'Accessories',
+                contact_hero_title: 'Contact Us',
+                contact_hero_desc: 'We are here to answer your inquiries and assist you. Feel free to reach out via the following channels.',
+                address_title: 'Address', phone_title: 'Phone', email_title: 'Email',
+                hours_title: 'Working Hours', hours_desc: 'Sat - Thu: 9 AM - 10 PM<br>Fri: 4 PM - 10 PM',
+                form_title: 'Send a Message', form_name: 'Full Name', form_email: 'Email Address',
+                form_subject: 'Subject', form_message: 'Message', form_send: 'Send Message',
+                social_title: 'Follow Us on Social Media', map_title: 'Our Location on Map', get_directions: 'Get Directions',
+                toast_success: 'Your message has been sent successfully! We will contact you soon.',
+                close: 'Close', logout_success: 'Logged out successfully.',
+                footer_desc: 'The premier destination for the finest and latest vape devices and accessories.',
+                footer_links: 'Important Links', footer_policies: 'Policies', footer_contact: 'Contact Us',
+                policy_terms: 'Terms & Conditions', policy_privacy: 'Privacy Policy', policy_return: 'Return & Exchange Policy',
+                policy_shipping: 'Shipping & Delivery Policy', policy_age: 'Age Verification & Responsibility',
+                copyright: '© 2026 AIKEN VAPE & TOBACCO. All rights reserved.'
+            }
+        };
+
+        // ==================== حالة تسجيل الدخول ====================
+        function isLoggedIn() { return localStorage.getItem('isLoggedIn') === 'true'; }
+        function handleCartClick(event) {
+            if (!isLoggedIn()) {
+                event.preventDefault();
+                const lang = localStorage.getItem('lang') || 'ar';
+                showToast(translations[lang].login_required || translations[lang].toast_success);
+                return false;
+            }
+            return true;
+        }
+        function updateLoginIcon() {
+            const lang = localStorage.getItem('lang') || 'ar';
+            const di = document.getElementById('desktopLoginIcon'), mi = document.getElementById('mobileLoginIcon');
+            [di, mi].forEach(icon => {
+                if (!icon) return;
+                if (isLoggedIn()) {
+                    icon.className = icon.className.includes('fa-sign-out-alt') ? icon.className : icon.className.replace('fa-sign-in-alt', 'fa-sign-out-alt');
+                    icon.setAttribute('data-translate-title', 'logout_title');
+                    icon.setAttribute('title', translations[lang].logout_title);
+                } else {
+                    icon.className = icon.className.includes('fa-sign-in-alt') ? icon.className : icon.className.replace('fa-sign-out-alt', 'fa-sign-in-alt');
+                    icon.setAttribute('data-translate-title', 'login_title');
+                    icon.setAttribute('title', translations[lang].login_title);
+                }
+            });
+            const da = document.getElementById('desktopAccountIcon'), ma = document.getElementById('mobileAccountIcon');
+            const display = isLoggedIn() ? 'flex' : 'none';
+            if (da) da.style.display = display;
+            if (ma) ma.style.display = display;
+        }
+        function handleLoginClick() {
+            if (isLoggedIn()) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('username');
+                updateLoginIcon();
+                const lang = localStorage.getItem('lang') || 'ar';
+                showToast(translations[lang].logout_success);
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // ==================== إدارة اللغة ====================
+        function applyLanguage(lang) {
+            document.getElementById('htmlRoot').setAttribute('lang', lang);
+            document.getElementById('htmlRoot').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.querySelectorAll('[data-translate-title]').forEach(el => {
+                const key = el.getAttribute('data-translate-title');
+                if (translations[lang] && translations[lang][key]) el.setAttribute('title', translations[lang][key]);
+            });
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.placeholder = translations[lang].search_placeholder;
+            const closeBtn = document.getElementById('closeSearchBtn');
+            if (closeBtn) closeBtn.setAttribute('title', translations[lang].close_search);
+            localStorage.setItem('lang', lang);
+            updateLoginIcon();
+            updateActiveLangInDropdowns(lang);
+            if (document.getElementById('searchOverlay').classList.contains('active')) performSearch();
+        }
+        function updateActiveLangInDropdowns(lang) {
+            document.querySelectorAll('.lang-menu li').forEach(li => {
+                const langAttr = li.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+                li.style.color = langAttr === lang ? 'var(--green)' : '';
+                li.style.fontWeight = langAttr === lang ? 'bold' : '';
+            });
+        }
+        function setLang(lang) {
+            applyLanguage(lang);
+            document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+        }
+
+        // ==================== القائمة الجانبية (موبايل) ====================
+        const body = document.body;
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdown = document.getElementById('dropdownCategories');
+        function openMenu() {
+            navMenu.classList.add('active');
+            navOverlay.classList.add('active');
+            body.classList.add('lock-scroll');
+            menuToggle.classList.replace('fa-bars', 'fa-times');
+        }
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            body.classList.remove('lock-scroll');
+            menuToggle.classList.replace('fa-times', 'fa-bars');
+            if (dropdown) dropdown.classList.remove('active');
+        }
+        menuToggle.addEventListener('click', () => navMenu.classList.contains('active') ? closeMenu() : openMenu());
+        navOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !link.classList.contains('dropdown-toggle')) closeMenu();
+        }));
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+        window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+
+        // ==================== قائمة اللغة ====================
+        document.querySelectorAll('.lang-dropdown').forEach(dropdownEl => {
+            const toggle = dropdownEl.querySelector('.lang-toggle');
+            if (toggle) toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.querySelectorAll('.lang-dropdown').forEach(d => { if (d !== dropdownEl) d.classList.remove('active'); });
+                dropdownEl.classList.toggle('active');
+            });
+        });
+        document.addEventListener('click', () => document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active')));
+
+        // ==================== المظهر ====================
+        const themeToggles = document.querySelectorAll('.theme-toggle');
+        const currentThemeStorage = localStorage.getItem('theme') || 'dark';
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                themeToggles.forEach(t => t.classList.replace('fa-moon', 'fa-sun'));
+            } else {
+                document.documentElement.classList.remove('light-mode');
+                themeToggles.forEach(t => t.classList.replace('fa-sun', 'fa-moon'));
+            }
+        }
+        applyTheme(currentThemeStorage);
+        themeToggles.forEach(toggle => toggle.addEventListener('click', () => {
+            const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        }));
+
+        // ==================== البحث ====================
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const closeSearchBtn = document.getElementById('closeSearchBtn');
+        const searchResultsDiv = document.getElementById('searchResults');
+        const searchIcon = document.getElementById('searchIcon');
+        // يمكنك إضافة منتجاتك هنا ليعمل البحث بشكل كامل
+        const products = [];
+
+        function openSearchModal() {
+            searchOverlay.classList.add('active');
+            body.classList.add('lock-scroll');
+            searchInput.value = '';
+            searchInput.focus();
+            performSearch();
+        }
+        function closeSearchModal() {
+            searchOverlay.classList.remove('active');
+            body.classList.remove('lock-scroll');
+        }
+        searchIcon.addEventListener('click', openSearchModal);
+        closeSearchBtn.addEventListener('click', closeSearchModal);
+        searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearchModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchOverlay.classList.contains('active')) closeSearchModal(); });
+        searchInput.addEventListener('input', performSearch);
+
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            const lang = localStorage.getItem('lang') || 'ar';
+            if (query === '') {
+                searchResultsDiv.innerHTML = `<div class="search-empty">${translations[lang].search_results}</div>`;
+                return;
+            }
+            const results = products.filter(p =>
+                (p.name?.ar?.toLowerCase().includes(query)) ||
+                (p.name?.en?.toLowerCase().includes(query)) ||
+                (p.desc?.ar?.toLowerCase().includes(query)) ||
+                (p.desc?.en?.toLowerCase().includes(query)) ||
+                (p.brand?.toLowerCase().includes(query)) ||
+                (p.compatibility?.toLowerCase().includes(query)) ||
+                (p.color?.includes(query))
+            );
+            if (results.length === 0) {
+                searchResultsDiv.innerHTML = `<div class="search-empty">${translations[lang].no_search_results}</div>`;
+                return;
+            }
+            const starsHtml = (r) => {
+                let s = '';
+                for (let i = 1; i <= 5; i++) s += i <= r ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+                return s;
+            };
+            searchResultsDiv.innerHTML = results.map(p => `
+                <div class="search-result-item">
+                    <div class="search-result-img"><img src="${p.image}" alt="${p.name?.[lang] || ''}" style="width:100%; height:100%; object-fit:cover;"></div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${p.name?.[lang] || ''}</div>
+                        <div class="search-result-meta">
+                            ${p.brand ? `<span>${p.brand}</span>` : ''}
+                            ${p.type ? `<span>${translations[lang]?.[p.type] || p.type}</span>` : ''}
+                            ${p.compatibility ? `<span>${p.compatibility}</span>` : ''}
+                        </div>
+                        <div class="search-result-price">${p.price} ${translations[lang].currency || ''}</div>
+                        <div class="search-result-rating">${starsHtml(p.rating)}<span>(${p.reviews})</span></div>
+                    </div>
+                    <a href="accessories-details.html?id=${p.id}" class="search-result-details">${translations[lang].details || 'Details'}</a>
+                </div>
+            `).join('');
+        }
+
+        // ==================== تحديث عداد السلة ====================
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+            document.querySelectorAll('.cart-count').forEach(el => {
+                el.textContent = count;
+                if (count > 0) {
+                    el.style.display = 'flex';
+                    el.classList.add('pop');
+                    setTimeout(() => el.classList.remove('pop'), 300);
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        }
+
+        // ==================== Toast ====================
+        const toastOverlay = document.getElementById('toastOverlay');
+        const toastMessage = document.getElementById('toastMessage');
+        const toastCloseBtn = document.getElementById('toastCloseBtn');
+        function showToast(msg) {
+            const lang = localStorage.getItem('lang') || 'ar';
+            toastMessage.textContent = msg || translations[lang].toast_success;
+            toastOverlay.classList.add('active');
+        }
+        toastCloseBtn.addEventListener('click', () => toastOverlay.classList.remove('active'));
+        toastOverlay.addEventListener('click', (e) => { if (e.target === toastOverlay) toastOverlay.classList.remove('active'); });
+
+        // ==================== نموذج التواصل ====================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if (!name || !email || !subject || !message) {
+                const lang = localStorage.getItem('lang') || 'ar';
+                alert(lang === 'ar' ? 'يرجى ملء جميع الحقول.' : 'Please fill in all fields.');
+                return;
+            }
+            const btn = this.querySelector('button');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '...';
+            setTimeout(() => {
+                showToast();
+                btn.disabled = false;
+                btn.textContent = originalText;
+                document.getElementById('contactForm').reset();
+            }, 1000);
+        });
+
+        // ==================== بدء التشغيل ====================
+        applyLanguage(localStorage.getItem('lang') || 'ar');
+        updateLoginIcon();
+        updateCartCount();
+    </script>
+</body>
+</html>

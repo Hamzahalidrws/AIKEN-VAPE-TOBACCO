@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السياسات | AIKEN VAPE & TOBACCO</title>
+
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <style>
+        :root {
+            --green: #86D800;
+            --purple: #6210A2;
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --bg-alt: #0a0a0a;
+            --bg-img: #151515;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --star-color: #f1c40f;
+            --header-bg: #000000;
+            --footer-bg: #000000;
+            --hover-bg: #222222;
+            --tag-bg: #1a1a1a;
+            --hero-bg-end: #000000;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+            --modal-bg: #111111;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+        :root.light-mode {
+            --bg-dark: #f3f5f7;
+            --bg-card: #ffffff;
+            --bg-alt: #e9edf2;
+            --bg-img: #f7f8fa;
+            --text-light: #101828;
+            --text-muted: #667085;
+            --border-color: #d9dee7;
+            --header-bg: #ffffff;
+            --footer-bg: #f8fafc;
+            --hover-bg: #eef2f6;
+            --tag-bg: #edf1f5;
+            --hero-bg-end: #f3f5f7;
+            --green: #5bb900;
+            --purple: #6b21a8;
+            --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-dark); color: var(--text-light); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; width: 100%; }
+
+        /* الهيدر */
+        header { background: var(--header-bg); border-bottom: 2px solid var(--purple); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 1px; } .logo span { color: var(--purple); }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links li a { position: relative; font-weight: 700; font-size: clamp(0.9rem, 2vw, 1.1rem); white-space: nowrap; transition: color 0.3s; }
+        .nav-links li a::after { content: ""; position: absolute; right: 0; bottom: -6px; width: 0; height: 3px; background: var(--green); border-radius: 3px; box-shadow: 0 0 10px rgba(134,216,0,.5); transition: width .3s ease; }
+        .nav-links li a:hover { color: var(--green); text-shadow: 0 0 10px rgba(134,216,0,.3); }
+        .nav-links li a:hover::after, .nav-links li a.active::after { width: 100%; } .nav-links li a.active { color: var(--green); }
+        .header-icons { display: flex; gap: 16px; color: var(--text-light); font-size: 1.2rem; align-items: center; }
+        .header-icons a, .header-icons i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .header-icons a:hover i, .header-icons i:hover { color: var(--green); transform: scale(1.1); }
+        .menu-toggle { display: none !important; color: var(--green); font-size: 1.6rem; cursor: pointer; }
+        .desktop-only { display: block; } .mobile-only { display: none !important; }
+        .lang-dropdown { position: relative; display: flex; align-items: center; cursor: pointer; }
+        .lang-menu { position: absolute; top: 150%; left: 50%; transform: translateX(-90%); background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--purple); border-radius: 5px; list-style: none; padding: 5px 0; min-width: 110px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-align: center; }
+        html[dir="ltr"] .lang-menu { left: 50%; right: auto; transform: translateX(-90%); } html[dir="rtl"] .lang-menu { right: 50%; left: auto; transform: translateX(90%); }
+        .lang-dropdown.active .lang-menu { display: block; }
+        .lang-menu li { padding: 10px; font-size: 0.95rem; color: var(--text-light); transition: 0.3s; cursor: pointer; } .lang-menu li:hover { background: var(--hover-bg); color: var(--green); }
+        .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; } .nav-overlay.active { display: block; }
+        .cart-link { position: relative; }
+        .cart-badge { position: absolute; top: -8px; right: -10px; background-color: var(--green); color: #000; font-size: 0.7rem; font-weight: 800; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--header-bg); display: none; }
+
+        /* محتوى السياسات */
+        .policies-hero {
+            padding: 60px 0 40px;
+            background: radial-gradient(circle at left center, rgba(98, 16, 162, 0.25) 0%, var(--hero-bg-end) 70%);
+            text-align: center;
+        }
+        .policies-hero h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        .policies-hero h1 span { color: var(--green); text-shadow: 0 0 20px rgba(134, 216, 0, 0.4); }
+        .policies-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        .policy-section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .policy-section:last-child { border-bottom: none; }
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .policy-card:hover {
+            border-color: var(--green);
+            box-shadow: 0 8px 20px rgba(134, 216, 0, 0.1);
+        }
+        .policy-card h2 {
+            color: var(--green);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .policy-card h2 i { color: var(--purple); }
+        .policy-card h3 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin: 20px 0 10px;
+            font-weight: 700;
+        }
+        .policy-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: var(--green);
+            font-weight: 700;
+        }
+        .important-note {
+            background: rgba(134, 216, 0, 0.1);
+            border-right: 4px solid var(--green);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            color: var(--text-light);
+        }
+        html[dir="ltr"] .important-note { border-right: none; border-left: 4px solid var(--green); }
+
+        /* الفوتر */
+        footer { background: var(--footer-bg); padding: clamp(40px, 8vw, 70px) 0 20px; border-top: 4px solid var(--green); transition: 0.3s; margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--purple); margin-bottom: 20px; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 800; position: relative; padding-bottom: 8px; }
+        .footer-col h4::after { content: ''; position: absolute; right: 0; bottom: 0; width: 35px; height: 3px; background: var(--green); }
+        html[dir="ltr"] .footer-col h4::after { right: auto; left: 0; }
+        .footer-col ul li { margin-bottom: 12px; } .footer-col ul li a { color: var(--text-muted); transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+        .footer-col ul li a::before { content: '\f104'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.75rem; color: var(--green); transition: 0.3s; }
+        html[dir="ltr"] .footer-col ul li a::before { content: '\f105'; } .footer-col ul li a:hover { color: var(--text-light); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; } .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; color: var(--green); font-size: 1.1rem; border: 1px solid var(--border-color); } .social-links a:hover { background: var(--purple); color: #fff; border-color: var(--purple); transform: translateY(-3px); }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; font-size: 0.9rem; } .footer-contact li i { color: var(--green); margin-top: 4px; }
+        .payment-methods { margin-top: 20px; font-size: 1.6rem; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; } .payment-methods i:hover { color: var(--text-light); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; } .mobile-only { display: flex !important; }
+            .header-inner { position: relative; padding: 10px 0; }
+            .nav-links { display: flex; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--header-bg); flex-direction: column; padding: 20px; border-left: 2px solid var(--purple); transition: right 0.4s ease; align-items: flex-start; z-index: 1001; overflow-y: auto; gap: 2px; }
+            html[dir="ltr"] .nav-links { right: auto; left: -100%; border-left: none; border-right: 2px solid var(--purple); transition: left 0.4s ease; }
+            .nav-links.active { right: 0; } html[dir="ltr"] .nav-links.active { left: 0; right: auto; }
+            .mobile-icons-row { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; font-size: 1.3rem; color: var(--text-light); }
+            .mobile-icons-row a, .mobile-icons-row i { cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+            .mobile-icons-row a:hover i, .mobile-icons-row i:hover { color: var(--green); }
+            .nav-links li { width: 100%; } .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; }
+            .menu-toggle { display: block !important; } .header-icons { gap: 12px; font-size: 1.1rem; }
+            .policy-card { padding: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+        @media (max-width: 400px) {
+            .header-inner { padding: 12px 20px; } .logo { font-size: 1.2rem; } .menu-toggle { font-size: 1.4rem; }
+            .header-icons { gap: 10px; font-size: 1rem; }
+            .policy-card h2 { font-size: 1.5rem; }
+        }
+        .policy-section {
+    scroll-margin-top: 120px; /* يترك مسافة أسفل الهيدر عند الانتقال للقسم */
+}
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+/* ===== زر الهامبرغر المتحول ===== */
+.menu-toggle {
+    display: none;              /* مخفي افتراضيًا */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1002;             /* فوق القائمة الجانبية */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+}
+
+/* تحويل الخطوط إلى X عند إضافة كلاس active */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* إظهار الزر في شاشات الموبايل */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Aiken <span>Vape</span></div>
+            <ul class="nav-links" id="navMenu">
+                <li class="mobile-only mobile-icons-row">
+                    <a href="cart.html" id="mobileCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge cart-count">0</span>
+                    </a>
+                    <a href="account.html" id="mobileAccountIcon" class="account-link" title="حسابي" data-translate-title="account" style="display: none;">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <i id="mobileLoginIcon" class="fas fa-sign-in-alt" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                    <i class="fas fa-moon theme-toggle" title="المظهر" data-translate-title="theme"></i>
+                    <div class="lang-dropdown">
+                        <i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i>
+                        <ul class="lang-menu">
+                            <li onclick="setLang('ar')">العربية</li>
+                            <li onclick="setLang('en')">English</li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="index.html" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
+                <li><a href="index.html#shop" class="nav-link" data-translate="nav_shop">المتجر</a></li>
+                <li><a href="index.html#offers" class="nav-link" data-translate="nav_offers">العروض والتخفيضات</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="nav_about">من نحن</a></li>
+                <li><a href="contact.html" class="nav-link" data-translate="nav_contact">تواصل معنا</a></li>
+                <li><a href="policies.html" class="nav-link active" data-translate="nav_policies">السياسات</a></li>
+            </ul>
+            <div class="header-icons">
+                <a href="cart.html" id="desktopCartLink" class="cart-link" title="السلة" data-translate-title="cart" onclick="return handleCartClick(event)">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge cart-count">0</span>
+                </a>
+                <a href="account.html" id="desktopAccountIcon" class="account-link desktop-only" title="حسابي" data-translate-title="account" style="display: none;">
+                    <i class="fas fa-user"></i>
+                </a>
+                <i id="desktopLoginIcon" class="fas fa-sign-in-alt desktop-only" title="تسجيل الدخول" data-translate-title="login_title" onclick="handleLoginClick()" style="cursor:pointer;"></i>
+                <i class="fas fa-moon theme-toggle desktop-only" title="المظهر" data-translate-title="theme"></i>
+                <div class="lang-dropdown desktop-only">
+                    <i class="fas fa-globe lang-toggle" title="اللغة" data-translate-title="language"></i>
+                    <ul class="lang-menu">
+                        <li onclick="setLang('ar')">العربية</li>
+                        <li onclick="setLang('en')">English</li>
+                    </ul>
+                </div>
+               <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- المحتوى الرئيسي: السياسات -->
+    <main>
+        <section class="policies-hero" data-aos="fade-up">
+            <div class="container">
+                <h1 data-translate="policies_hero_title">السياسات <span>والأحكام</span></h1>
+                <p data-translate="policies_hero_desc">اقرأ سياساتنا بعناية لفهم حقوقك وواجباتك عند استخدام متجرنا.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- الشروط والأحكام -->
+            <section class="policy-section" id="terms" data-aos="fade-up">
+                <div class="policy-card">
+                    <h2><i class="fas fa-file-contract"></i> <span data-translate="policy_terms_title">الشروط والأحكام</span></h2>
+                    <div data-translate="policy_terms_content">
+                        <p>مرحبًا بكم في متجر <span class="highlight">AIKEN VAPE & TOBACCO</span>، الواقع في مدينة Aiken بولاية South Carolina. باستخدامك لهذا الموقع، فإنك توافق على الالتزام بالشروط والأحكام التالية:</p>
+                        <h3>1. القبول بالشروط</h3>
+                        <p>بمجرد دخولك إلى الموقع أو إجراء أي عملية شراء، فأنت تقر بأنك قد قرأت وفهمت هذه الشروط وتوافق عليها بالكامل.</p>
+                        <h3>2. المنتجات والخدمات</h3>
+                        <p>نحن نقدم منتجات الفيب والتبغ الأصلية فقط. قد تختلف الأسعار والمنتجات المتاحة حسب المخزون والطلب.</p>
+                        <h3>3. حقوق الملكية الفكرية</h3>
+                        <p>جميع المحتويات الموجودة على الموقع (نصوص، شعارات، صور، رسومات) هي ملك حصري لـ AIKEN VAPE & TOBACCO ولا يجوز استخدامها دون إذن كتابي.</p>
+                        <h3>4. التعديلات على الشروط</h3>
+                        <p>نحتفظ بحق تعديل هذه الشروط في أي وقت. تسري التعديلات فور نشرها على الموقع.</p>
+                        <div class="important-note">
+                            <i class="fas fa-exclamation-circle" style="margin-left: 8px;"></i> <span data-translate="policy_terms_note">العنوان: 2567 Whiskey Rd, Aiken, SC 29803</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- سياسة الخصوصية -->
+            <section class="policy-section" id="privacy" data-aos="fade-up">
+                <div class="policy-card">
+                    <h2><i class="fas fa-shield-alt"></i> <span data-translate="policy_privacy_title">سياسة الخصوصية</span></h2>
+                    <div data-translate="policy_privacy_content">
+                        <p>خصوصيتك تهمنا. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك الشخصية.</p>
+                        <h3>1. جمع المعلومات</h3>
+                        <p>نقوم بجمع المعلومات التي تقدمها طوعًا عند التسجيل أو إجراء عملية شراء، مثل الاسم والبريد الإلكتروني ورقم الهاتف والعنوان.</p>
+                        <h3>2. استخدام المعلومات</h3>
+                        <p>تُستخدم معلوماتك لمعالجة الطلبات، وتحسين خدماتنا، وإرسال التحديثات والعروض إذا وافقت على ذلك.</p>
+                        <h3>3. حماية البيانات</h3>
+                        <p>بياناتك محمية بأعلى معايير الأمان. <span class="highlight">لا يمكن لأي طرف ثالث الوصول إلى بياناتك الشخصية</span> دون إذن منك أو بموجب القانون.</p>
+                        <h3>4. ملفات تعريف الارتباط</h3>
+                        <p>قد نستخدم ملفات تعريف الارتباط لتحسين تجربتك. يمكنك تعطيلها من إعدادات المتصفح، لكن قد يؤثر ذلك على وظائف الموقع.</p>
+                        <h3>5. مشاركة المعلومات</h3>
+                        <p>لا نبيع أو نؤجر معلوماتك الشخصية لأي جهة خارجية. قد نشارك البيانات فقط مع مزودي الخدمات الأساسيين (مثل شركات الشحن) لإتمام طلبك.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- سياسة الشحن والتوصيل -->
+            <section class="policy-section" id="shipping" data-aos="fade-up">
+                <div class="policy-card">
+                    <h2><i class="fas fa-truck"></i> <span data-translate="policy_shipping_title">سياسة الشحن والتوصيل</span></h2>
+                    <div data-translate="policy_shipping_content">
+                        <p>نحرص على توصيل طلباتك بأسرع وقت ممكن وبأمان تام.</p>
+                        <h3>1. منطقة التوصيل</h3>
+                        <p>الشحن والتوصيل متاح داخل مدينة <span class="highlight">Aiken</span> فقط (South Carolina). لا نقوم حاليًا بالشحن خارج هذه المنطقة.</p>
+                        <h3>2. مدة الشحن</h3>
+                        <p>يتم تجهيز الطلب خلال 24 ساعة، والتوصيل خلال 1-3 أيام عمل داخل Aiken.</p>
+                        <h3>3. تكلفة الشحن</h3>
+                        <p>الشحن مجاني للطلبات التي تزيد عن 50 دولارًا. للطلبات الأقل، تُضاف رسوم رمزية قدرها 5 دولارات.</p>
+                        <h3>4. تتبع الطلب</h3>
+                        <p>بعد إتمام الطلب، ستصلك رسالة تأكيد عبر البريد الإلكتروني مع تفاصيل التوصيل.</p>
+                        <div class="important-note">
+                            <i class="fas fa-info-circle" style="margin-left: 8px;"></i> <span data-translate="policy_shipping_note">يرجى التأكد من كتابة العنوان بدقة داخل Aiken لضمان وصول طلبك.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- تأكيد العمر والمسؤولية -->
+            <section class="policy-section" id="age" data-aos="fade-up">
+                <div class="policy-card">
+                    <h2><i class="fas fa-id-card"></i> <span data-translate="policy_age_title">تأكيد العمر والمسؤولية</span></h2>
+                    <div data-translate="policy_age_content">
+                        <p>بيع منتجات التبغ والفيب مقتصر قانونًا على البالغين من العمر 21 عامًا أو أكثر.</p>
+                        <h3>1. التحقق من العمر</h3>
+                        <p>نلتزم بالتحقق من عمر كل عميل قبل إتمام أي عملية شراء. <span class="highlight">يتم التحقق من العمر عبر إرسال صورة الهوية الرسمية (رخصة القيادة أو جواز السفر) وصورة سيلفي</span> للتأكد من مطابقة الوجه.</p>
+                        <h3>2. سرية بيانات التحقق</h3>
+                        <p>يتم استخدام بيانات التحقق فقط لأغراض تأكيد العمر، ولا يتم تخزينها بعد اكتمال العملية، وتظل محمية تمامًا.</p>
+                        <h3>3. المسؤولية الشخصية</h3>
+                        <p>باستخدامك لهذا الموقع، فإنك تقر بأنك تبلغ 21 عامًا أو أكثر وتتحمل المسؤولية الكاملة عن استخدام المنتجات.</p>
+                        <h3>4. رفض الخدمة</h3>
+                        <p>نحتفظ بحق رفض أي طلب إذا تعذر التحقق من العمر أو كانت المعلومات غير صحيحة.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="font-size:1.6rem;margin-bottom:15px;">Aiken <span>Vape</span></div>
+                    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;line-height:1.6;" data-translate="footer_desc">الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/_z8y3?igsh=MWE5eW4xb3U0ZnhrMQ==&igsi=MWE5eW4xb3U0ZnhrMQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/193wnE9jcr/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@hamzahalydrws?_r=1&_t=ZS-98wVIRKlJge"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/12175308866"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_links">روابط هامة</h4>
+                    <ul>
+                        <li><a href="index.html" data-translate="nav_home">الرئيسية</a></li>
+                        <li><a href="index.html#shop" data-translate="nav_shop">المتجر</a></li>
+                        <li><a href="disposables.html" data-translate="nav_disposables">السحبات الجاهزة</a></li>
+                        <li><a href="index.html#offers" data-translate="nav_offers">العروض</a></li>
+                        <li><a href="policies.html" data-translate="nav_policies">السياسات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_policies">السياسات</h4>
+                    <ul>
+                        <li><a href="policies.html#terms" data-translate="policy_terms_title">الشروط والأحكام</a></li>
+                        <li><a href="policies.html#privacy" data-translate="policy_privacy_title">سياسة الخصوصية</a></li>
+                        <li><a href="policies.html#shipping" data-translate="policy_shipping_title">سياسة الشحن</a></li>
+                        <li><a href="policies.html#age" data-translate="policy_age_title">تأكيد العمر</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_contact">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>2567 Whiskey Rd, Aiken, SC 29803</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>zubair007207@gmail.com</span></li>
+                        <li><i class="fas fa-phone"></i> <span dir="ltr">+1 803-226-0066</span></li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" data-translate="copyright">&copy; 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.</div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="assets/js/aos.js"></script>
+
+    <script>
+        // ==================== الترجمات ====================
+        const translations = {
+            ar: {
+                account: 'حسابي',
+                theme: 'المظهر',
+                language: 'اللغة',
+                login_title: 'تسجيل الدخول',
+                logout_title: 'تسجيل الخروج',
+                cart: 'السلة',
+                nav_home: 'الرئيسية',
+                nav_shop: 'المتجر',
+                nav_offers: 'العروض والتخفيضات',
+                nav_about: 'من نحن',
+                nav_contact: 'تواصل معنا',
+                nav_policies: 'السياسات',
+                nav_disposables: 'السحبات الجاهزة',
+                footer_desc: 'الوجهة الأولى لأرقى وأحدث أجهزة الفيب وملحقاتها.',
+                footer_links: 'روابط هامة',
+                footer_policies: 'السياسات',
+                footer_contact: 'تواصل معنا',
+                copyright: '© 2026 AIKEN VAPE & TOBACCO. جميع الحقوق محفوظة.',
+                policies_hero_title: 'السياسات <span>والأحكام</span>',
+                policies_hero_desc: 'اقرأ سياساتنا بعناية لفهم حقوقك وواجباتك عند استخدام متجرنا.',
+                policy_terms_title: 'الشروط والأحكام',
+                policy_terms_content: '<p>مرحبًا بكم في متجر <span class="highlight">AIKEN VAPE & TOBACCO</span>، الواقع في مدينة Aiken بولاية South Carolina. باستخدامك لهذا الموقع، فإنك توافق على الالتزام بالشروط والأحكام التالية:</p><h3>1. القبول بالشروط</h3><p>بمجرد دخولك إلى الموقع أو إجراء أي عملية شراء، فأنت تقر بأنك قد قرأت وفهمت هذه الشروط وتوافق عليها بالكامل.</p><h3>2. المنتجات والخدمات</h3><p>نحن نقدم منتجات الفيب والتبغ الأصلية فقط. قد تختلف الأسعار والمنتجات المتاحة حسب المخزون والطلب.</p><h3>3. حقوق الملكية الفكرية</h3><p>جميع المحتويات الموجودة على الموقع (نصوص، شعارات، صور، رسومات) هي ملك حصري لـ AIKEN VAPE & TOBACCO ولا يجوز استخدامها دون إذن كتابي.</p><h3>4. التعديلات على الشروط</h3><p>نحتفظ بحق تعديل هذه الشروط في أي وقت. تسري التعديلات فور نشرها على الموقع.</p><div class="important-note"><i class="fas fa-exclamation-circle" style="margin-left: 8px;"></i> <span>العنوان: 2567 Whiskey Rd, Aiken, SC 29803</span></div>',
+                policy_terms_note: 'العنوان: 2567 Whiskey Rd, Aiken, SC 29803',
+                policy_privacy_title: 'سياسة الخصوصية',
+                policy_privacy_content: '<p>خصوصيتك تهمنا. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك الشخصية.</p><h3>1. جمع المعلومات</h3><p>نقوم بجمع المعلومات التي تقدمها طوعًا عند التسجيل أو إجراء عملية شراء، مثل الاسم والبريد الإلكتروني ورقم الهاتف والعنوان.</p><h3>2. استخدام المعلومات</h3><p>تُستخدم معلوماتك لمعالجة الطلبات، وتحسين خدماتنا، وإرسال التحديثات والعروض إذا وافقت على ذلك.</p><h3>3. حماية البيانات</h3><p>بياناتك محمية بأعلى معايير الأمان. <span class="highlight">لا يمكن لأي طرف ثالث الوصول إلى بياناتك الشخصية</span> دون إذن منك أو بموجب القانون.</p><h3>4. ملفات تعريف الارتباط</h3><p>قد نستخدم ملفات تعريف الارتباط لتحسين تجربتك. يمكنك تعطيلها من إعدادات المتصفح، لكن قد يؤثر ذلك على وظائف الموقع.</p><h3>5. مشاركة المعلومات</h3><p>لا نبيع أو نؤجر معلوماتك الشخصية لأي جهة خارجية. قد نشارك البيانات فقط مع مزودي الخدمات الأساسيين (مثل شركات الشحن) لإتمام طلبك.</p>',
+                policy_shipping_title: 'سياسة الشحن والتوصيل',
+                policy_shipping_content: '<p>نحرص على توصيل طلباتك بأسرع وقت ممكن وبأمان تام.</p><h3>1. منطقة التوصيل</h3><p>الشحن والتوصيل متاح داخل مدينة <span class="highlight">Aiken</span> فقط (South Carolina). لا نقوم حاليًا بالشحن خارج هذه المنطقة.</p><h3>2. مدة الشحن</h3><p>يتم تجهيز الطلب خلال 24 ساعة، والتوصيل خلال 1-3 أيام عمل داخل Aiken.</p><h3>3. تكلفة الشحن</h3><p>الشحن مجاني للطلبات التي تزيد عن 50 دولارًا. للطلبات الأقل، تُضاف رسوم رمزية قدرها 5 دولارات.</p><h3>4. تتبع الطلب</h3><p>بعد إتمام الطلب، ستصلك رسالة تأكيد عبر البريد الإلكتروني مع تفاصيل التوصيل.</p><div class="important-note"><i class="fas fa-info-circle" style="margin-left: 8px;"></i> <span>يرجى التأكد من كتابة العنوان بدقة داخل Aiken لضمان وصول طلبك.</span></div>',
+                policy_shipping_note: 'يرجى التأكد من كتابة العنوان بدقة داخل Aiken لضمان وصول طلبك.',
+                policy_age_title: 'تأكيد العمر والمسؤولية',
+                policy_age_content: '<p>بيع منتجات التبغ والفيب مقتصر قانونًا على البالغين من العمر 21 عامًا أو أكثر.</p><h3>1. التحقق من العمر</h3><p>نلتزم بالتحقق من عمر كل عميل قبل إتمام أي عملية شراء. <span class="highlight">يتم التحقق من العمر عبر إرسال صورة الهوية الرسمية (رخصة القيادة أو جواز السفر) وصورة سيلفي</span> للتأكد من مطابقة الوجه.</p><h3>2. سرية بيانات التحقق</h3><p>يتم استخدام بيانات التحقق فقط لأغراض تأكيد العمر، ولا يتم تخزينها بعد اكتمال العملية، وتظل محمية تمامًا.</p><h3>3. المسؤولية الشخصية</h3><p>باستخدامك لهذا الموقع، فإنك تقر بأنك تبلغ 21 عامًا أو أكثر وتتحمل المسؤولية الكاملة عن استخدام المنتجات.</p><h3>4. رفض الخدمة</h3><p>نحتفظ بحق رفض أي طلب إذا تعذر التحقق من العمر أو كانت المعلومات غير صحيحة.</p>',
+                login_required: 'يجب عليك تسجيل الدخول أولاً.',
+                logout_success: 'تم تسجيل الخروج بنجاح.'
+            },
+            en: {
+                account: 'My Account',
+                theme: 'Theme',
+                language: 'Language',
+                login_title: 'Login',
+                logout_title: 'Logout',
+                cart: 'Cart',
+                nav_home: 'Home',
+                nav_shop: 'Shop',
+                nav_offers: 'Offers & Deals',
+                nav_about: 'About Us',
+                nav_contact: 'Contact Us',
+                nav_policies: 'Policies',
+                nav_disposables: 'Disposables',
+                footer_desc: 'The premier destination for the finest and latest vape devices and accessories.',
+                footer_links: 'Important Links',
+                footer_policies: 'Policies',
+                footer_contact: 'Contact Us',
+                copyright: '© 2026 AIKEN VAPE & TOBACCO. All rights reserved.',
+                policies_hero_title: 'Policies <span>& Terms</span>',
+                policies_hero_desc: 'Read our policies carefully to understand your rights and responsibilities when using our store.',
+                policy_terms_title: 'Terms & Conditions',
+                policy_terms_content: '<p>Welcome to <span class="highlight">AIKEN VAPE & TOBACCO</span>, located in Aiken, South Carolina. By using this website, you agree to comply with the following terms and conditions:</p><h3>1. Acceptance of Terms</h3><p>By entering the site or making a purchase, you acknowledge that you have read, understood, and fully agree to these terms.</p><h3>2. Products & Services</h3><p>We offer only authentic vape and tobacco products. Prices and availability may vary based on stock and demand.</p><h3>3. Intellectual Property</h3><p>All content on the site (text, logos, images, graphics) is the exclusive property of AIKEN VAPE & TOBACCO and may not be used without written permission.</p><h3>4. Modifications to Terms</h3><p>We reserve the right to modify these terms at any time. Changes take effect immediately upon posting.</p><div class="important-note"><i class="fas fa-exclamation-circle" style="margin-left: 8px;"></i> <span>Address: 2567 Whiskey Rd, Aiken, SC 29803</span></div>',
+                policy_terms_note: 'Address: 2567 Whiskey Rd, Aiken, SC 29803',
+                policy_privacy_title: 'Privacy Policy',
+                policy_privacy_content: '<p>Your privacy matters to us. This policy explains how we collect, use, and protect your personal information.</p><h3>1. Information Collection</h3><p>We collect information you voluntarily provide during registration or purchase, such as name, email, phone number, and address.</p><h3>2. Use of Information</h3><p>Your information is used to process orders, improve our services, and send updates and offers if you consent.</p><h3>3. Data Protection</h3><p>Your data is protected with the highest security standards. <span class="highlight">No third party can access your personal data</span> without your consent or as required by law.</p><h3>4. Cookies</h3><p>We may use cookies to improve your experience. You can disable them in your browser settings, but this may affect site functionality.</p><h3>5. Information Sharing</h3><p>We do not sell or rent your personal information to any outside party. Data may be shared only with essential service providers (e.g., shipping companies) to complete your order.</p>',
+                policy_shipping_title: 'Shipping & Delivery Policy',
+                policy_shipping_content: '<p>We strive to deliver your orders as quickly and safely as possible.</p><h3>1. Delivery Area</h3><p>Shipping and delivery are available only within <span class="highlight">Aiken</span> (South Carolina). We currently do not ship outside this area.</p><h3>2. Shipping Duration</h3><p>Orders are prepared within 24 hours, and delivery takes 1-3 business days within Aiken.</p><h3>3. Shipping Cost</h3><p>Shipping is free for orders over $50. For orders below that, a nominal fee of $5 is added.</p><h3>4. Order Tracking</h3><p>After completing your order, you will receive a confirmation email with delivery details.</p><div class="important-note"><i class="fas fa-info-circle" style="margin-left: 8px;"></i> <span>Please ensure accurate address within Aiken to guarantee delivery.</span></div>',
+                policy_shipping_note: 'Please ensure accurate address within Aiken to guarantee delivery.',
+                policy_age_title: 'Age Verification & Responsibility',
+                policy_age_content: '<p>Sale of tobacco and vape products is legally restricted to adults aged 21 years or older.</p><h3>1. Age Verification</h3><p>We verify the age of every customer before completing a purchase. <span class="highlight">Age verification is done by submitting a photo of official ID (driver\'s license or passport) and a selfie</span> to confirm face matching.</p><h3>2. Confidentiality of Verification Data</h3><p>Verification data is used solely for age confirmation, is not stored after the process, and remains fully protected.</p><h3>3. Personal Responsibility</h3><p>By using this site, you confirm that you are 21 or older and take full responsibility for product use.</p><h3>4. Refusal of Service</h3><p>We reserve the right to refuse any order if age cannot be verified or information is incorrect.</p>',
+                login_required: 'You need to login first.',
+                logout_success: 'Logged out successfully.'
+            }
+        };
+
+        // ==================== حالة تسجيل الدخول ====================
+        function isLoggedIn() { return localStorage.getItem('isLoggedIn') === 'true'; }
+        function handleCartClick(event) {
+            if (!isLoggedIn()) {
+                event.preventDefault();
+                const lang = localStorage.getItem('lang') || 'ar';
+                alert(translations[lang].login_required);
+                return false;
+            }
+            return true;
+        }
+        function updateLoginIcon() {
+            const lang = localStorage.getItem('lang') || 'ar';
+            const di = document.getElementById('desktopLoginIcon'), mi = document.getElementById('mobileLoginIcon');
+            [di, mi].forEach(icon => {
+                if (!icon) return;
+                if (isLoggedIn()) {
+                    icon.className = icon.className.includes('fa-sign-out-alt') ? icon.className : icon.className.replace('fa-sign-in-alt', 'fa-sign-out-alt');
+                    icon.setAttribute('data-translate-title', 'logout_title');
+                    icon.setAttribute('title', translations[lang].logout_title);
+                } else {
+                    icon.className = icon.className.includes('fa-sign-in-alt') ? icon.className : icon.className.replace('fa-sign-out-alt', 'fa-sign-in-alt');
+                    icon.setAttribute('data-translate-title', 'login_title');
+                    icon.setAttribute('title', translations[lang].login_title);
+                }
+            });
+            const da = document.getElementById('desktopAccountIcon'), ma = document.getElementById('mobileAccountIcon');
+            const display = isLoggedIn() ? 'flex' : 'none';
+            if (da) da.style.display = display;
+            if (ma) ma.style.display = display;
+        }
+        function handleLoginClick() {
+            if (isLoggedIn()) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('username');
+                updateLoginIcon();
+                const lang = localStorage.getItem('lang') || 'ar';
+                alert(translations[lang].logout_success);
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // ==================== القائمة الجانبية ====================
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+        function openMenu() { navMenu.classList.add('active'); navOverlay.classList.add('active'); menuToggle.classList.replace('fa-bars', 'fa-times'); menuToggle.classList.add('active'); }
+        function closeMenu() { navMenu.classList.remove('active'); navOverlay.classList.remove('active'); menuToggle.classList.remove('active'); menuToggle.classList.replace('fa-times', 'fa-bars'); }
+        menuToggle.addEventListener('click', () => navMenu.classList.contains('active') ? closeMenu() : openMenu());
+        navOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => { if (window.innerWidth <= 768) closeMenu(); }));
+        window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+
+        // ==================== المظهر ====================
+        const themeToggles = document.querySelectorAll('.theme-toggle');
+        const currentThemeStorage = localStorage.getItem('theme') || 'dark';
+        function applyTheme(theme) {
+            if (theme === 'light') { document.documentElement.classList.add('light-mode'); themeToggles.forEach(t => t.classList.replace('fa-moon', 'fa-sun')); }
+            else { document.documentElement.classList.remove('light-mode'); themeToggles.forEach(t => t.classList.replace('fa-sun', 'fa-moon')); }
+        }
+        applyTheme(currentThemeStorage);
+        themeToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme); applyTheme(newTheme);
+            });
+        });
+
+        // ==================== اللغة ====================
+        function applyLanguage(lang) {
+            document.getElementById('htmlRoot').setAttribute('lang', lang);
+            document.getElementById('htmlRoot').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.querySelectorAll('[data-translate-title]').forEach(el => {
+                const key = el.getAttribute('data-translate-title');
+                if (translations[lang] && translations[lang][key]) el.setAttribute('title', translations[lang][key]);
+            });
+            localStorage.setItem('lang', lang);
+            updateLoginIcon();
+            document.querySelectorAll('.lang-menu li').forEach(li => {
+                const langAttr = li.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+                li.style.color = langAttr === lang ? 'var(--green)' : '';
+                li.style.fontWeight = langAttr === lang ? 'bold' : '';
+            });
+            document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active'));
+        }
+        function setLang(lang) { applyLanguage(lang); }
+
+        // ==================== قائمة اللغة ====================
+        document.querySelectorAll('.lang-dropdown').forEach(dropdownEl => {
+            const toggle = dropdownEl.querySelector('.lang-toggle');
+            if (toggle) toggle.addEventListener('click', (e) => { e.stopPropagation(); document.querySelectorAll('.lang-dropdown').forEach(d => { if (d !== dropdownEl) d.classList.remove('active'); }); dropdownEl.classList.toggle('active'); });
+        });
+        document.addEventListener('click', () => document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('active')));
+
+        // ==================== عداد السلة ====================
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+            document.querySelectorAll('.cart-count').forEach(el => {
+                el.textContent = count;
+                el.style.display = count > 0 ? 'flex' : 'none';
+            });
+        }
+
+        // ==================== AOS ====================
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // ==================== بدء التشغيل ====================
+        applyLanguage(localStorage.getItem('lang') || 'ar');
+        updateLoginIcon();
+        updateCartCount();
+    </script>
+</body>
+</html>
